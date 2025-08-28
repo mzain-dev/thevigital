@@ -168,7 +168,7 @@ export default function CaseStudiesPage() {
         
         <div className="text-center space-y-6">
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Every business is unique, and so is our approach. We'll analyze your specific needs and create a customized strategy to maximize your ROI.
+            Every business is unique, and so is our approach. We&apos;ll analyze your specific needs and create a customized strategy to maximize your ROI.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

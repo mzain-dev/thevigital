@@ -12,13 +12,13 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
-  const typewriterServices = useMemo(() => [
+  const typewriterServices = [
     'Performance Marketing',
     'Web Development', 
     'SEO Optimization',
     'AI Automation',
     'Brand Design'
-  ], []);
+  ];
 
   const services = [
     {
@@ -298,7 +298,7 @@ export default function Home() {
               <Button size="lg" className="px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-200 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70" asChild>
                 <a href="/contact">
                   <Rocket className="mr-2 w-5 h-5" />
-                  Let's Talk
+                  Let&apos;s Talk
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
@@ -460,7 +460,7 @@ export default function Home() {
               Trusted by Industry Leaders
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              We've helped businesses across various industries achieve remarkable growth and ROI
+              We&apos;ve helped businesses across various industries achieve remarkable growth and ROI
             </p>
           </div>
           
@@ -537,7 +537,7 @@ export default function Home() {
               Our Case Studies
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              See how we've transformed businesses across industries with data-driven strategies
+              See how we&apos;ve transformed businesses across industries with data-driven strategies
             </p>
           </div>
 
@@ -1078,7 +1078,7 @@ export default function Home() {
                 Still Have Questions?
               </h3>
               <p className="text-muted-foreground mb-6">
-                Our team is here to help. Get in touch and we'll answer all your questions about growing your business.
+                Our team is here to help. Get in touch and we&apos;ll answer all your questions about growing your business.
               </p>
               <Button 
                 size="lg" 
@@ -1105,7 +1105,7 @@ export default function Home() {
               What Our Clients Say
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real results from real businesses. Here's what our clients have to say about working with us.
+              Real results from real businesses. Here&apos;s what our clients have to say about working with us.
             </p>
           </div>
           
@@ -1130,7 +1130,7 @@ export default function Home() {
                         {/* Testimonial Quote */}
                         <div className="flex-grow mb-6">
                           <blockquote className="text-muted-foreground italic leading-relaxed text-base">
-                            "{testimonial.quote}"
+                            &ldquo;{testimonial.quote}&rdquo;
                           </blockquote>
                         </div>
                         
@@ -1184,7 +1184,7 @@ export default function Home() {
                         {/* Testimonial Quote */}
                         <div className="flex-grow mb-6">
                           <blockquote className="text-muted-foreground italic leading-relaxed text-base">
-                            "{testimonial.quote}"
+                            &ldquo;{testimonial.quote}&rdquo;
                           </blockquote>
                         </div>
                         
@@ -1247,7 +1247,7 @@ export default function Home() {
               Stop Waiting, Start Growing
             </h2>
             <p className="text-lg text-primary-foreground/90 leading-relaxed">
-              Get a custom quote for your growth journey. Let's discuss how we can help you achieve measurable, sustainable growth that actually pays for itself.
+              Get a custom quote for your growth journey. Let&apos;s discuss how we can help you achieve measurable, sustainable growth that actually pays for itself.
             </p>
           </div>
           
