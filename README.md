@@ -1,24 +1,72 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ROI Agency
+
+A modern Next.js 14+ application built with the App Router, TypeScript, and Tailwind CSS.
+
+## Tech Stack
+
+- **Framework**: Next.js 14+ with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **Animations**: Framer Motion
+- **Icons**: Lucide React, Radix UI Icons
+- **Forms**: React Hook Form with Zod validation
+- **Theming**: next-themes
+- **Utilities**: class-variance-authority, clsx, tailwind-merge
+- **Components**: Vaul (drawer component)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 20.11.1+ (see `.nvmrc`)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues automatically
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
+- `npm run type-check` - Run TypeScript type checking
+
+## Project Structure
+
+```
+src/
+├── app/           # App Router pages and layouts
+├── components/    # Reusable components
+│   └── ui/       # shadcn/ui components
+├── lib/           # Utility functions and configurations
+└── ...
+```
+
+## Configuration Files
+
+- `.nvmrc` - Node.js version specification
+- `.editorconfig` - Editor configuration
+- `.prettierrc` - Prettier formatting rules
+- `components.json` - shadcn/ui configuration
+- `tsconfig.json` - TypeScript configuration
+- `tailwind.config.ts` - Tailwind CSS configuration
 
 ## Learn More
 
