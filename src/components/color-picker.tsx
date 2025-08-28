@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { useColor } from '@/contexts/color-context';
 import { ColorPalette } from '@/lib/colors';
-import { Palette, EyeDropper, RotateCcw } from 'lucide-react';
+import { Palette, RotateCcw } from 'lucide-react';
 
 interface ColorPickerProps {
   className?: string;

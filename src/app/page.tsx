@@ -2,26 +2,23 @@
 
 import { Section, SectionHeader } from '@/components/section';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import Autoplay from 'embla-carousel-autoplay';
-import { ArrowRight, TrendingUp, Globe, Search, Users, Palette, Bot, Zap, BarChart3, Target, Eye, RotateCcw, Sparkles, Rocket, Award, Clock, ExternalLink, Star, CheckCircle, ArrowDown, Mail, Quote } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowRight, TrendingUp, Globe, Search, Users, Palette, Bot, Zap, BarChart3, Target, Eye, RotateCcw, Sparkles, Rocket, Award, Clock, Star, CheckCircle, Mail, Quote } from 'lucide-react';
+import { useEffect, useState, useMemo } from 'react';
 
 export default function Home() {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
 
-  const typewriterServices = [
+  const typewriterServices = useMemo(() => [
     'Performance Marketing',
     'Web Development', 
     'SEO Optimization',
     'AI Automation',
     'Brand Design'
-  ];
+  ], []);
 
   const services = [
     {
@@ -204,7 +201,7 @@ export default function Home() {
 
   const testimonials = [
     {
-      quote: "ROI Agency transformed our marketing from a cost center to a profit driver. We're seeing 3x ROI on our marketing spend.",
+      quote: "ROI Agency transformed our marketing from a cost center to a profit driver. We&apos;re seeing 3x ROI on our marketing spend.",
       name: "Sarah Chen",
       role: "CMO, TechFlow Inc.",
       avatar: "SC",
@@ -721,7 +718,7 @@ export default function Home() {
       <Section className="py-20 bg-background">
         <SectionHeader
           title="Proven Results That Speak"
-          subtitle="Numbers don't lie. Here's what we've achieved for our clients through data-driven strategies and relentless optimization."
+          subtitle="Numbers don&apos;t lie. Here&apos;s what we&apos;ve achieved for our clients through data-driven strategies and relentless optimization."
           align="center"
         />
         
@@ -892,7 +889,7 @@ export default function Home() {
               Why Choose ROI Agency?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              We're not just another marketing agency. We're your growth partner.
+              We&apos;re not just another marketing agency. We&apos;re your growth partner.
             </p>
           </div>
           
@@ -1019,7 +1016,7 @@ export default function Home() {
               },
               {
                 question: "What makes you different from other agencies?",
-                answer: "We're 100% ROI-focused, use data-driven strategies, and provide transparent reporting. Every decision is measured by return on investment.",
+                answer: "We&apos;re 100% ROI-focused, use data-driven strategies, and provide transparent reporting. Every decision is measured by return on investment.",
                 icon: Target
               },
               {
@@ -1039,7 +1036,7 @@ export default function Home() {
               },
               {
                 question: "What's included in your services?",
-                answer: "Comprehensive strategy, execution, ongoing optimization, and detailed reporting. We're your full-service growth partner.",
+                answer: "Comprehensive strategy, execution, ongoing optimization, and detailed reporting. We&apos;re your full-service growth partner.",
                 icon: CheckCircle
               }
             ].map((faq, index) => (

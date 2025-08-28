@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
-import { Section, SectionHeader } from '@/components/section';
+import { Section } from '@/components/section';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { Mail, Lock, Eye, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Login - ROI Agency',
@@ -92,7 +92,7 @@ export default function LoginPage() {
               
               <div className="text-center space-y-4">
                 <p className="text-sm text-muted-foreground">
-                  Don't have an account?{' '}
+                  Don&apos;t have an account?{' '}
                   <Button variant="link" className="p-0 h-auto text-primary">
                     Sign up
                   </Button>

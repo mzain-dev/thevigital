@@ -16,7 +16,7 @@ interface ColorContextType {
 const ColorContext = createContext<ColorContextType | undefined>(undefined);
 
 export function ColorProvider({ children }: { children: React.ReactNode }) {
-  const { theme, resolvedTheme } = useTheme();
+  const { resolvedTheme } = useTheme();
   const [currentPalette, setCurrentPalette] = useState<ColorPalette>(defaultColorPalettes[0]);
   const [customPrimaryColor, setCustomPrimaryColor] = useState<string>('hsl(240 100% 29%)');
   const [mounted, setMounted] = useState(false);

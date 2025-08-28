@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Section, SectionHeader } from '@/components/section';
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { Home, ArrowLeft, Search } from 'lucide-react';
 
@@ -74,7 +74,7 @@ export default function NotFound() {
             
             {/* Search Suggestion */}
             <div className="bg-muted/30 rounded-lg p-6 max-w-md mx-auto">
-              <h3 className="font-semibold text-foreground mb-2">Can't find what you're looking for?</h3>
+                              <h3 className="font-semibold text-foreground mb-2">Can&apos;t find what you&apos;re looking for?</h3>
               <p className="text-sm text-muted-foreground mb-4">
                 Try searching our site or contact our support team for assistance.
               </p>

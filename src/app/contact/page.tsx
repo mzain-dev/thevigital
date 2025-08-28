@@ -126,7 +126,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <h3 className="text-xl font-bold text-foreground">Get in touch</h3>
               <p className="text-muted-foreground">
-                We're excited to learn about your business and discuss how our strategic approach can help you achieve your goals.
+                We&apos;re excited to learn about your business and discuss how our strategic approach can help you achieve your goals.
               </p>
             </div>
             

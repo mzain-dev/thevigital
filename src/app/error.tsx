@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
-import { Section, SectionHeader } from '@/components/section';
+import { Section } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { Home, RefreshCw, AlertTriangle } from 'lucide-react';
 

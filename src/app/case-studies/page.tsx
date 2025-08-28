@@ -162,7 +162,7 @@ export default function CaseStudiesPage() {
       <Section className="bg-muted/30">
         <SectionHeader
           title="Ready to Start Your Success Story?"
-          subtitle="Let's discuss how we can help you achieve similar results for your business."
+          subtitle="Let&apos;s discuss how we can help you achieve similar results for your business."
           align="center"
         />
         

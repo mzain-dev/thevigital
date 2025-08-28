@@ -22,7 +22,7 @@ export default function TermsPage() {
             <div>
               <h3 className="text-xl font-bold text-foreground mb-4">Acceptance of Terms</h3>
               <p className="text-muted-foreground">
-                By accessing and using ROI Agency's services, you accept and agree to be bound by the terms and provision of this agreement.
+                By accessing and using ROI Agency&apos;s services, you accept and agree to be bound by the terms and provision of this agreement.
               </p>
             </div>
 
@@ -94,7 +94,7 @@ export default function TermsPage() {
             <div>
               <h3 className="text-xl font-bold text-foreground mb-4">Limitation of Liability</h3>
               <p className="text-muted-foreground">
-                ROI Agency's liability is limited to the amount paid for the specific service in question. We are not liable for indirect, incidental, or consequential damages.
+                ROI Agency&apos;s liability is limited to the amount paid for the specific service in question. We are not liable for indirect, incidental, or consequential damages.
               </p>
             </div>
 
