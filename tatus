@@ -1,0 +1,3 @@
+[33mc68b60f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m Fix ESLint errors for Vercel deployment: escape quotes, remove unused imports, fix navigation
+[33m43a164b[m Initial commit: ROI Agency website with Next.js and Tailwind CSS
+[33m0028dd3[m Initial commit from Create Next App

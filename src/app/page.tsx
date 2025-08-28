@@ -5,20 +5,20 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ArrowRight, TrendingUp, Globe, Search, Users, Palette, Bot, Zap, BarChart3, Target, Eye, RotateCcw, Sparkles, Rocket, Award, Clock, Star, CheckCircle, Mail, Quote } from 'lucide-react';
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState } from 'react';
+
+const typewriterServices = [
+  'Performance Marketing',
+  'Web Development', 
+  'SEO Optimization',
+  'AI Automation',
+  'Brand Design'
+];
 
 export default function Home() {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
-
-  const typewriterServices = [
-    'Performance Marketing',
-    'Web Development', 
-    'SEO Optimization',
-    'AI Automation',
-    'Brand Design'
-  ];
 
   const services = [
     {
@@ -96,7 +96,7 @@ export default function Home() {
     }
 
     return () => clearTimeout(timeout);
-  }, [currentText, currentIndex, isTyping, typewriterServices]);
+  }, [currentText, currentIndex, isTyping]);
 
   const features = [
     {
@@ -263,7 +263,7 @@ export default function Home() {
             <div className="space-y-4">
               <div className="flex items-center gap-2 mb-4">
                 <Sparkles className="w-6 h-6 text-primary animate-pulse" />
-                <Badge variant="secondary" className="text-xs">2025's Most Innovative Agency</Badge>
+                <Badge variant="secondary" className="text-xs">2025&apos;s Most Innovative Agency</Badge>
                 <Sparkles className="w-6 h-6 text-primary animate-pulse" />
               </div>
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
@@ -558,7 +558,7 @@ export default function Home() {
 
           {/* Case Study Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {caseStudies.map((study, index) => (
+            {caseStudies.map((study) => (
               <div key={study.id} className="group relative">
                 <div className={`relative overflow-hidden rounded-2xl shadow-2xl transform transition-all duration-700 group-hover:scale-105 group-hover:${study.rotation}`}>
                   {/* Background Image Placeholder */}
