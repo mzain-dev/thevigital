@@ -1,18 +1,51 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, Menu, X } from 'lucide-react';
-import { ThemeToggle } from './theme-toggle';
+import { ChevronDown, Menu, X, LogIn, Phone, TrendingUp, Globe, Search, Users, Palette, Bot } from 'lucide-react';
 import { ColorPicker } from './color-picker';
+import Link from 'next/link';
 
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
 
-  const navigationItems = [
-    { name: 'Services', href: '#services' },
-    { name: 'Our Solutions', href: '#solutions' },
-    { name: 'Industries', href: '#industries' },
-    { name: 'More', href: '#more' },
+  const services = [
+    {
+      name: 'Performance Marketing',
+      href: '/services#performance-marketing',
+      icon: TrendingUp,
+      description: 'Data-driven campaigns that convert'
+    },
+    {
+      name: 'Web Development',
+      href: '/services#web-development',
+      icon: Globe,
+      description: 'Modern, fast websites that drive results'
+    },
+    {
+      name: 'SEO Optimization',
+      href: '/services#seo',
+      icon: Search,
+      description: 'Organic growth that moves the needle'
+    },
+    {
+      name: 'CRM & Automation',
+      href: '/services#crm-automation',
+      icon: Users,
+      description: 'Streamline operations and boost efficiency'
+    },
+    {
+      name: 'Graphic Design/Branding',
+      href: '/services#design-branding',
+      icon: Palette,
+      description: 'Visual identity that builds trust'
+    },
+    {
+      name: 'AI Agents for Business',
+      href: '/services#ai-agents',
+      icon: Bot,
+      description: 'Intelligent automation for modern companies'
+    }
   ];
 
   return (
@@ -38,35 +71,64 @@ export function Header() {
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {navigationItems.map((item) => (
-              <div key={item.name} className="group relative">
-                <a
-                  href={item.href}
-                  className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-sm py-2"
-                >
-                  {item.name}
-                  <ChevronDown className="w-4 h-4 group-hover:rotate-180 transition-transform duration-200" />
-                </a>
-                {/* Dropdown placeholder - you can add actual dropdown content here */}
-                <div className="absolute top-full left-0 w-48 bg-card border border-border rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 mt-2 z-50">
-                  <div className="p-3 text-muted-foreground text-xs text-center">
-                    Dropdown content for {item.name}
+          {/* Desktop Navigation - Services Dropdown Only */}
+          <nav className="hidden lg:flex items-center">
+            <div 
+              className="group relative"
+              onMouseEnter={() => setIsServicesDropdownOpen(true)}
+              onMouseLeave={() => setIsServicesDropdownOpen(false)}
+            >
+              <button className="flex items-center gap-1 text-muted-foreground hover:text-primary transition-colors duration-200 font-medium text-sm py-2 px-3 rounded-lg hover:bg-accent/50">
+                Services
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isServicesDropdownOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {/* Services Dropdown */}
+              <div className={`absolute top-full left-0 w-80 bg-card border border-border rounded-xl shadow-xl transition-all duration-200 mt-2 z-50 ${isServicesDropdownOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+                <div className="p-4">
+                  <div className="grid grid-cols-1 gap-2">
+                    {services.map((service) => (
+                      <Link
+                        key={service.name}
+                        href={service.href}
+                        className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors duration-200 group"
+                      >
+                        <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-200">
+                          <service.icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-foreground text-sm group-hover:text-primary transition-colors duration-200">
+                            {service.name}
+                          </h3>
+                          <p className="text-xs text-muted-foreground mt-1">
+                            {service.description}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-border">
+                    <Link
+                      href="/services"
+                      className="block w-full text-center px-4 py-2 bg-primary hover:bg-[#4411ab] text-primary-foreground font-semibold rounded-lg transition-all duration-300 text-sm"
+                    >
+                      View All Services
+                    </Link>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
           </nav>
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
             <ColorPicker />
-            <ThemeToggle />
-            <button className="px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105">
+            <button className="px-6 py-3 bg-primary hover:bg-[#4411ab] text-primary-foreground font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg group">
+              <LogIn className="mr-2 w-4 h-4" />
               Login
             </button>
-            <button className="px-6 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground font-semibold rounded-lg transition-all duration-200 shadow-md hover:shadow-lg hover:scale-105">
+            <button className="px-6 py-3 bg-secondary hover:bg-[#4411ab] hover:text-white font-semibold rounded-lg transition-all duration-300 shadow-md hover:shadow-lg group">
+              <Phone className="mr-2 w-4 h-4 group-hover:text-white transition-colors duration-300" />
               Book A Call
             </button>
           </div>
@@ -74,7 +136,6 @@ export function Header() {
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center gap-3">
             <ColorPicker />
-            <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 text-muted-foreground hover:text-primary transition-colors duration-200"
@@ -87,21 +148,49 @@ export function Header() {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="lg:hidden border-t border-border bg-background/95 backdrop-blur">
-            <nav className="py-4 space-y-3">
-              {navigationItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="block px-4 py-2 text-muted-foreground hover:text-primary hover:bg-accent rounded-lg transition-colors duration-200 font-medium"
+            <nav className="py-4">
+              {/* Services Section */}
+              <div className="px-4 mb-4">
+                <h3 className="text-sm font-semibold text-foreground mb-3">Our Services</h3>
+                <div className="space-y-2">
+                  {services.map((service) => (
+                    <Link
+                      key={service.name}
+                      href={service.href}
+                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors duration-200 group"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-200">
+                        <service.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-medium text-foreground text-sm group-hover:text-primary transition-colors duration-200">
+                          {service.name}
+                        </h4>
+                        <p className="text-xs text-muted-foreground">
+                          {service.description}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  href="/services"
+                  className="block w-full text-center px-4 py-2 bg-primary hover:bg-[#4411ab] text-primary-foreground font-semibold rounded-lg transition-all duration-300 text-sm mt-3"
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {item.name}
-                </a>
-              ))}
-              <div className="px-4 pt-4 space-y-3">
-                <button className="w-full px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition-all duration-200">
+                  View All Services
+                </Link>
+              </div>
+              
+              {/* CTA Buttons */}
+              <div className="px-4 pt-4 space-y-3 border-t border-border">
+                <button className="w-full px-6 py-3 bg-primary hover:bg-[#4411ab] text-primary-foreground font-semibold rounded-lg transition-all duration-300 group">
+                  <LogIn className="mr-2 w-4 h-4" />
                   Login
                 </button>
-                <button className="w-full px-6 py-3 bg-secondary hover:bg-secondary/80 text-secondary-foreground font-semibold rounded-lg transition-all duration-200">
+                <button className="w-full px-6 py-3 bg-secondary hover:bg-[#4411ab] hover:text-white font-semibold rounded-lg transition-all duration-300 group">
+                  <Phone className="mr-2 w-4 h-4 group-hover:text-white transition-colors duration-300" />
                   Book A Call
                 </button>
               </div>

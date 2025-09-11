@@ -17,8 +17,8 @@ const ColorContext = createContext<ColorContextType | undefined>(undefined);
 
 export function ColorProvider({ children }: { children: React.ReactNode }) {
   const { resolvedTheme } = useTheme();
-  const [currentPalette, setCurrentPalette] = useState<ColorPalette>(defaultColorPalettes[0]);
-  const [customPrimaryColor, setCustomPrimaryColor] = useState<string>('hsl(240 100% 29%)');
+  const [currentPalette, setCurrentPalette] = useState<ColorPalette>(defaultColorPalettes[0]); // Slate is at index 0
+  const [customPrimaryColor, setCustomPrimaryColor] = useState<string>('hsl(222.2 84% 4.9%)'); // Slate primary color
   const [mounted, setMounted] = useState(false);
 
   // Prevent hydration mismatch by only applying colors after mount
@@ -42,9 +42,9 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (mounted && resolvedTheme) {
       if (resolvedTheme === 'dark') {
-        setCurrentPalette(darkColorPalettes[0]);
+        setCurrentPalette(darkColorPalettes[0]); // Slate Dark
       } else {
-        setCurrentPalette(defaultColorPalettes[0]);
+        setCurrentPalette(defaultColorPalettes[0]); // Slate
       }
     }
   }, [resolvedTheme, mounted]);
@@ -60,11 +60,11 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
   const resetToDefault = () => {
     if (mounted && resolvedTheme) {
       if (resolvedTheme === 'dark') {
-        setCurrentPalette(darkColorPalettes[0]);
+        setCurrentPalette(darkColorPalettes[0]); // Slate Dark
       } else {
-        setCurrentPalette(defaultColorPalettes[0]);
+        setCurrentPalette(defaultColorPalettes[0]); // Slate
       }
-      setCustomPrimaryColor('hsl(240 5.9% 10%)');
+      setCustomPrimaryColor('hsl(222.2 84% 4.9%)'); // Reset to Slate primary color
     }
   };
 

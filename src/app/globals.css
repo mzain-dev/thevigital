@@ -143,17 +143,53 @@
 .typewriter-container {
   position: relative;
   display: inline-block;
-  min-width: 400px;
+  min-width: 200px;
+  width: 100%;
+  line-height: 1.2;
 }
 
 .typewriter-text {
   white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: baseline;
 }
 
 .typewriter-cursor {
   display: inline-block;
   animation: blink 1s infinite;
   margin-left: 2px;
+  color: hsl(var(--primary));
+  vertical-align: baseline;
+}
+
+/* Mobile: Center the typewriter text */
+@media (max-width: 639px) {
+  .typewriter-container {
+    text-align: center;
+    min-width: 200px;
+  }
+}
+
+@media (min-width: 640px) {
+  .typewriter-container {
+    min-width: 300px;
+    text-align: left;
+    display: inline-flex;
+    align-items: baseline;
+  }
+}
+
+@media (min-width: 768px) {
+  .typewriter-container {
+    min-width: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .typewriter-container {
+    min-width: 500px;
+  }
 }
 
 @keyframes blink {

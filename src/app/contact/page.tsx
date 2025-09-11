@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
+import { Mail, Phone, MessageSquare } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Contact Us - ROI Agency',
@@ -27,20 +27,6 @@ export default function ContactPage() {
       description: '+1 (555) 123-4567',
       action: 'Call Now',
       href: 'tel:+15551234567'
-    },
-    {
-      icon: MapPin,
-      title: 'Visit Us',
-      description: '123 Business Ave, Suite 100, New York, NY 10001',
-      action: 'Get Directions',
-      href: '#'
-    },
-    {
-      icon: Clock,
-      title: 'Business Hours',
-      description: 'Monday - Friday: 9:00 AM - 6:00 PM EST',
-      action: 'Schedule Meeting',
-      href: '#'
     }
   ];
 
@@ -113,7 +99,7 @@ export default function ContactPage() {
                   />
                 </div>
                 
-                <Button size="lg" className="w-full py-3">
+                <Button size="lg" className="w-full py-6 bg-primary hover:bg-[#4411ab] group">
                   <MessageSquare className="w-4 h-4 mr-2" />
                   Send Message
                 </Button>
@@ -143,7 +129,7 @@ export default function ContactPage() {
                         <p className="text-muted-foreground text-sm">{method.description}</p>
                         <Button 
                           variant="link" 
-                          className="p-0 h-auto text-primary hover:text-primary/80"
+                          className="p-0 h-auto text-primary hover:text-[#4411ab]"
                           asChild
                         >
                           <a href={method.href}>{method.action}</a>
