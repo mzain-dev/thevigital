@@ -125,7 +125,7 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
             Schedule Your Free Consultation
           </DialogTitle>
           <DialogDescription className="text-center text-xs sm:text-base mt-1">
-            Fill out the form below and we'll get back to you within 24 hours
+            Fill out the form below and we&apos;ll get back to you within 24 hours
           </DialogDescription>
         </DialogHeader>
         
@@ -136,7 +136,7 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
             </div>
             <h3 className="text-lg sm:text-2xl font-bold text-foreground mb-2">Consultation Booked!</h3>
             <p className="text-muted-foreground mb-4 sm:mb-6 text-xs sm:text-base">
-              Thank you for scheduling your consultation. We'll contact you within 24 hours to confirm your appointment.
+              Thank you for scheduling your consultation. We&apos;ll contact you within 24 hours to confirm your appointment.
             </p>
             <Button onClick={closeModal} className="w-full text-sm sm:text-base">
               Close

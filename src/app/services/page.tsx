@@ -1,7 +1,7 @@
 "use client";
 
-import { Section, SectionHeader } from '@/components/section';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Section } from '@/components/section';
+import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CTASection } from '@/components/cta-section';
@@ -107,7 +107,7 @@ export default function ServicesPage() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [services]);
 
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
@@ -326,7 +326,7 @@ export default function ServicesPage() {
                           {/* Unique Value Proposition */}
                           <div className="bg-gradient-to-r from-[#4411ab]/10 to-[#4411ab]/5 border border-[#4411ab]/20 rounded-lg p-3 lg:p-3">
                             <p className="text-sm sm:text-sm lg:text-sm font-medium text-foreground italic">
-                              "{service.uniqueValue}"
+                              &ldquo;{service.uniqueValue}&rdquo;
                             </p>
                           </div>
                           

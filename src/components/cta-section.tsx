@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Section } from '@/components/section';
-import { ArrowRight, Rocket, Award } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
 interface CTASectionProps {

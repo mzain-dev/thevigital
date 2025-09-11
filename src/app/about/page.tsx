@@ -1,11 +1,11 @@
 "use client";
 
-import { Section, SectionHeader } from '@/components/section';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Section } from '@/components/section';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CTASection } from '@/components/cta-section';
-import { ArrowRight, Target, TrendingUp, Users, Lightbulb, Rocket, Search, Clipboard, Zap, BarChart3, Sparkles, Award, Globe, CheckCircle, Clock } from 'lucide-react';
+import { ArrowRight, Target, TrendingUp, Users, Lightbulb, Rocket, Search, Clipboard, Zap, BarChart3, Sparkles, Award, CheckCircle, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
@@ -71,7 +71,7 @@ export default function AboutPage() {
     });
 
     return () => observer.disconnect();
-  }, []);
+  }, [processSteps]);
 
   return (
     <div className="min-h-screen bg-background">

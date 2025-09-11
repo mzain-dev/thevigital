@@ -134,7 +134,7 @@ export default function ScheduleCallPage() {
             </div>
             <h2 className="text-2xl font-bold text-foreground mb-2">Consultation Booked!</h2>
             <p className="text-muted-foreground mb-6">
-              Thank you for scheduling your consultation. We'll contact you within 24 hours to confirm your appointment.
+              Thank you for scheduling your consultation. We&apos;ll contact you within 24 hours to confirm your appointment.
             </p>
             <Button 
               onClick={() => {
@@ -183,7 +183,7 @@ export default function ScheduleCallPage() {
             <CardHeader className="text-center pt-6">
               <CardTitle className="text-2xl font-bold">Book Your Consultation</CardTitle>
               <CardDescription>
-                Fill out the form below and we'll get back to you within 24 hours
+                Fill out the form below and we&apos;ll get back to you within 24 hours
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-0">

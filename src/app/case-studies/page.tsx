@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import { Section, SectionHeader } from '@/components/section';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { CTASection } from '@/components/cta-section';
@@ -376,7 +375,7 @@ export default function CaseStudiesPage() {
       <section className="py-8 sm:py-12">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {caseStudies.map((study, index) => (
+            {caseStudies.map((study) => (
               <Card key={study.id} className="border border-border">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between mb-3">
