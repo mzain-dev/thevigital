@@ -8,7 +8,7 @@ import { CTASection } from '@/components/cta-section';
 import { ScheduleCallPopup } from '@/components/schedule-call-popup';
 import { ArrowRight, TrendingUp, Globe, Search, Users, Palette, Bot, CheckCircle, Sparkles, Rocket, Award, Clock, Target, Zap } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 export default function ServicesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,7 +19,7 @@ export default function ServicesPage() {
     setSelectedService(serviceId);
   };
 
-  const services = [
+  const services = useMemo(() => [
     {
       id: 'performance-marketing',
       title: 'Performance Marketing',
@@ -86,7 +86,7 @@ export default function ServicesPage() {
       badgeVariant: 'default' as const,
       color: 'from-indigo-500 to-cyan-600'
     }
-  ];
+  ], []);
 
   // Intersection Observer for motion reveal
   useEffect(() => {

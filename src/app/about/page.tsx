@@ -7,11 +7,11 @@ import { Button } from '@/components/ui/button';
 import { CTASection } from '@/components/cta-section';
 import { ArrowRight, Target, TrendingUp, Users, Lightbulb, Rocket, Search, Clipboard, Zap, BarChart3, Sparkles, Award, CheckCircle, Clock } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 
 export default function AboutPage() {
 
-  const processSteps = [
+  const processSteps = useMemo(() => [
     {
       id: 'discover',
       title: 'Discover',
@@ -42,7 +42,7 @@ export default function AboutPage() {
       icon: BarChart3,
       description: 'Transparent reporting with actionable insights and ROI metrics'
     }
-  ];
+  ], []);
 
   // Intersection Observer for motion reveal
   useEffect(() => {
