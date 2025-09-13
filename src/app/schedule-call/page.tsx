@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,7 +27,8 @@ const timeSlots = [
   '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM'
 ];
 
-export default function ScheduleCallPage() {
+// Component that uses useSearchParams
+function ScheduleCallForm() {
   const searchParams = useSearchParams();
   
   const [formData, setFormData] = useState({
@@ -383,5 +384,26 @@ export default function ScheduleCallPage() {
         </div>
       </Section>
     </div>
+  );
+}
+
+// Loading fallback component
+function ScheduleCallLoading() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-background to-accent/5 flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
+// Main export component with Suspense boundary
+export default function ScheduleCallPage() {
+  return (
+    <Suspense fallback={<ScheduleCallLoading />}>
+      <ScheduleCallForm />
+    </Suspense>
   );
 }
