@@ -163,7 +163,7 @@ export function Footer() {
                   />
                   <button 
                     type="submit"
-                    className="px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-[#4411ab] transition-all duration-300 flex-shrink-0 whitespace-nowrap shadow-md hover:shadow-lg group flex items-center justify-center gap-2"
+                    className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 text-sm sm:text-base bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-[#4411ab] transition-all duration-300 flex-shrink-0 whitespace-nowrap shadow-md hover:shadow-lg group flex items-center justify-center gap-2"
                   >
                     <Mail className="w-4 h-4" />
                     Subscribe

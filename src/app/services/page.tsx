@@ -112,27 +112,28 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
       {/* Hero Section - Full Viewport Height */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, currentColor 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-8 lg:pt-0">
+        {/* Enhanced Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
+        <div className="absolute inset-0 bg-gradient-to-bl from-secondary/5 via-transparent to-primary/5 animate-pulse delay-2000"></div>
         
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex items-center min-h-screen">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-            {/* Left Side - Content */}
-            <div className="space-y-8">
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-bounce delay-1000"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
+        <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
+        
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-screen pt-8 pb-4 lg:py-0">
+          {/* Left Side - Content */}
+          <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 pr-0 lg:pr-8">
               {/* Enhanced Main Headline */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-center sm:justify-start gap-2 mb-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
                   <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
-                  <Badge variant="secondary" className="text-xs">Professional Services</Badge>
+                  <Badge variant="secondary" className="text-xs sm:text-sm">Professional Services</Badge>
                   <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
                 </div>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
+                <h1 className="text-[44px] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
                   Services That{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
                     Drive Results
@@ -142,7 +143,7 @@ export default function ServicesPage() {
                 {/* Enhanced Subheadline */}
                 <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
                   Comprehensive digital solutions designed to transform your business and maximize your return on investment.
-                  <span className="block text-sm text-primary mt-2 font-medium">
+                  <span className="block text-sm text-primary mt-1 font-medium">
                     ✨ ROI-Focused • Data-Driven • Results-Guaranteed ✨
                   </span>
                 </p>
@@ -150,16 +151,16 @@ export default function ServicesPage() {
               
               {/* Enhanced CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start">
-                <Button size="sm" className="px-6 py-3 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-black hover:bg-[#4411ab] text-white group" asChild>
+                <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
                   <Link href="/schedule-call">
-                    <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
+                    <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     Schedule a Call
-                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 text-white" />
                   </Link>
                 </Button>
-                <Button variant="outline" size="sm" className="px-6 py-3 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 border-black hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
+                <Button variant="outline" size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
                   <Link href="/case-studies">
-                    <Award className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-black group-hover:text-white transition-colors duration-300" />
+                    <Award className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
                     View Work
                     <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
@@ -167,95 +168,53 @@ export default function ServicesPage() {
               </div>
               
               {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
+                  <Clock className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
                   <span>24/7 Support</span>
                 </div>
                 <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                 <div className="flex items-center gap-2">
-                  <Target className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
+                  <Target className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
                   <span>ROI Guaranteed</span>
                 </div>
                 <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                 <div className="flex items-center gap-2">
-                  <Zap className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
-                  <span>Fast Results</span>
+                  <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
+                  <span>AI-Powered</span>
                 </div>
               </div>
-            </div>
+          </div>
 
-            {/* Right Side - Service Visuals Grid */}
-            <div className="hidden lg:block">
-              <div className="grid grid-cols-2 gap-6">
-                {/* Performance Marketing */}
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '0ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <TrendingUp className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Performance Marketing</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Most Popular
-                      </Badge>
+          {/* Right Side - Single Services Image */}
+          <div className="hidden lg:block w-1/2 pl-8">
+              <div className="relative h-[250px] sm:h-[400px] lg:h-[600px]">
+                <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                    {/* Replace this div with your actual services image: */}
+                    {/* <img src="/services/services-hero-image.jpg" alt="ROI Agency Services" className="w-full h-full object-contain" /> */}
+                    
+                    {/* Placeholder for now - Image only */}
+                    <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
+                      <span className="text-6xl">🚀</span>
                     </div>
                   </div>
                 </div>
+              </div>
+          </div>
 
-                {/* Web Development */}
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:rotate-1"
-                  style={{ animationDelay: '100ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Globe className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Web Development</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Featured
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-
-                {/* SEO That Matters */}
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '200ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Search className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">SEO That Matters</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Essential
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-
-                {/* CRM & Automation */}
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:rotate-1"
-                  style={{ animationDelay: '300ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Users className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">CRM & Automation</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Premium
-                      </Badge>
+          {/* Mobile & Tablet Services Image - Inside Hero Section */}
+          <div className="block lg:hidden w-full mt-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative h-[300px] sm:h-[400px]">
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                    {/* Replace with your images: */}
+                    {/* <img src="/services/services-hero-image.jpg" alt="ROI Agency Services" className="w-full h-full object-contain" /> */}
+                    
+                    {/* Mobile Placeholder */}
+                    <div className="w-full h-full bg-gray-300 rounded-xl flex items-center justify-center">
+                      <span className="text-3xl sm:text-4xl">🚀</span>
                     </div>
                   </div>
                 </div>
@@ -266,19 +225,19 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Section - Minimal Card Design */}
-      <Section className="py-12 lg:py-24 bg-gradient-to-br from-muted/30 via-background to-muted/20">
+      <Section className="pt-16 pb-12 lg:pt-12 lg:pb-24 bg-gradient-to-br from-muted/30 via-background to-muted/20">
         <div>
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <div className="w-1 h-8 bg-[#4411ab] rounded-full"></div>
-              <span className="text-sm font-medium text-[#4411ab] uppercase tracking-wider">Our Services</span>
-              <div className="w-1 h-8 bg-[#4411ab] rounded-full"></div>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6">
+              <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
+              <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Services</span>
+              <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
               Comprehensive Digital Solutions
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
               Each service is crafted with precision to deliver measurable ROI and sustainable business growth
             </p>
           </div>
@@ -349,7 +308,7 @@ export default function ServicesPage() {
                           <Button 
                             onClick={() => openModal(service.id)}
                             size="sm" 
-                            className="w-full lg:w-auto px-4 py-2 sm:px-5 sm:py-2.5 lg:px-6 lg:py-3 bg-black hover:bg-[#4411ab] text-white group text-sm sm:text-sm lg:text-base"
+                            className="w-full lg:w-auto px-4 py-4 sm:px-5 sm:py-2.5 lg:px-8 lg:py-5 bg-black hover:bg-[#4411ab] text-white group text-sm sm:text-sm lg:text-base"
                           >
                             Schedule a Call
                             <ArrowRight className="w-4 h-4 lg:w-4 lg:h-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" />

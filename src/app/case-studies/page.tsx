@@ -228,140 +228,106 @@ export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section - Full Viewport Height */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, currentColor 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-8 lg:pt-0">
+        {/* Enhanced Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
+        <div className="absolute inset-0 bg-gradient-to-bl from-secondary/5 via-transparent to-primary/5 animate-pulse delay-2000"></div>
         
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex items-center min-h-screen">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-            {/* Left Side - Content */}
-            <div className="space-y-8">
-              {/* Enhanced Main Headline */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <Award className="w-6 h-6 text-[#4411ab] animate-pulse" />
-                  <Badge variant="secondary" className="text-xs">Success Stories</Badge>
-                  <Award className="w-6 h-6 text-[#4411ab] animate-pulse" />
-                </div>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-              Case Studies
-            </h1>
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-bounce delay-1000"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
+        <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
+        
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-screen pt-8 pb-8 lg:py-0">
+          {/* Left Side - Content */}
+          <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 pr-0 lg:pr-8">
+            {/* Enhanced Main Headline */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                <Award className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
+                <Badge variant="secondary" className="text-xs sm:text-sm">Success Stories</Badge>
+                <Award className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
+              </div>
+              <h1 className="text-[44px] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
+                Case Studies
+              </h1>
                 
-                {/* Enhanced Subheadline */}
-                <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-                  Real results from real businesses. See how we&apos;ve helped companies across industries achieve measurable growth.
-                  <span className="block text-sm text-primary mt-2 font-medium">
-                    ✨ Proven Results • Data-Driven • ROI-Focused ✨
-                  </span>
-                </p>
-              </div>
+            {/* Enhanced Subheadline - Minimal spacing */}
+            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
+              Real results from real businesses. See how we&apos;ve helped companies across industries achieve measurable growth.
+              <span className="block text-sm text-primary mt-1 font-medium">
+                ✨ Proven Results • Data-Driven • ROI-Focused ✨
+              </span>
+            </p>
+          </div>
               
-              {/* Enhanced CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 items-start">
-                <Button size="lg" className="px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-primary to-primary/80 hover:bg-[#4411ab] group" asChild>
-                  <Link href="/schedule-call">
-                    <Rocket className="mr-2 w-5 h-5" />
-                    Schedule a Call
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="px-8 py-6 text-lg font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
-                  <Link href="/services">
-                    <Award className="mr-2 w-5 h-5 group-hover:text-white transition-colors duration-300" />
-                    View Services
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </Button>
-              </div>
+            {/* Enhanced CTA Buttons - Single line */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start">
+              <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
+                <Link href="/schedule-call">
+                  <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  Schedule a Call
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 text-white" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
+                <Link href="/services">
+                  <Award className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
+                  View Services
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </Button>
+            </div>
               
-              {/* Trust Indicators */}
-              <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-4 h-4 text-[#4411ab]" />
-                  <span>260% Avg. Revenue Growth</span>
-                </div>
-                <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                <div className="flex items-center gap-2">
-                  <Target className="w-4 h-4 text-[#4411ab]" />
-                  <span>95% Success Rate</span>
-                </div>
-                <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                <div className="flex items-center gap-2">
-                  <BarChart3 className="w-4 h-4 text-[#4411ab]" />
-                  <span>Data-Driven Results</span>
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
+                <span>260% Avg. Growth</span>
+              </div>
+              <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+              <div className="flex items-center gap-2">
+                <Target className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
+                <span>95% Success Rate</span>
+              </div>
+              <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+              <div className="flex items-center gap-2">
+                <BarChart3 className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
+                <span>Data-Driven</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Single Case Studies Image */}
+          <div className="hidden lg:block w-1/2 pl-8">
+            <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                  {/* Replace this div with your actual case studies image: */}
+                  {/* <img src="/case-studies/case-studies-hero-image.jpg" alt="ROI Agency Case Studies" className="w-full h-full object-contain" /> */}
+                  
+                  {/* Placeholder for now - Image only */}
+                  <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
+                    <span className="text-6xl">📊</span>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Right Side - Visual Content */}
-            <div className="hidden lg:block">
-              <div className="grid grid-cols-2 gap-6">
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '0ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <TrendingUp className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Revenue Growth</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        +260% Avg
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '100ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Target className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Success Rate</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        95% Success
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '200ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Users className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Client Growth</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        +340% Users
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '300ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <BarChart3 className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Data-Driven</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Proven Results
-                      </Badge>
+          {/* Mobile & Tablet Case Studies Image - Inside Hero Section */}
+          <div className="block lg:hidden w-full mt-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative h-[300px] sm:h-[400px]">
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                    {/* Replace with your images: */}
+                    {/* <img src="/case-studies/case-studies-hero-image.jpg" alt="ROI Agency Case Studies" className="w-full h-full object-contain" /> */}
+                    
+                    {/* Mobile Placeholder */}
+                    <div className="w-full h-full bg-gray-300 rounded-xl flex items-center justify-center">
+                      <span className="text-3xl sm:text-4xl">📊</span>
                     </div>
                   </div>
                 </div>
@@ -376,81 +342,64 @@ export default function CaseStudiesPage() {
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {caseStudies.map((study) => (
-              <Card key={study.id} className="border border-border">
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between mb-3">
-                    <Badge variant={study.badgeVariant} className="text-xs">
-                      {study.badge}
-                    </Badge>
-                    <div className="text-xs text-muted-foreground">
-                      {study.duration}
+              <div key={study.id} className="group">
+                <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-full hover:shadow-xl transition-all duration-300">
+                  {/* Card Image */}
+                  <div className="h-48 sm:h-52 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
+                    {/* Replace this div with your actual case study image: */}
+                    {/* <img src={`/case-studies/${study.id}-hero.jpg`} alt={study.title} className="w-full h-full object-cover" /> */}
+                    
+                    {/* Placeholder for now */}
+                    <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                      <span className="text-4xl sm:text-5xl">📊</span>
+                    </div>
+                    
+                    {/* Badge overlay */}
+                    <div className="absolute top-3 left-3">
+                      <Badge variant={study.badgeVariant} className="text-xs">
+                        {study.badge}
+                      </Badge>
                     </div>
                   </div>
-                  
-                  <CardTitle className="text-lg sm:text-xl font-semibold text-foreground mb-2">
-                    {study.title}
-                  </CardTitle>
-                  
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <span className="font-medium text-foreground">{study.company}</span>
-                    <span>•</span>
-                    <span>{study.industry}</span>
+
+                  {/* Card Content - Minimal */}
+                  <div className="p-4 sm:p-6">
+                    <div className="mb-3">
+                      <h3 className="text-base sm:text-lg font-semibold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+                        {study.title}
+                      </h3>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <span className="font-medium text-foreground">{study.company}</span>
+                        <span>•</span>
+                        <span>{study.industry}</span>
+                      </div>
+                    </div>
+
+                    {/* Service Name */}
+                    <div className="mb-4">
+                      <div className="text-lg sm:text-xl font-semibold text-primary mb-1">
+                        {study.services[0]}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        Primary Service
+                      </div>
+                    </div>
+
+                    {/* CTA Button */}
+                    <Button 
+                      variant="outline" 
+                      size="sm"
+                      className="w-full px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold border-[#4411ab] text-[#4411ab] hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
+                      asChild
+                    >
+                      <a href={`/case-studies/${study.id}`}>
+                        View Details
+                        <ArrowRight className="ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </a>
+                    </Button>
                   </div>
-                </CardHeader>
-
-                <CardContent className="space-y-4">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {study.description}
-                  </p>
-
-                  {/* Key Results */}
-                  <div className="grid grid-cols-3 gap-3">
-                    {Object.entries(study.results).map(([key, result]) => {
-                      const IconComponent = result.icon;
-                      return (
-                        <div key={key} className="text-center p-3 bg-muted/30 rounded-lg">
-                          <div className="w-6 h-6 mx-auto mb-2 rounded bg-white border border-[#4411ab] flex items-center justify-center">
-                            <IconComponent className={`w-3 h-3 ${result.color}`} />
-                          </div>
-                          <div className="text-sm font-semibold text-foreground">
-                            {result.value}
-                          </div>
-                          <div className="text-xs text-muted-foreground capitalize">
-                            {key.replace(/([A-Z])/g, ' $1').trim()}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Services */}
-                  <div className="flex flex-wrap gap-1">
-                    {study.services.slice(0, 3).map((service, serviceIndex) => (
-                      <Badge key={serviceIndex} variant="outline" className="text-xs">
-                        {service}
-                      </Badge>
-                    ))}
-                    {study.services.length > 3 && (
-                      <Badge variant="outline" className="text-xs">
-                        +{study.services.length - 3} more
-                      </Badge>
-                    )}
-                  </div>
-
-                  {/* CTA Button */}
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="w-full px-6 py-3 text-base font-semibold border-[#4411ab] text-[#4411ab] hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
-                    asChild
-                  >
-                    <a href={`/case-studies/${study.id}`}>
-                      View Case Study
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                    </a>
-                  </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>

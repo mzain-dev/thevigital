@@ -76,143 +76,109 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section - Full Viewport Height */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 25% 25%, currentColor 1px, transparent 1px)`,
-            backgroundSize: '40px 40px'
-          }}></div>
-        </div>
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-8 lg:pt-0">
+        {/* Enhanced Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
+        <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
+        <div className="absolute inset-0 bg-gradient-to-bl from-secondary/5 via-transparent to-primary/5 animate-pulse delay-2000"></div>
         
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex items-center min-h-screen">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
-            {/* Left Side - Content */}
-            <div className="space-y-8">
-              {/* Enhanced Main Headline */}
-              <div className="space-y-4">
-                <div className="flex items-center gap-2 mb-4">
-                  <Sparkles className="w-6 h-6 text-[#4411ab] animate-pulse" />
-                  <Badge variant="secondary" className="text-xs">About Us</Badge>
-                  <Sparkles className="w-6 h-6 text-[#4411ab] animate-pulse" />
-                </div>
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                  Your Growth{' '}
-                  <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
-                    Our Job
-                  </span>
-                </h1>
-                
-                {/* Enhanced Subheadline */}
-                <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed">
-                  We&apos;re a team of data-driven marketers, developers, and strategists who believe that every marketing dollar should work harder than the last.
-                  <span className="block text-sm text-primary mt-2 font-medium">
-                    ✨ ROI-Focused • Data-Driven • Results-Guaranteed ✨
-                  </span>
-                </p>
+        {/* Floating Elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-bounce delay-1000"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
+        <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
+        
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-screen pt-8 pb-8 lg:py-0">
+          {/* Left Side - Content */}
+          <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 pr-0 lg:pr-8">
+            {/* Enhanced Main Headline */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
+                <Badge variant="secondary" className="text-xs sm:text-sm">About Us</Badge>
+                <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
               </div>
+              <h1 className="text-[44px] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
+                Your Growth{' '}
+                <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
+                  Our Job
+                </span>
+              </h1>
               
-              {/* Enhanced CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 items-start">
-                <Button size="lg" className="px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-primary to-primary/80 hover:bg-[#4411ab] group" asChild>
-                  <Link href="/schedule-call">
-                    <Rocket className="mr-2 w-5 h-5" />
-                    Schedule a Call
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </Button>
-                <Button variant="outline" size="lg" className="px-8 py-6 text-lg font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
-                  <Link href="/case-studies">
-                    <Award className="mr-2 w-5 h-5 group-hover:text-white transition-colors duration-300" />
-                    View Our Work
-                    <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </Button>
+              {/* Enhanced Subheadline - Minimal spacing */}
+              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
+                We&apos;re a team of data-driven marketers, developers, and strategists who believe that every marketing dollar should work harder than the last.
+                <span className="block text-sm text-primary mt-1 font-medium">
+                  ✨ ROI-Focused • Data-Driven • Results-Guaranteed ✨
+                </span>
+              </p>
+            </div>
+            
+            {/* Enhanced CTA Buttons - Single line */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start">
+              <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
+                <Link href="/schedule-call">
+                  <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  Schedule a Call
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 text-white" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
+                <Link href="/case-studies">
+                  <Award className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
+                  View Our Work
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </Button>
+            </div>
+            
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Clock className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
+                <span>24/7 Support</span>
               </div>
-              
-              {/* Trust Indicators */}
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#4411ab]" />
-                  <span>24/7 Support</span>
-                </div>
-                <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                <div className="flex items-center gap-2">
-                  <Target className="w-4 h-4 text-[#4411ab]" />
-                  <span>ROI Guaranteed</span>
-                </div>
-                <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                <div className="flex items-center gap-2">
-                  <Zap className="w-4 h-4 text-[#4411ab]" />
-                  <span>Fast Results</span>
+              <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+              <div className="flex items-center gap-2">
+                <Target className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
+                <span>ROI Guaranteed</span>
+              </div>
+              <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+              <div className="flex items-center gap-2">
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
+                <span>Fast Results</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Single About Image (Desktop Only) */}
+          <div className="hidden lg:block w-1/2 pl-8">
+            <div className="relative h-[600px]">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                  {/* Replace this div with your actual about image: */}
+                  {/* <img src="/about/team-image.jpg" alt="ROI Agency Team" className="w-full h-full object-contain" /> */}
+                  
+                  {/* Placeholder for now - Image only */}
+                  <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
+                    <span className="text-6xl">👥</span>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* Right Side - Content Images */}
-            <div className="hidden lg:block">
-              <div className="grid grid-cols-2 gap-6">
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '0ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Target className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Data-Driven</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Core Value
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '100ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <TrendingUp className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">ROI Focused</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Mission
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '200ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Users className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Team First</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Culture
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 transform hover:-rotate-1"
-                  style={{ animationDelay: '300ms' }}
-                >
-                  <div className="aspect-square bg-gradient-to-br from-muted/20 to-muted/10 flex items-center justify-center">
-                    <div className="text-center space-y-3 p-6">
-                      <div className="w-16 h-16 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                        <Lightbulb className="w-8 h-8 text-[#4411ab]" />
-                      </div>
-                      <h3 className="font-semibold text-sm text-foreground">Innovation</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        Approach
-                      </Badge>
+          {/* Mobile & Tablet About Image - Inside Hero Section */}
+          <div className="block lg:hidden w-full mt-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative h-[300px] sm:h-[400px]">
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                    {/* Replace with your about image: */}
+                    {/* <img src="/about/team-image.jpg" alt="ROI Agency Team" className="w-full h-full object-contain" /> */}
+                    
+                    {/* Mobile Placeholder - Image only */}
+                    <div className="w-full h-full bg-gray-300 rounded-xl flex items-center justify-center">
+                      <span className="text-3xl sm:text-4xl">👥</span>
                     </div>
                   </div>
                 </div>
@@ -223,7 +189,7 @@ export default function AboutPage() {
       </section>
 
       {/* Mission Section - Enhanced */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 relative overflow-hidden">
+      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -234,17 +200,17 @@ export default function AboutPage() {
         
         <div className="relative z-10">
           <div id="mission" className="opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               {/* Left Side - Enhanced Content */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-1 h-8 bg-primary rounded-full"></div>
-                  <span className="text-sm font-medium text-primary uppercase tracking-wider">Our Mission</span>
-                  <div className="w-1 h-8 bg-primary rounded-full"></div>
+              <div className="space-y-4 sm:space-y-6">
+                <div className="inline-flex items-center gap-2 mb-4 sm:mb-6">
+                  <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
+                  <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Mission</span>
+                  <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
                 </div>
                 
                 {/* Enhanced Title */}
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                   Data-Driven Results,{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                     ROI-First Approach
@@ -252,95 +218,62 @@ export default function AboutPage() {
                 </h2>
                 
                 {/* Enhanced Description */}
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   We believe in the power of data to drive decisions, not hunches. Every strategy we create, every campaign we run, and every optimization we make is backed by solid analytics and measurable outcomes.
                 </p>
                 
                 {/* Minimal Enhanced Checklist */}
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/20">
-                    <div className="w-5 h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-3 h-3 text-[#4411ab]" />
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
                     </div>
-                    <span className="text-base text-foreground">Performance-based pricing models</span>
+                    <span className="text-sm sm:text-base text-foreground">Performance-based pricing models</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/20">
-                    <div className="w-5 h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-3 h-3 text-[#4411ab]" />
+                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
                     </div>
-                    <span className="text-base text-foreground">Real-time data monitoring and optimization</span>
+                    <span className="text-sm sm:text-base text-foreground">Real-time data monitoring and optimization</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/20">
-                    <div className="w-5 h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-3 h-3 text-[#4411ab]" />
+                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
                     </div>
-                    <span className="text-base text-foreground">Transparent reporting and insights</span>
+                    <span className="text-sm sm:text-base text-foreground">Transparent reporting and insights</span>
                   </div>
                 </div>
                 
                 {/* Trust Indicators */}
-                <div className="flex items-center gap-8 text-sm text-muted-foreground pt-4">
-                  <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-[#4411ab]" />
+                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Target className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Data-Driven</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-[#4411ab]" />
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>ROI Focused</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-[#4411ab]" />
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Results Guaranteed</span>
                   </div>
                 </div>
               </div>
 
-              {/* Right Side - Visual Content */}
+              {/* Right Side - Single Mission Image */}
               <div className="relative">
-                <div className="grid grid-cols-2 gap-6">
-                  {/* Main Visual - Mission/Data Image */}
-                  <div className="col-span-2">
-                    <div className="aspect-video rounded-2xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-lg">
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center space-y-4 p-8">
-                          <div className="w-20 h-20 border-2 border-[#4411ab] rounded-2xl flex items-center justify-center mx-auto">
-                            <Target className="w-10 h-10 text-[#4411ab]" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold text-foreground mb-2">Mission Visual</h3>
-                            <p className="text-sm text-muted-foreground">Data-driven strategies in action</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Supporting Visuals */}
-                  <div className="aspect-square rounded-xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-md">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center space-y-3 p-4">
-                        <div className="w-12 h-12 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                          <TrendingUp className="w-6 h-6 text-[#4411ab]" />
-                        </div>
-                        <div>
-                          <div className="text-2xl font-bold text-primary">2x</div>
-                          <div className="text-xs text-muted-foreground">ROI</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="aspect-square rounded-xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-md">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center space-y-3 p-4">
-                        <div className="w-12 h-12 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                          <CheckCircle className="w-6 h-6 text-[#4411ab]" />
-                        </div>
-                        <div>
-                          <div className="text-2xl font-bold text-primary">99%</div>
-                          <div className="text-xs text-muted-foreground">Success</div>
-                        </div>
+                <div className="relative h-[250px] sm:h-[400px] lg:h-[600px]">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                      {/* Replace this div with your actual mission image: */}
+                      {/* <img src="/about/mission-image.jpg" alt="ROI Agency Mission" className="w-full h-full object-contain" /> */}
+                      
+                      {/* Placeholder for now - Image only */}
+                      <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
+                        <span className="text-6xl">🎯</span>
                       </div>
                     </div>
                   </div>
@@ -352,7 +285,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Story Section - Enhanced */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 relative overflow-hidden">
+      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -363,51 +296,18 @@ export default function AboutPage() {
         
         <div className="relative z-10">
           <div id="story" className="opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              {/* Left Side - Visual Content */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
+              {/* Left Side - Single Story Image */}
               <div className="relative order-2 lg:order-1">
-                <div className="grid grid-cols-2 gap-6">
-                  {/* Timeline Visual */}
-                  <div className="col-span-2">
-                    <div className="aspect-video rounded-2xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-lg">
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center space-y-4 p-8">
-                          <div className="w-20 h-20 border-2 border-[#4411ab] rounded-2xl flex items-center justify-center mx-auto">
-                            <Users className="w-10 h-10 text-[#4411ab]" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold text-foreground mb-2">Our Journey</h3>
-                            <p className="text-sm text-muted-foreground">From 2019 to today</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Timeline Years */}
-                  <div className="aspect-square rounded-xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-md">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center space-y-2 p-4">
-                        <div className="w-12 h-12 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                          <span className="text-lg font-bold text-[#4411ab]">19</span>
-                        </div>
-                        <div>
-                          <div className="text-lg font-bold text-primary">2019</div>
-                          <div className="text-xs text-muted-foreground">Founded</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="aspect-square rounded-xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-md">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center space-y-2 p-4">
-                        <div className="w-12 h-12 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                          <span className="text-lg font-bold text-[#4411ab]">25</span>
-                        </div>
-                        <div>
-                          <div className="text-lg font-bold text-primary">2025</div>
-                          <div className="text-xs text-muted-foreground">Today</div>
-                        </div>
+                <div className="relative h-[250px] sm:h-[400px] lg:h-[600px]">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                      {/* Replace this div with your actual story image: */}
+                      {/* <img src="/about/story-image.jpg" alt="ROI Agency Story" className="w-full h-full object-contain" /> */}
+                      
+                      {/* Placeholder for now - Image only */}
+                      <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
+                        <span className="text-6xl">📈</span>
                       </div>
                     </div>
                   </div>
@@ -415,53 +315,53 @@ export default function AboutPage() {
               </div>
 
               {/* Right Side - Enhanced Content */}
-              <div className="space-y-8 order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-1 h-8 bg-primary rounded-full"></div>
-                  <span className="text-sm font-medium text-primary uppercase tracking-wider">Our Story</span>
-                  <div className="w-1 h-8 bg-primary rounded-full"></div>
+              <div className="space-y-4 sm:space-y-6 order-1 lg:order-2">
+                <div className="inline-flex items-center gap-2 mb-4 sm:mb-6">
+                  <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
+                  <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Story</span>
+                  <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
                 </div>
                 
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                   Why We Started,{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                     What Sets Us Apart
                   </span>
                 </h2>
                 
-                <p className="text-lg text-muted-foreground leading-relaxed">
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   Founded in 2019, ROI Agency was born from frustration with traditional marketing agencies that promised the world but delivered vague results and empty promises.
                 </p>
                 
-                <div className="space-y-4">
-                  <div className="bg-gradient-to-r from-muted/20 to-muted/10 border border-muted/20 rounded-xl p-4 pl-0">
-                    <h4 className="font-semibold text-foreground mb-2">The Problem We Solved</h4>
-                    <p className="text-lg text-muted-foreground leading-relaxed">
+                <div className="space-y-3 sm:space-y-4">
+                  <div className="bg-gradient-to-r from-muted/20 to-muted/10 border border-muted/20 rounded-xl p-3 sm:p-4">
+                    <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">The Problem We Solved</h4>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       Too many businesses were spending money on marketing without seeing real returns. We decided to change that by focusing on measurable outcomes.
                     </p>
                   </div>
-                  <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-4">
-                    <h4 className="font-semibold text-foreground mb-2">What Makes Us Different</h4>
-                    <p className="text-muted-foreground">
+                  <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-3 sm:p-4">
+                    <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">What Makes Us Different</h4>
+                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                       We don&apos;t just create campaigns; we build systems that continuously optimize and improve performance based on real data.
                     </p>
                   </div>
                 </div>
                 
                 {/* Trust Indicators */}
-                <div className="flex items-center gap-8 text-sm text-muted-foreground pt-4">
-                  <div className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-[#4411ab]" />
+                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Team Founded</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-[#4411ab]" />
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Target className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Problem Focused</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-[#4411ab]" />
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Growth Driven</span>
                   </div>
                 </div>
@@ -472,7 +372,7 @@ export default function AboutPage() {
       </Section>
 
       {/* Philosophy Section - Enhanced */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 relative overflow-hidden">
+      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -483,115 +383,82 @@ export default function AboutPage() {
         
         <div className="relative z-10">
           <div id="philosophy" className="opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
               {/* Left Side - Enhanced Content */}
-              <div className="space-y-8">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-1 h-8 bg-primary rounded-full"></div>
-                  <span className="text-sm font-medium text-primary uppercase tracking-wider">Our Philosophy</span>
-                  <div className="w-1 h-8 bg-primary rounded-full"></div>
+              <div className="space-y-4 sm:space-y-6">
+                <div className="inline-flex items-center gap-2 mb-4 sm:mb-6">
+                  <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
+                  <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Philosophy</span>
+                  <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
                 </div>
                 
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                   Marketing Should{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                     Pay for Itself
                   </span>
                 </h2>
                 
-                <div className="bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-2xl p-6">
-                  <p className="text-xl font-bold text-foreground text-center mb-4">
+                <div className="bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-xl sm:rounded-2xl p-4 sm:p-6">
+                  <p className="text-lg sm:text-xl font-bold text-foreground text-center mb-2 sm:mb-4">
                     &quot;Marketing expenditures should pay for themselves&quot;
                   </p>
-                  <p className="text-base text-muted-foreground text-center">
+                  <p className="text-sm sm:text-base text-muted-foreground text-center leading-relaxed">
                     This isn&apos;t just a slogan—it&apos;s our core principle. We believe every marketing dollar should generate at least $2 in return.
                   </p>
                 </div>
                 
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/20">
-                    <div className="w-5 h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <TrendingUp className="w-3 h-3 text-[#4411ab]" />
+                <div className="space-y-2 sm:space-y-3">
+                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
+                      <TrendingUp className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
                     </div>
-                    <span className="text-base text-foreground">Performance-based compensation</span>
+                    <span className="text-sm sm:text-base text-foreground">Performance-based compensation</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/20">
-                    <div className="w-5 h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <Target className="w-3 h-3 text-[#4411ab]" />
+                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
+                      <Target className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
                     </div>
-                    <span className="text-base text-foreground">Transparent ROI tracking</span>
+                    <span className="text-sm sm:text-base text-foreground">Transparent ROI tracking</span>
                   </div>
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-muted/20">
-                    <div className="w-5 h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-3 h-3 text-[#4411ab]" />
+                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
+                      <CheckCircle className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
                     </div>
-                    <span className="text-base text-foreground">Continuous optimization focus</span>
+                    <span className="text-sm sm:text-base text-foreground">Continuous optimization focus</span>
                   </div>
                 </div>
                 
                 {/* Trust Indicators */}
-                <div className="flex items-center gap-8 text-sm text-muted-foreground pt-4">
-                  <div className="flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-[#4411ab]" />
+                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>ROI Focused</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-[#4411ab]" />
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <Target className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Performance Based</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-[#4411ab]" />
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="flex items-center gap-1 sm:gap-2">
+                    <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Transparent</span>
                   </div>
                 </div>
               </div>
 
-              {/* Right Side - Visual Content */}
+              {/* Right Side - Single Philosophy Image */}
               <div className="relative">
-                <div className="grid grid-cols-2 gap-6">
-                  {/* ROI Visual */}
-                  <div className="col-span-2">
-                    <div className="aspect-video rounded-2xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-lg">
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center space-y-4 p-8">
-                          <div className="w-20 h-20 border-2 border-[#4411ab] rounded-2xl flex items-center justify-center mx-auto">
-                            <TrendingUp className="w-10 h-10 text-[#4411ab]" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-bold text-foreground mb-2">ROI Philosophy</h3>
-                            <p className="text-sm text-muted-foreground">$1 investment → $2+ return</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Investment & Return Visuals */}
-                  <div className="aspect-square rounded-xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-md">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center space-y-2 p-4">
-                        <div className="w-12 h-12 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                          <span className="text-lg font-bold text-[#4411ab]">$1</span>
-                        </div>
-                        <div>
-                          <div className="text-lg font-bold text-primary">Investment</div>
-                          <div className="text-xs text-muted-foreground">Marketing Spend</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="aspect-square rounded-xl bg-gradient-to-br from-muted/20 to-muted/10 border border-muted/20 overflow-hidden shadow-md">
-                    <div className="w-full h-full flex items-center justify-center">
-                      <div className="text-center space-y-2 p-4">
-                        <div className="w-12 h-12 border-2 border-[#4411ab] rounded-xl flex items-center justify-center mx-auto">
-                          <span className="text-lg font-bold text-[#4411ab]">$2+</span>
-                        </div>
-                        <div>
-                          <div className="text-lg font-bold text-primary">Return</div>
-                          <div className="text-xs text-muted-foreground">Guaranteed</div>
-                        </div>
+                <div className="relative h-[250px] sm:h-[400px] lg:h-[600px]">
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                      {/* Replace this div with your actual philosophy image: */}
+                      {/* <img src="/about/philosophy-image.jpg" alt="ROI Agency Philosophy" className="w-full h-full object-contain" /> */}
+                      
+                      {/* Placeholder for now - Image only */}
+                      <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
+                        <span className="text-6xl">💰</span>
                       </div>
                     </div>
                   </div>
@@ -603,21 +470,21 @@ export default function AboutPage() {
       </Section>
 
       {/* Process Section */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 mb-4">
-              <div className="w-1 h-8 bg-primary rounded-full"></div>
-              <span className="text-sm font-medium text-primary uppercase tracking-wider">Our Process</span>
-              <div className="w-1 h-8 bg-primary rounded-full"></div>
+      <Section className="pt-16 pb-20 lg:pt-12 lg:pb-24 bg-background">
+        <div className="container mx-auto px-6 lg:px-12 xl:px-16 max-w-7xl">
+          <div className="text-center mb-4 sm:mb-8">
+            <div className="inline-flex items-center gap-2 mb-4 sm:mb-6">
+              <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
+              <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Process</span>
+              <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
               How We Deliver{' '}
               <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                 Consistent Results
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Our proven 5-step process ensures every project follows the same rigorous methodology for predictable, scalable success.
             </p>
           </div>
@@ -656,7 +523,7 @@ export default function AboutPage() {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 relative z-20">
               {processSteps.map((step, index) => (
                 <div
                   key={step.id}
@@ -665,19 +532,19 @@ export default function AboutPage() {
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <Card className="group relative overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-background via-background to-muted/20 backdrop-blur-sm text-center h-full">
-                    <CardContent className="p-6 h-full flex flex-col">
-                      <div className="space-y-4 flex-1 flex flex-col">
+                    <CardContent className="p-4 sm:p-6 h-full flex flex-col">
+                      <div className="space-y-3 sm:space-y-4 flex-1 flex flex-col">
                         {/* Icon */}
-                        <div className="w-16 h-16 border-2 border-[#4411ab] rounded-2xl flex items-center justify-center mx-auto">
-                          <step.icon className="w-8 h-8 text-[#4411ab]" />
+                        <div className="w-12 h-12 sm:w-16 sm:h-16 border-2 border-[#4411ab] rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto">
+                          <step.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#4411ab]" />
                         </div>
                         
                         {/* Content */}
                         <div className="flex-1 flex flex-col justify-center">
-                          <h3 className="font-bold text-foreground text-base mb-2">
+                          <h3 className="font-bold text-foreground text-sm sm:text-base mb-1 sm:mb-2">
                             {step.title}
                           </h3>
-                          <p className="text-sm text-muted-foreground leading-relaxed">
+                          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                             {step.description}
                           </p>
                         </div>
