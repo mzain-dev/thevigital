@@ -6,6 +6,7 @@ import { ColorProvider } from "@/contexts/color-context";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -96,6 +97,7 @@ export default function RootLayout({
               <Footer />
             </div>
             <Toaster />
+            <SpeedInsights />
           </ColorProvider>
         </ThemeProvider>
       </body>
