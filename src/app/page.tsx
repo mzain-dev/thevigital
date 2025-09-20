@@ -20,6 +20,10 @@ export default function Home() {
   const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
+  
+  // Portfolio slider state
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const services = [
     {
@@ -71,6 +75,58 @@ export default function Home() {
       features: ['Chatbot Development', 'Process Automation', 'Data Analysis', 'Predictive Insights']
     }
   ];
+
+  // Portfolio slider data
+  const portfolioSlides = [
+    {
+      id: 1,
+      title: "TechFlow Dashboard",
+      description: "SaaS Analytics Platform",
+      image: "/portfolio/techflow-dashboard.jpg"
+    },
+    {
+      id: 2,
+      title: "GrowthLab E-commerce",
+      description: "Modern Online Store",
+      image: "/portfolio/growthlab-ecommerce.jpg"
+    },
+    {
+      id: 3,
+      title: "ScaleUp FinTech",
+      description: "Banking App Interface",
+      image: "/portfolio/scaleup-fintech.jpg"
+    },
+    {
+      id: 4,
+      title: "InnovateCorp CRM",
+      description: "Sales Management System",
+      image: "/portfolio/innovatecorp-crm.jpg"
+    }
+  ];
+
+  // Auto-slide functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % portfolioSlides.length);
+    }, 2500); // 2.5 seconds
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, portfolioSlides.length]);
+
+  // Manual navigation functions
+  const goToNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % portfolioSlides.length);
+  };
+
+  const goToPrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + portfolioSlides.length) % portfolioSlides.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+  };
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -276,7 +332,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section - Full Viewport Height */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-8 lg:pt-0">
         {/* Enhanced Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
@@ -287,28 +343,28 @@ export default function Home() {
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
         <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
         
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex items-center min-h-screen">
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-screen pt-8 pb-8 lg:py-0">
           {/* Left Side - Content */}
           <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 pr-0 lg:pr-8">
             {/* Enhanced Main Headline */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-center sm:justify-start gap-2 mb-4">
+            <div className="space-y-3">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
                 <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
                 <Badge variant="secondary" className="text-xs sm:text-sm">2025&apos;s Most Innovative Agency</Badge>
                 <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
               </div>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
+              <h1 className="text-[44px] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
                 Marketing That{' '}
                 <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
                   Delivers ROI
                 </span>
               </h1>
               
-              {/* Text Type Animation for Services */}
-              <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-2 sm:gap-3 min-h-[3rem] sm:min-h-[3.5rem] md:min-h-[4rem] lg:min-h-[4.5rem]">
+              {/* Text Type Animation for Services - Equal height to animated indicator */}
+              <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-2 sm:gap-3 h-8 sm:h-8 md:h-10 lg:h-12">
                 <span className="text-base sm:text-lg md:text-xl text-muted-foreground whitespace-nowrap text-center sm:text-left">We specialize in:</span>
-                <div className="relative flex items-center justify-center sm:justify-start min-w-[220px] sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] h-8 sm:h-8 md:h-10 lg:h-12 w-full sm:w-auto">
-                  <div className="text-base sm:text-lg md:text-xl font-semibold text-primary typewriter-container w-full text-center sm:text-left">
+                <div className="relative flex items-center justify-center sm:justify-start min-w-[220px] sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] w-full sm:w-auto h-full">
+                  <div className="text-base sm:text-lg md:text-xl font-semibold text-primary typewriter-container w-full text-center sm:text-left h-full flex items-center">
                     <span className="typewriter-text">{currentText}</span>
                     <span className="typewriter-cursor animate-pulse">|</span>
                   </div>
@@ -316,28 +372,28 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Enhanced Subheadline */}
+            {/* Enhanced Subheadline - Minimal spacing */}
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
               Your marketing spend should always pay for itself.
-              <span className="block text-sm text-primary mt-2 font-medium">
+              <span className="block text-sm text-primary mt-1 font-medium">
                 ✨ AI-Powered • Data-Driven • Results-Guaranteed ✨
               </span>
             </p>
             
-            {/* Enhanced CTA Buttons */}
+            {/* Enhanced CTA Buttons - Single line */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start">
-              <Button size="sm" className="px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 xl:px-12 xl:py-6 text-base sm:text-lg lg:text-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
+              <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
                 <a href="/schedule-call">
-                  <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
+                  <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   Schedule a Call
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 group-hover:translate-x-1 transition-transform duration-300 text-white" />
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 text-white" />
                 </a>
               </Button>
-              <Button variant="outline" size="sm" className="px-6 py-3 sm:px-8 sm:py-4 lg:px-10 lg:py-5 xl:px-12 xl:py-6 text-base sm:text-lg lg:text-xl font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
+              <Button variant="outline" size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
                 <a href="/case-studies">
-                  <Award className="mr-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
+                  <Award className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
                   See Work
-                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               </Button>
             </div>
@@ -361,127 +417,209 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right Side - Portfolio Showcase */}
+          {/* Right Side - Portfolio Slider (Desktop Only) */}
           <div className="hidden lg:block w-1/2 pl-8">
-            <div className="relative h-[600px] overflow-hidden rounded-2xl bg-gradient-to-br from-muted/20 to-background/50 backdrop-blur-sm border border-muted/20">
-              {/* Portfolio Screenshots Container */}
-              <div className="absolute inset-0 flex flex-col animate-scroll-up">
-                {/* First Set of Screenshots */}
-                <div className="flex-shrink-0 p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-xl p-4 border border-blue-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/techflow-dashboard.jpg" alt="TechFlow Dashboard" className="w-full h-full object-cover rounded-lg" /> */}
-                        TechFlow Screenshot
+            <div className="relative h-[600px]">
+              {/* Desktop Portfolio Slider Container - Full column width */}
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
+                
+                {/* Slider Navigation Buttons */}
+                <button 
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  onClick={() => {
+                    goToPrevSlide();
+                    setIsAutoPlaying(false);
+                  }}
+                  onMouseEnter={() => setIsAutoPlaying(false)}
+                  onMouseLeave={() => setIsAutoPlaying(true)}
+                >
+                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                
+                <button 
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  onClick={() => {
+                    goToNextSlide();
+                    setIsAutoPlaying(false);
+                  }}
+                  onMouseEnter={() => setIsAutoPlaying(false)}
+                  onMouseLeave={() => setIsAutoPlaying(true)}
+                >
+                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Large Portfolio Image Area */}
+                <div className="w-full h-full relative">
+                  {/* Dynamic Portfolio Image */}
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                    {/* Replace this div with your actual images: */}
+                    {/* <img src={portfolioSlides[currentSlide].image} alt={portfolioSlides[currentSlide].title} className="w-full h-full object-contain" /> */}
+                    
+                    {/* Placeholder for now */}
+                    <div className="text-center text-gray-500 p-8">
+                      <div className="w-32 h-32 mx-auto mb-6 bg-gray-300 rounded-2xl flex items-center justify-center">
+                        <span className="text-6xl">🖼️</span>
                       </div>
-                      <h4 className="text-sm font-semibold text-foreground">TechFlow Dashboard</h4>
-                      <p className="text-sm text-muted-foreground">SaaS Analytics Platform</p>
+                      <h3 className="text-xl font-semibold mb-2">{portfolioSlides[currentSlide].title}</h3>
+                      <p className="text-sm text-gray-400 max-w-md">
+                        Replace this placeholder with your designer's image: {portfolioSlides[currentSlide].image}
+                      </p>
                     </div>
-                    <div className="bg-gradient-to-br from-green-500/20 to-blue-600/20 rounded-xl p-4 border border-green-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/growthlab-ecommerce.jpg" alt="GrowthLab E-commerce" className="w-full h-full object-cover rounded-lg" /> */}
-                        GrowthLab Screenshot
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground">GrowthLab E-commerce</h4>
-                      <p className="text-sm text-muted-foreground">Online Store Design</p>
+                  </div>
+                  
+                  {/* Dynamic Image Overlay Info */}
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                    <div className="text-white">
+                      <h4 className="text-lg font-semibold mb-1">{portfolioSlides[currentSlide].title}</h4>
+                      <p className="text-sm text-white/80">{portfolioSlides[currentSlide].description}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex-shrink-0 p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gradient-to-br from-orange-500/20 to-red-600/20 rounded-xl p-4 border border-orange-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-orange-400 to-red-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/scaleup-fintech.jpg" alt="ScaleUp FinTech" className="w-full h-full object-cover rounded-lg" /> */}
-                        ScaleUp Screenshot
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground">ScaleUp FinTech</h4>
-                      <p className="text-sm text-muted-foreground">Banking App Interface</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-purple-500/20 to-pink-600/20 rounded-xl p-4 border border-purple-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-purple-400 to-pink-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/innovatecorp-crm.jpg" alt="InnovateCorp CRM" className="w-full h-full object-cover rounded-lg" /> */}
-                        InnovateCorp Screenshot
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground">InnovateCorp CRM</h4>
-                      <p className="text-sm text-muted-foreground">Sales Management System</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex-shrink-0 p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gradient-to-br from-yellow-500/20 to-orange-600/20 rounded-xl p-4 border border-yellow-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/futuretech-brand.jpg" alt="FutureTech Brand" className="w-full h-full object-cover rounded-lg" /> */}
-                        FutureTech Screenshot
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground">FutureTech Brand</h4>
-                      <p className="text-sm text-muted-foreground">Healthcare Brand Identity</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-indigo-500/20 to-cyan-600/20 rounded-xl p-4 border border-indigo-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-indigo-400 to-cyan-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/ai-agent-platform.jpg" alt="AI Agent Platform" className="w-full h-full object-cover rounded-lg" /> */}
-                        AI Platform Screenshot
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground">AI Agent Platform</h4>
-                      <p className="text-sm text-muted-foreground">Automation Dashboard</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Duplicate Set for Seamless Loop */}
-                <div className="flex-shrink-0 p-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-xl p-4 border border-blue-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/techflow-dashboard.jpg" alt="TechFlow Dashboard" className="w-full h-full object-cover rounded-lg" /> */}
-                        TechFlow Screenshot
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground">TechFlow Dashboard</h4>
-                      <p className="text-sm text-muted-foreground">SaaS Analytics Platform</p>
-                    </div>
-                    <div className="bg-gradient-to-br from-green-500/20 to-blue-600/20 rounded-xl p-4 border border-green-500/20">
-                      <div className="w-full h-32 bg-gradient-to-br from-green-400 to-blue-500 rounded-lg mb-3 flex items-center justify-center text-white font-semibold text-sm">
-                        {/* Replace this div with: <img src="/portfolio/growthlab-ecommerce.jpg" alt="GrowthLab E-commerce" className="w-full h-full object-cover rounded-lg" /> */}
-                        GrowthLab Screenshot
-                      </div>
-                      <h4 className="text-sm font-semibold text-foreground">GrowthLab E-commerce</h4>
-                      <p className="text-sm text-muted-foreground">Online Store Design</p>
-                    </div>
-                  </div>
+                {/* Dynamic Slider Dots Indicator */}
+                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+                  {portfolioSlides.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
+                        index === currentSlide 
+                          ? 'bg-white scale-125' 
+                          : 'bg-white/50 hover:bg-white/70'
+                      }`}
+                      onClick={() => {
+                        goToSlide(index);
+                        setIsAutoPlaying(false);
+                      }}
+                      onMouseEnter={() => setIsAutoPlaying(false)}
+                      onMouseLeave={() => setIsAutoPlaying(true)}
+                    />
+                  ))}
                 </div>
               </div>
 
-              {/* Overlay Gradient for Smooth Edges */}
-              <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-b from-background to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-background to-transparent"></div>
-            </div>
-
-            {/* Portfolio Stats */}
-            <div className="mt-6 text-center">
-              <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                  <span>Live Portfolio</span>
-                </div>
-                <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                <div className="flex items-center gap-2">
-                  <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
-                  <span>Continuous Updates</span>
+              {/* Desktop Portfolio Stats */}
+              <div className="mt-6 text-center">
+                <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span>Interactive Slider</span>
+                  </div>
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
+                    <span>Auto-Slide 2.5s</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        {/* Enhanced Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex justify-center group cursor-pointer hover:border-primary/50 transition-colors duration-200">
-            <div className="w-1 h-3 bg-muted-foreground/50 rounded-full mt-2 animate-pulse group-hover:bg-primary/50 transition-colors duration-200"></div>
+
+          {/* Mobile & Tablet Portfolio Slider - Inside Hero Section */}
+          <div className="block lg:hidden w-full mt-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative h-[300px] sm:h-[400px]">
+                {/* Mobile/Tablet Slider Container */}
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
+                  
+                  {/* Mobile Navigation Buttons */}
+                  <button 
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    onClick={() => {
+                      goToPrevSlide();
+                      setIsAutoPlaying(false);
+                    }}
+                    onMouseEnter={() => setIsAutoPlaying(false)}
+                    onMouseLeave={() => setIsAutoPlaying(true)}
+                  >
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  
+                  <button 
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
+                    onClick={() => {
+                      goToNextSlide();
+                      setIsAutoPlaying(false);
+                    }}
+                    onMouseEnter={() => setIsAutoPlaying(false)}
+                    onMouseLeave={() => setIsAutoPlaying(true)}
+                  >
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+
+                  {/* Mobile Image Area */}
+                  <div className="w-full h-full relative">
+                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
+                      {/* Replace with your images: */}
+                      {/* <img src={portfolioSlides[currentSlide].image} alt={portfolioSlides[currentSlide].title} className="w-full h-full object-contain" /> */}
+                      
+                      {/* Mobile Placeholder */}
+                      <div className="text-center text-gray-500 p-4">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-gray-300 rounded-xl flex items-center justify-center">
+                          <span className="text-3xl sm:text-4xl">🖼️</span>
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-semibold mb-2">{portfolioSlides[currentSlide].title}</h3>
+                        <p className="text-xs sm:text-sm text-gray-400">{portfolioSlides[currentSlide].description}</p>
+                      </div>
+                    </div>
+                    
+                    {/* Mobile Image Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                      <div className="text-white">
+                        <h4 className="text-base sm:text-lg font-semibold mb-1">{portfolioSlides[currentSlide].title}</h4>
+                        <p className="text-xs sm:text-sm text-white/80">{portfolioSlides[currentSlide].description}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mobile Slider Dots */}
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1.5">
+                    {portfolioSlides.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-200 ${
+                          index === currentSlide 
+                            ? 'bg-white scale-125' 
+                            : 'bg-white/50 hover:bg-white/70'
+                        }`}
+                        onClick={() => {
+                          goToSlide(index);
+                          setIsAutoPlaying(false);
+                        }}
+                        onMouseEnter={() => setIsAutoPlaying(false)}
+                        onMouseLeave={() => setIsAutoPlaying(true)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile Portfolio Stats */}
+              <div className="mt-4 text-center">
+                <div className="flex items-center justify-center gap-4 text-xs sm:text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
+                    <span>Auto-Slide</span>
+                  </div>
+                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></div>
+                    <span>Touch Friendly</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
 
       {/* Client Logos Carousel Section */}
       <section className="py-12 lg:py-24 bg-gradient-to-r from-muted/20 to-background">
@@ -669,7 +807,7 @@ export default function Home() {
 
           {/* View All Button - Minimal */}
           <div className="text-center mt-8 sm:mt-12 lg:mt-16">
-            <Button size="sm" className="px-6 py-3 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold bg-primary hover:bg-[#4411ab] text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
+            <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold bg-primary hover:bg-[#4411ab] text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
               <a href="/case-studies">
                 View All Case Studies
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
@@ -751,7 +889,7 @@ export default function Home() {
         <div className="text-center mt-8 sm:mt-12">
           <Button 
             size="sm" 
-            className="bg-primary hover:bg-[#4411ab] text-primary-foreground group px-6 py-3 sm:px-8 sm:py-6 text-sm sm:text-lg" 
+            className="bg-primary hover:bg-[#4411ab] text-primary-foreground group px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg" 
             asChild
           >
             <a href="/services">
@@ -839,7 +977,7 @@ export default function Home() {
           <Button 
             variant="outline" 
             size="sm" 
-            className="border-primary/30 text-primary hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group px-6 py-3 sm:px-8 sm:py-6 text-sm sm:text-lg" 
+            className="border-primary/30 text-primary hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg" 
             asChild
           >
             <a href="/case-studies">
@@ -999,7 +1137,7 @@ export default function Home() {
                   </p>
                   <Button 
                     size="sm" 
-                    className="bg-primary hover:bg-[#4411ab] text-primary-foreground px-4 sm:px-6 py-2 font-medium shadow-md hover:shadow-lg transition-all duration-300 group text-sm sm:text-base" 
+                    className="bg-primary hover:bg-[#4411ab] text-primary-foreground px-12 py-5 sm:px-6 py-2 font-medium shadow-md hover:shadow-lg transition-all duration-300 group text-sm sm:text-base" 
                     asChild
                   >
                     <a href="/schedule-call">

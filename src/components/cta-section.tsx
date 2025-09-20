@@ -76,7 +76,7 @@ export function CTASection({
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <Button 
               size="sm" 
-              className="px-6 py-3 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-black hover:bg-[#4411ab] group"
+              className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-black hover:bg-[#4411ab] group"
               asChild
             >
               <Link href={primaryButton.href}>
@@ -88,7 +88,7 @@ export function CTASection({
             <Button 
               variant="outline" 
               size="sm" 
-              className="px-6 py-3 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 border-black hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
+              className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 border-black hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
               asChild
             >
               <Link href={secondaryButton.href}>

@@ -225,32 +225,6 @@ export function Navbar() {
                 </div>
               </div>
 
-              {/* Services Section */}
-              <div className="px-3 sm:px-4 mb-4">
-                <h3 className="text-sm font-semibold text-foreground mb-3">Our Services</h3>
-                <div className="space-y-2">
-                  {services.map((service) => (
-                    <Link
-                      key={service.name}
-                      href={service.href}
-                      className="flex items-center gap-3 p-3 rounded-lg hover:bg-accent/50 transition-colors duration-200"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                    >
-                      <div className="w-8 h-8 bg-accent/50 rounded-lg flex items-center justify-center hover:bg-accent transition-colors duration-200">
-                        <service.icon className="w-4 h-4 text-muted-foreground hover:text-[#4411ab] transition-colors duration-200" />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="font-medium text-foreground text-sm hover:text-[#4411ab] transition-colors duration-200">
-                          {service.name}
-                        </h4>
-                        <p className="text-xs text-muted-foreground">
-                          {service.description}
-                        </p>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
               
               {/* CTA Buttons */}
               <div className="px-3 sm:px-4 pt-3 sm:pt-4 space-y-2 sm:space-y-3 border-t border-border">
