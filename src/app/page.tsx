@@ -466,7 +466,7 @@ export default function Home() {
                       </div>
                       <h3 className="text-xl font-semibold mb-2">{portfolioSlides[currentSlide].title}</h3>
                       <p className="text-sm text-gray-400 max-w-md">
-                        Replace this placeholder with your designer's image: {portfolioSlides[currentSlide].image}
+                        Replace this placeholder with your designer&apos;s image: {portfolioSlides[currentSlide].image}
                       </p>
                     </div>
                   </div>
