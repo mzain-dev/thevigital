@@ -187,6 +187,15 @@ export function Navbar() {
                     Home
                   </Link>
                   <Link
+                    href="/services"
+                    className={`block px-3 py-2 text-sm sm:text-base transition-colors duration-200 font-semibold ${
+                      pathname === '/services' ? 'text-[#4411ab]' : 'text-foreground hover:text-[#4411ab]'
+                    }`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    Services
+                  </Link>
+                  <Link
                     href="/about"
                     className={`block px-3 py-2 text-sm sm:text-base transition-colors duration-200 font-semibold ${
                       pathname === '/about' ? 'text-[#4411ab]' : 'text-foreground hover:text-[#4411ab]'
@@ -246,7 +255,7 @@ export function Navbar() {
               {/* CTA Buttons */}
               <div className="px-3 sm:px-4 pt-3 sm:pt-4 space-y-2 sm:space-y-3 border-t border-border">
                 <Button size="sm" className="w-full py-2 sm:py-3 text-sm sm:text-base font-semibold bg-primary text-primary-foreground hover:bg-[#4411ab] shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
-                  <Link href="/schedule-call">
+                  <Link href="/schedule-call" onClick={() => setIsMobileMenuOpen(false)}>
                     <Phone className="mr-2 w-3 h-3 sm:w-4 sm:h-4" />
                     Schedule a Call
                   </Link>
