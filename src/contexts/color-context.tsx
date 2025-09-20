@@ -1,8 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import { ColorPalette, defaultColorPalettes, darkColorPalettes, generateCustomPalette, applyColorPalette } from '@/lib/colors';
+import { ColorPalette, defaultColorPalettes, generateCustomPalette, applyColorPalette } from '@/lib/colors';
 
 interface ColorContextType {
   currentPalette: ColorPalette;
@@ -16,7 +15,6 @@ interface ColorContextType {
 const ColorContext = createContext<ColorContextType | undefined>(undefined);
 
 export function ColorProvider({ children }: { children: React.ReactNode }) {
-  const { resolvedTheme } = useTheme();
   const [currentPalette, setCurrentPalette] = useState<ColorPalette>(defaultColorPalettes[0]); // Slate is at index 0
   const [customPrimaryColor, setCustomPrimaryColor] = useState<string>('hsl(222.2 84% 4.9%)'); // Slate primary color
   const [mounted, setMounted] = useState(false);
@@ -26,10 +24,8 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     setMounted(true);
   }, []);
 
-  // Get available palettes based on current theme
-  const availablePalettes = resolvedTheme === 'dark' 
-    ? [...darkColorPalettes, ...defaultColorPalettes]
-    : [...defaultColorPalettes, ...darkColorPalettes];
+  // Always use light mode palettes only
+  const availablePalettes = defaultColorPalettes;
 
   // Apply palette when it changes (only after mount)
   useEffect(() => {
@@ -38,32 +34,24 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     }
   }, [currentPalette, mounted]);
 
-  // Update palette when theme changes (only after mount)
+  // Initialize with light mode palette
   useEffect(() => {
-    if (mounted && resolvedTheme) {
-      if (resolvedTheme === 'dark') {
-        setCurrentPalette(darkColorPalettes[0]); // Slate Dark
-      } else {
-        setCurrentPalette(defaultColorPalettes[0]); // Slate
-      }
+    if (mounted) {
+      setCurrentPalette(defaultColorPalettes[0]); // Slate
     }
-  }, [resolvedTheme, mounted]);
+  }, [mounted]);
 
   // Generate custom palette when custom primary color changes (only after mount)
   useEffect(() => {
-    if (mounted && resolvedTheme) {
-      const customPalette = generateCustomPalette(customPrimaryColor, resolvedTheme === 'dark');
+    if (mounted) {
+      const customPalette = generateCustomPalette(customPrimaryColor, false); // Always light mode
       setCurrentPalette(customPalette);
     }
-  }, [customPrimaryColor, resolvedTheme, mounted]);
+  }, [customPrimaryColor, mounted]);
 
   const resetToDefault = () => {
-    if (mounted && resolvedTheme) {
-      if (resolvedTheme === 'dark') {
-        setCurrentPalette(darkColorPalettes[0]); // Slate Dark
-      } else {
-        setCurrentPalette(defaultColorPalettes[0]); // Slate
-      }
+    if (mounted) {
+      setCurrentPalette(defaultColorPalettes[0]); // Slate
       setCustomPrimaryColor('hsl(222.2 84% 4.9%)'); // Reset to Slate primary color
     }
   };
