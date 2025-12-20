@@ -11,26 +11,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Calendar, Clock, Upload, Phone, Mail, User, FileText, CheckCircle } from 'lucide-react';
 import { Section } from '@/components/section';
 
-const services = [
-  { value: 'performance-marketing', label: 'Performance Marketing' },
-  { value: 'web-development', label: 'Web Development' },
-  { value: 'seo-optimization', label: 'SEO Optimization' },
-  { value: 'crm-automation', label: 'CRM & Automation' },
-  { value: 'design-branding', label: 'Graphic Design/Branding' },
-  { value: 'ai-agents', label: 'AI Agents for Business' },
-  { value: 'other', label: 'Other' }
-];
-
-const timeSlots = [
-  '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM',
-  '12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM',
-  '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM'
-];
+import { SERVICES_SUMMARY, TIME_SLOTS } from '@/lib/constants';
 
 // Component that uses useSearchParams
 function ScheduleCallForm() {
   const searchParams = useSearchParams();
-  
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -105,7 +91,7 @@ function ScheduleCallForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
@@ -115,7 +101,7 @@ function ScheduleCallForm() {
     try {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
-      
+
       console.log('Form submitted:', formData);
       setIsSubmitted(true);
     } catch (error) {
@@ -137,7 +123,7 @@ function ScheduleCallForm() {
             <p className="text-muted-foreground mb-6">
               Thank you for scheduling your consultation. We&apos;ll contact you within 24 hours to confirm your appointment.
             </p>
-            <Button 
+            <Button
               onClick={() => {
                 setIsSubmitted(false);
                 setFormData({
@@ -171,7 +157,7 @@ function ScheduleCallForm() {
             <span className="text-primary block">Free Consultation</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-2">
-            Ready to grow your business? Book a free 30-minute consultation with our experts 
+            Ready to grow your business? Book a free 30-minute consultation with our experts
             to discuss your project and discover how we can help you achieve your goals.
           </p>
         </div>
@@ -260,9 +246,9 @@ function ScheduleCallForm() {
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
                     <SelectContent>
-                      {services.map((service) => (
-                        <SelectItem key={service.value} value={service.value}>
-                          {service.label}
+                      {SERVICES_SUMMARY.map((service) => (
+                        <SelectItem key={service.id} value={service.id}>
+                          {service.title}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -305,7 +291,7 @@ function ScheduleCallForm() {
                         <SelectValue placeholder="Select time slot" />
                       </SelectTrigger>
                       <SelectContent>
-                        {timeSlots.map((slot) => (
+                        {TIME_SLOTS.map((slot) => (
                           <SelectItem key={slot} value={slot}>
                             {slot}
                           </SelectItem>

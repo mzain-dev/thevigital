@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,6 +12,20 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Phone, Mail, User, FileText, Upload, Calendar, Clock, CheckCircle } from 'lucide-react';
 
+import { SERVICES_SUMMARY, TIME_SLOTS } from '@/lib/constants';
+
+const formSchema = z.object({
+  fullName: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  service: z.string().min(1, "Please select a service"),
+  date: z.string().min(1, "Please select a date"),
+  time: z.string().min(1, "Please select a time"),
+  description: z.string().min(10, "Please provide more details"),
+});
+
+type FormData = z.infer<typeof formSchema>;
+
 interface ScheduleCallPopupProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
@@ -16,95 +33,19 @@ interface ScheduleCallPopupProps {
 }
 
 export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '' }: ScheduleCallPopupProps) {
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    service: preSelectedService,
-    date: '',
-    time: '',
-    description: '',
-    file: null as File | null
-  });
-  const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [file, setFile] = useState<File | null>(null);
 
-  // Update service field when preSelectedService prop changes
-  useEffect(() => {
-    if (preSelectedService) {
-      setFormData(prev => ({ ...prev, service: preSelectedService }));
-    }
-  }, [preSelectedService]);
-
-  // Service options for the form
-  const serviceOptions = [
-    { value: 'performance-marketing', label: 'Performance Marketing' },
-    { value: 'web-development', label: 'Web Development' },
-    { value: 'seo-optimization', label: 'SEO That Matters' },
-    { value: 'crm-automation', label: 'CRM & Marketing Automation' },
-    { value: 'graphic-design', label: 'Graphic Design / Branding' },
-    { value: 'ai-agents', label: 'AI Agents for Business' },
-    { value: 'other', label: 'Other' }
-  ];
-
-  const timeSlots = [
-    '9:00 AM - 10:00 AM',
-    '10:00 AM - 11:00 AM',
-    '11:00 AM - 12:00 PM',
-    '1:00 PM - 2:00 PM',
-    '2:00 PM - 3:00 PM',
-    '3:00 PM - 4:00 PM',
-    '4:00 PM - 5:00 PM'
-  ];
-
-  // Form handling functions
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null;
-    setFormData(prev => ({ ...prev, file }));
-  };
-
-  const validateForm = () => {
-    const newErrors: Record<string, string> = {};
-    
-    if (!formData.fullName.trim()) newErrors.fullName = 'Full name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-    if (!formData.service) newErrors.service = 'Please select a service';
-    if (!formData.date) newErrors.date = 'Please select a date';
-    if (!formData.time) newErrors.time = 'Please select a time';
-    if (!formData.description.trim()) newErrors.description = 'Project description is required';
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
-    
-    setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-  };
-
-  const closeModal = () => {
-    onOpenChange(false);
-    setIsSubmitted(false);
-    setFormData({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors, isSubmitting },
+    watch
+  } = useForm<FormData>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
       fullName: '',
       email: '',
       phone: '',
@@ -112,9 +53,36 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
       date: '',
       time: '',
       description: '',
-      file: null
-    });
-    setErrors({});
+    }
+  });
+
+  // Update service field when preSelectedService prop changes
+  useEffect(() => {
+    if (preSelectedService) {
+      setValue('service', preSelectedService);
+    }
+  }, [preSelectedService, setValue]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0] || null;
+    setFile(selectedFile);
+  };
+
+  const onSubmit = async (data: FormData) => {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    console.log('Form Data:', data);
+    console.log('File:', file);
+    setIsSubmitted(true);
+  };
+
+  const closeModal = () => {
+    onOpenChange(false);
+    setTimeout(() => {
+      setIsSubmitted(false);
+      reset();
+      setFile(null);
+    }, 300);
   };
 
   return (
@@ -128,7 +96,7 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
             Fill out the form below and we&apos;ll get back to you within 24 hours
           </DialogDescription>
         </DialogHeader>
-        
+
         {isSubmitted ? (
           <div className="text-center py-4 sm:py-8 px-3 sm:px-6">
             <div className="flex justify-center mb-3 sm:mb-4">
@@ -143,7 +111,7 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
             </Button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 px-3 sm:px-6 pb-4 sm:pb-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4 px-3 sm:px-6 pb-4 sm:pb-6">
             {/* Personal Information */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
               <div className="space-y-1 sm:space-y-2">
@@ -153,14 +121,12 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                 </Label>
                 <Input
                   id="fullName"
-                  type="text"
                   placeholder="Enter your full name"
-                  value={formData.fullName}
-                  onChange={(e) => handleInputChange('fullName', e.target.value)}
+                  {...register('fullName')}
                   className={`h-9 sm:h-10 text-sm sm:text-base ${errors.fullName ? 'border-red-500' : ''}`}
                 />
                 {errors.fullName && (
-                  <p className="text-xs text-red-500">{errors.fullName}</p>
+                  <p className="text-xs text-red-500">{errors.fullName.message}</p>
                 )}
               </div>
 
@@ -173,12 +139,11 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                   id="email"
                   type="email"
                   placeholder="Enter your email"
-                  value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  {...register('email')}
                   className={`h-9 sm:h-10 text-sm sm:text-base ${errors.email ? 'border-red-500' : ''}`}
                 />
                 {errors.email && (
-                  <p className="text-xs text-red-500">{errors.email}</p>
+                  <p className="text-xs text-red-500">{errors.email.message}</p>
                 )}
               </div>
             </div>
@@ -192,12 +157,11 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                 id="phone"
                 type="tel"
                 placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
+                {...register('phone')}
                 className={`h-9 sm:h-10 text-sm sm:text-base ${errors.phone ? 'border-red-500' : ''}`}
               />
               {errors.phone && (
-                <p className="text-xs text-red-500">{errors.phone}</p>
+                <p className="text-xs text-red-500">{errors.phone.message}</p>
               )}
             </div>
 
@@ -208,22 +172,22 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                 Service Interested In *
               </Label>
               <Select
-                value={formData.service}
-                onValueChange={(value) => handleInputChange('service', value)}
+                value={watch('service')}
+                onValueChange={(value) => setValue('service', value, { shouldValidate: true })}
               >
                 <SelectTrigger className={`h-9 sm:h-10 text-sm sm:text-base ${errors.service ? 'border-red-500' : ''}`}>
                   <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
-                  {serviceOptions.map((service) => (
-                    <SelectItem key={service.value} value={service.value}>
-                      {service.label}
+                  {SERVICES_SUMMARY.map((service) => (
+                    <SelectItem key={service.id} value={service.id}>
+                      {service.title}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
               {errors.service && (
-                <p className="text-xs text-red-500">{errors.service}</p>
+                <p className="text-xs text-red-500">{errors.service.message}</p>
               )}
             </div>
 
@@ -238,12 +202,11 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                   id="date"
                   type="date"
                   min={new Date().toISOString().split('T')[0]}
-                  value={formData.date}
-                  onChange={(e) => handleInputChange('date', e.target.value)}
+                  {...register('date')}
                   className={`h-9 sm:h-10 text-sm sm:text-base ${errors.date ? 'border-red-500' : ''}`}
                 />
                 {errors.date && (
-                  <p className="text-xs text-red-500">{errors.date}</p>
+                  <p className="text-xs text-red-500">{errors.date.message}</p>
                 )}
               </div>
 
@@ -253,14 +216,14 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                   Preferred Time *
                 </Label>
                 <Select
-                  value={formData.time}
-                  onValueChange={(value) => handleInputChange('time', value)}
+                  value={watch('time')}
+                  onValueChange={(value) => setValue('time', value, { shouldValidate: true })}
                 >
                   <SelectTrigger className={`h-9 sm:h-10 text-sm sm:text-base ${errors.time ? 'border-red-500' : ''}`}>
                     <SelectValue placeholder="Select time slot" />
                   </SelectTrigger>
                   <SelectContent>
-                    {timeSlots.map((slot) => (
+                    {TIME_SLOTS.map((slot) => (
                       <SelectItem key={slot} value={slot}>
                         {slot}
                       </SelectItem>
@@ -268,7 +231,7 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                   </SelectContent>
                 </Select>
                 {errors.time && (
-                  <p className="text-xs text-red-500">{errors.time}</p>
+                  <p className="text-xs text-red-500">{errors.time.message}</p>
                 )}
               </div>
             </div>
@@ -282,12 +245,11 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
               <Textarea
                 id="description"
                 placeholder="Tell us about your project, goals, and any specific requirements..."
-                value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                {...register('description')}
                 className={`min-h-[70px] sm:min-h-[100px] text-sm sm:text-base ${errors.description ? 'border-red-500' : ''}`}
               />
               {errors.description && (
-                <p className="text-xs text-red-500">{errors.description}</p>
+                <p className="text-xs text-red-500">{errors.description.message}</p>
               )}
             </div>
 
@@ -308,8 +270,9 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
                   />
                   <div className="flex items-center h-8 sm:h-10 w-full rounded-md border border-input bg-background px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50">
                     <span className="inline-flex items-center px-1.5 sm:px-2 py-0.5 sm:py-1 bg-primary text-primary-foreground rounded text-xs font-normal hover:bg-primary/90 transition-colors duration-200">
-                      Choose File
+                      {file ? 'File Selected' : 'Choose File'}
                     </span>
+                    {file && <span className="ml-2 text-xs truncate">{file.name}</span>}
                   </div>
                 </div>
               </div>

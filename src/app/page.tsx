@@ -5,155 +5,24 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { CTASection } from '@/components/cta-section';
-import { ArrowRight, TrendingUp, Globe, Search, Users, Palette, Bot, Zap, BarChart3, Target, Eye, RotateCcw, Sparkles, Rocket, Award, Clock, Star, CheckCircle, Mail, Quote } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowRight, TrendingUp, Globe, Users, Palette, Bot, Zap, BarChart3, Target, Eye, RotateCcw, Sparkles, Rocket, Award, Clock, Star, CheckCircle, Mail, Quote } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
-const typewriterServices = [
-  'Performance Marketing',
-  'Web Development', 
-  'SEO Optimization',
-  'AI Automation',
-  'Brand Design'
-];
+import { SERVICES_SUMMARY } from '@/lib/constants';
+
+const typewriterServices = SERVICES_SUMMARY.map(s => s.title);
 
 export default function Home() {
-  const [currentText, setCurrentText] = useState('');
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-  
-  // Portfolio slider state
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  const services = [
-    {
-      title: 'Performance Marketing',
-      description: 'Data-driven campaigns that convert and scale',
-      icon: TrendingUp,
-      href: '/services',
-      gradient: 'from-blue-500 to-purple-600',
-      features: ['PPC Management', 'Conversion Optimization', 'A/B Testing', 'ROI Tracking']
-    },
-    {
-      title: 'Web Development',
-      description: 'Modern, fast websites that drive results',
-      icon: Globe,
-      href: '/services',
-      gradient: 'from-green-500 to-blue-600',
-      features: ['Custom Development', 'E-commerce Solutions', 'Performance Optimization', 'SEO Integration']
-    },
-    {
-      title: 'SEO That Matters',
-      description: 'Organic growth that actually moves the needle',
-      icon: Search,
-      href: '/services',
-      gradient: 'from-orange-500 to-red-600',
-      features: ['Technical SEO', 'Content Strategy', 'Local SEO', 'Link Building']
-    },
-    {
-      title: 'CRM & Automation',
-      description: 'Streamline operations and boost efficiency',
-      icon: Users,
-      href: '/services',
-      gradient: 'from-purple-500 to-pink-600',
-      features: ['Sales Automation', 'Lead Nurturing', 'Customer Segmentation', 'Workflow Optimization']
-    },
-    {
-      title: 'Graphic Design/Branding',
-      description: 'Visual identity that builds trust and recognition',
-      icon: Palette,
-      href: '/services',
-      gradient: 'from-yellow-500 to-orange-600',
-      features: ['Brand Identity', 'Logo Design', 'Marketing Materials', 'Social Media Assets']
-    },
-    {
-      title: 'AI Agents for Business',
-      description: 'Intelligent automation for modern companies',
-      icon: Bot,
-      href: '/services',
-      gradient: 'from-indigo-500 to-cyan-600',
-      features: ['Chatbot Development', 'Process Automation', 'Data Analysis', 'Predictive Insights']
-    }
-  ];
-
   // Portfolio slider data
-  const portfolioSlides = [
-    {
-      id: 1,
-      title: "TechFlow Dashboard",
-      description: "SaaS Analytics Platform",
-      image: "/portfolio/techflow-dashboard.jpg"
-    },
-    {
-      id: 2,
-      title: "GrowthLab E-commerce",
-      description: "Modern Online Store",
-      image: "/portfolio/growthlab-ecommerce.jpg"
-    },
-    {
-      id: 3,
-      title: "ScaleUp FinTech",
-      description: "Banking App Interface",
-      image: "/portfolio/scaleup-fintech.jpg"
-    },
-    {
-      id: 4,
-      title: "InnovateCorp CRM",
-      description: "Sales Management System",
-      image: "/portfolio/innovatecorp-crm.jpg"
-    }
-  ];
 
-  // Auto-slide functionality
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-    
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % portfolioSlides.length);
-    }, 2500); // 2.5 seconds
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, portfolioSlides.length]);
-
-  // Manual navigation functions
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % portfolioSlides.length);
-  };
-
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + portfolioSlides.length) % portfolioSlides.length);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    
-    if (isTyping) {
-      if (currentText.length < typewriterServices[currentIndex].length) {
-        timeout = setTimeout(() => {
-          setCurrentText(typewriterServices[currentIndex].slice(0, currentText.length + 1));
-        }, 100);
-      } else {
-        timeout = setTimeout(() => {
-          setIsTyping(false);
-        }, 1000);
-      }
-    } else {
-      if (currentText.length > 0) {
-        timeout = setTimeout(() => {
-          setCurrentText(currentText.slice(0, -1));
-        }, 50);
-      } else {
-        setCurrentIndex((prev) => (prev + 1) % typewriterServices.length);
-        setIsTyping(true);
-      }
-    }
-
-    return () => clearTimeout(timeout);
-  }, [currentText, currentIndex, isTyping]);
 
   const features = [
     {
@@ -337,12 +206,12 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
         <div className="absolute inset-0 bg-gradient-to-bl from-secondary/5 via-transparent to-primary/5 animate-pulse delay-2000"></div>
-        
+
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-bounce delay-1000"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
         <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
-        
+
         <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-screen pt-8 pb-8 lg:py-0">
           {/* Left Side - Content */}
           <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 pr-0 lg:pr-8">
@@ -359,19 +228,19 @@ export default function Home() {
                   Delivers ROI
                 </span>
               </h1>
-              
+
               {/* Text Type Animation for Services - Equal height to animated indicator */}
               <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-2 sm:gap-3 h-8 sm:h-8 md:h-10 lg:h-12">
                 <span className="text-base sm:text-lg md:text-xl text-muted-foreground whitespace-nowrap text-center sm:text-left">We specialize in:</span>
                 <div className="relative flex items-center justify-center sm:justify-start min-w-[220px] sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] w-full sm:w-auto h-full">
                   <div className="text-base sm:text-lg md:text-xl font-semibold text-primary typewriter-container w-full text-center sm:text-left h-full flex items-center">
-                    <span className="typewriter-text">{currentText}</span>
+                    <span className="typewriter-text">{typewriterServices[0]}</span>
                     <span className="typewriter-cursor animate-pulse">|</span>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             {/* Enhanced Subheadline - Minimal spacing */}
             <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
               Your marketing spend should always pay for itself.
@@ -379,25 +248,25 @@ export default function Home() {
                 ✨ AI-Powered • Data-Driven • Results-Guaranteed ✨
               </span>
             </p>
-            
+
             {/* Enhanced CTA Buttons - Single line */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start">
               <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
-                <a href="/schedule-call">
+                <Link href="/schedule-call">
                   <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-white" />
                   Schedule a Call
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300 text-white" />
-                </a>
+                </Link>
               </Button>
               <Button variant="outline" size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold border-2 hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group" asChild>
-                <a href="/case-studies">
+                <Link href="/case-studies">
                   <Award className="mr-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
                   See Work
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                </Link>
               </Button>
             </div>
-            
+
             {/* Trust Indicators */}
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -419,101 +288,15 @@ export default function Home() {
 
           {/* Right Side - Portfolio Slider (Desktop Only) */}
           <div className="hidden lg:block w-1/2 pl-8">
-            <div className="relative h-[600px]">
-              {/* Desktop Portfolio Slider Container - Full column width */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
-                
-                {/* Slider Navigation Buttons */}
-                <button 
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
-                  onClick={() => {
-                    goToPrevSlide();
-                    setIsAutoPlaying(false);
-                  }}
-                  onMouseEnter={() => setIsAutoPlaying(false)}
-                  onMouseLeave={() => setIsAutoPlaying(true)}
-                >
-                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                
-                <button 
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
-                  onClick={() => {
-                    goToNextSlide();
-                    setIsAutoPlaying(false);
-                  }}
-                  onMouseEnter={() => setIsAutoPlaying(false)}
-                  onMouseLeave={() => setIsAutoPlaying(true)}
-                >
-                  <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-
-                {/* Large Portfolio Image Area */}
-                <div className="w-full h-full relative">
-                  {/* Dynamic Portfolio Image */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                    {/* Replace this div with your actual images: */}
-                    {/* <img src={portfolioSlides[currentSlide].image} alt={portfolioSlides[currentSlide].title} className="w-full h-full object-contain" /> */}
-                    
-                    {/* Placeholder for now */}
-                    <div className="text-center text-gray-500 p-8">
-                      <div className="w-32 h-32 mx-auto mb-6 bg-gray-300 rounded-2xl flex items-center justify-center">
-                        <span className="text-6xl">🖼️</span>
-                      </div>
-                      <h3 className="text-xl font-semibold mb-2">{portfolioSlides[currentSlide].title}</h3>
-                      <p className="text-sm text-gray-400 max-w-md">
-                        Replace this placeholder with your designer&apos;s image: {portfolioSlides[currentSlide].image}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  {/* Dynamic Image Overlay Info */}
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-                    <div className="text-white">
-                      <h4 className="text-lg font-semibold mb-1">{portfolioSlides[currentSlide].title}</h4>
-                      <p className="text-sm text-white/80">{portfolioSlides[currentSlide].description}</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Dynamic Slider Dots Indicator */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-                  {portfolioSlides.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                        index === currentSlide 
-                          ? 'bg-white scale-125' 
-                          : 'bg-white/50 hover:bg-white/70'
-                      }`}
-                      onClick={() => {
-                        goToSlide(index);
-                        setIsAutoPlaying(false);
-                      }}
-                      onMouseEnter={() => setIsAutoPlaying(false)}
-                      onMouseLeave={() => setIsAutoPlaying(true)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Desktop Portfolio Stats */}
-              <div className="mt-6 text-center">
-                <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                    <span>Interactive Slider</span>
-                  </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-secondary rounded-full animate-pulse"></div>
-                    <span>Auto-Slide 2.5s</span>
-                  </div>
-                </div>
+            <div className="relative h-[600px] w-full flex items-center justify-center">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl p-2">
+                <Image
+                  src="/hero-image.png"
+                  alt="Digital Agency Hero"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -522,97 +305,14 @@ export default function Home() {
           <div className="block lg:hidden w-full mt-8">
             <div className="max-w-4xl mx-auto">
               <div className="relative h-[300px] sm:h-[400px]">
-                {/* Mobile/Tablet Slider Container */}
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
-                  
-                  {/* Mobile Navigation Buttons */}
-                  <button 
-                    className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
-                    onClick={() => {
-                      goToPrevSlide();
-                      setIsAutoPlaying(false);
-                    }}
-                    onMouseEnter={() => setIsAutoPlaying(false)}
-                    onMouseLeave={() => setIsAutoPlaying(true)}
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
-                  
-                  <button 
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 w-8 h-8 sm:w-10 sm:h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110"
-                    onClick={() => {
-                      goToNextSlide();
-                      setIsAutoPlaying(false);
-                    }}
-                    onMouseEnter={() => setIsAutoPlaying(false)}
-                    onMouseLeave={() => setIsAutoPlaying(true)}
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-
-                  {/* Mobile Image Area */}
-                  <div className="w-full h-full relative">
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                      {/* Replace with your images: */}
-                      {/* <img src={portfolioSlides[currentSlide].image} alt={portfolioSlides[currentSlide].title} className="w-full h-full object-contain" /> */}
-                      
-                      {/* Mobile Placeholder */}
-                      <div className="text-center text-gray-500 p-4">
-                        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-gray-300 rounded-xl flex items-center justify-center">
-                          <span className="text-3xl sm:text-4xl">🖼️</span>
-                        </div>
-                        <h3 className="text-lg sm:text-xl font-semibold mb-2">{portfolioSlides[currentSlide].title}</h3>
-                        <p className="text-xs sm:text-sm text-gray-400">{portfolioSlides[currentSlide].description}</p>
-                      </div>
-                    </div>
-                    
-                    {/* Mobile Image Overlay */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                      <div className="text-white">
-                        <h4 className="text-base sm:text-lg font-semibold mb-1">{portfolioSlides[currentSlide].title}</h4>
-                        <p className="text-xs sm:text-sm text-white/80">{portfolioSlides[currentSlide].description}</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Mobile Slider Dots */}
-                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex gap-1.5">
-                    {portfolioSlides.map((_, index) => (
-                      <button
-                        key={index}
-                        className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all duration-200 ${
-                          index === currentSlide 
-                            ? 'bg-white scale-125' 
-                            : 'bg-white/50 hover:bg-white/70'
-                        }`}
-                        onClick={() => {
-                          goToSlide(index);
-                          setIsAutoPlaying(false);
-                        }}
-                        onMouseEnter={() => setIsAutoPlaying(false)}
-                        onMouseLeave={() => setIsAutoPlaying(true)}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile Portfolio Stats */}
-              <div className="mt-4 text-center">
-                <div className="flex items-center justify-center gap-4 text-xs sm:text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></div>
-                    <span>Auto-Slide</span>
-                  </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full"></div>
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></div>
-                    <span>Touch Friendly</span>
-                  </div>
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl p-2">
+                  <Image
+                    src="/hero-image.png"
+                    alt="Digital Agency Hero"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -632,7 +332,7 @@ export default function Home() {
               We&apos;ve helped businesses across various industries achieve remarkable growth and ROI
             </p>
           </div>
-          
+
           <div className="relative overflow-hidden">
             {/* First row of logos */}
             <div className="flex animate-scroll-left">
@@ -641,53 +341,53 @@ export default function Home() {
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-lg border border-blue-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-blue-600">TechCorp</span>
                 </div>
-                
+
                 {/* Client Logo 2 */}
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 rounded-lg border border-green-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-green-600">GrowthLab</span>
                 </div>
-                
+
                 {/* Client Logo 3 */}
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-orange-500/10 to-red-600/10 rounded-lg border border-orange-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-orange-600">ScaleUp</span>
                 </div>
-                
+
                 {/* Client Logo 4 */}
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-lg border border-purple-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-purple-600">InnovateCorp</span>
                 </div>
-                
+
                 {/* Client Logo 5 */}
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-yellow-500/10 to-orange-600/10 rounded-lg border border-yellow-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-yellow-600">FutureTech</span>
                 </div>
-                
+
                 {/* Client Logo 6 */}
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-indigo-500/10 to-cyan-600/10 rounded-lg border border-indigo-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-indigo-600">DataFlow</span>
                 </div>
-                
+
                 {/* Duplicate logos for seamless loop */}
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-lg border border-blue-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-blue-600">TechCorp</span>
                 </div>
-                
+
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 rounded-lg border border-green-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-green-600">GrowthLab</span>
                 </div>
-                
+
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-orange-500/10 to-red-600/10 rounded-lg border border-orange-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-orange-600">ScaleUp</span>
                 </div>
-                
+
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-lg border border-purple-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-purple-600">InnovateCorp</span>
                 </div>
-                
+
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-yellow-500/10 to-orange-600/10 rounded-lg border border-yellow-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-yellow-600">FutureTech</span>
                 </div>
-                
+
                 <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-indigo-500/10 to-cyan-600/10 rounded-lg border border-indigo-500/20 p-2 sm:p-4">
                   <span className="text-sm sm:text-base font-bold text-indigo-600">DataFlow</span>
                 </div>
@@ -788,9 +488,9 @@ export default function Home() {
                     </div>
 
                     {/* CTA Button - Minimal */}
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
+                    <Button
+                      variant="outline"
+                      size="sm"
                       className="w-full px-4 py-2 text-sm font-semibold border-[#4411ab] text-[#4411ab] hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
                       asChild
                     >
@@ -808,10 +508,10 @@ export default function Home() {
           {/* View All Button - Minimal */}
           <div className="text-center mt-8 sm:mt-12 lg:mt-16">
             <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold bg-primary hover:bg-[#4411ab] text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
-              <a href="/case-studies">
+              <Link href="/case-studies" className="flex items-center">
                 View All Case Studies
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
-              </a>
+              </Link>
             </Button>
           </div>
         </div>
@@ -821,84 +521,84 @@ export default function Home() {
       <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background">
         <div>
           {/* Services Section Heading */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
-            Our Core Services
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground">
-            Comprehensive solutions designed to deliver measurable ROI and sustainable business growth
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
-          {services.map((service, index) => (
-            <div key={index} className="group flex">
-              <div className="w-full bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/30 hover:shadow-md transition-all duration-300 flex flex-col">
-                
-                {/* Service Icon */}
-                <div className="mb-4 sm:mb-5 flex-shrink-0">
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-white border border-[#4411ab] rounded-lg flex items-center justify-center group-hover:bg-[#4411ab]/10 transition-colors duration-300`}>
-                    <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
+              Our Core Services
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground">
+              Comprehensive solutions designed to deliver measurable ROI and sustainable business growth
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12">
+            {SERVICES_SUMMARY.map((service, index) => (
+              <div key={index} className="group flex">
+                <div className="w-full bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/30 hover:shadow-md transition-all duration-300 flex flex-col">
+
+                  {/* Service Icon */}
+                  <div className="mb-4 sm:mb-5 flex-shrink-0">
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-white border border-[#4411ab] rounded-lg flex items-center justify-center group-hover:bg-[#4411ab]/10 transition-colors duration-300`}>
+                      <service.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
+                    </div>
                   </div>
-                </div>
 
-                {/* Service Content */}
-                <div className="mb-4 sm:mb-6 flex-grow">
-                  <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300">
-                    <a href={service.href} className="hover:text-primary cursor-pointer">
-                      {service.title}
-                    </a>
-                  </h3>
-                  <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* Feature List */}
-                <div className="mb-4 sm:mb-6 flex-grow">
-                  <div className="space-y-1 sm:space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-sm sm:text-base">
-                        <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary rounded-full flex-shrink-0"></div>
-                        <span className="text-foreground/80">{feature}</span>
-                      </div>
-                    ))}
+                  {/* Service Content */}
+                  <div className="mb-4 sm:mb-6 flex-grow">
+                    <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300">
+                      <a href={service.href} className="hover:text-primary cursor-pointer">
+                        {service.title}
+                      </a>
+                    </h3>
+                    <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                      {service.description}
+                    </p>
                   </div>
-                </div>
 
-                {/* CTA Button - Always at bottom */}
-                <div className="mt-auto">
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    className="w-full px-6 py-3 sm:px-8 sm:py-6 border-primary/20 text-primary hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group text-sm sm:text-lg" 
-                    asChild
-                  >
-                    <a href={service.href}>
-                      Learn More
-                      <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
-                    </a>
-                  </Button>
+                  {/* Feature List */}
+                  <div className="mb-4 sm:mb-6 flex-grow">
+                    <div className="space-y-1 sm:space-y-2">
+                      {service.keyFeatures.map((feature, idx) => (
+                        <div key={idx} className="flex items-center gap-2 text-sm sm:text-base">
+                          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-primary rounded-full flex-shrink-0"></div>
+                          <span className="text-foreground/80">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CTA Button - Always at bottom */}
+                  <div className="mt-auto">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="w-full px-6 py-3 sm:px-8 sm:py-6 border-primary/20 text-primary hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group text-sm sm:text-lg"
+                      asChild
+                    >
+                      <Link href={service.href} className="flex items-center">
+                        Learn More
+                        <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-8 sm:mt-12">
-          <Button 
-            size="sm" 
-            className="bg-primary hover:bg-[#4411ab] text-primary-foreground group px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg" 
-            asChild
-          >
-            <a href="/services">
-              <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
-              View All Services
-              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
-          </Button>
-        </div>
+          {/* Bottom CTA */}
+          <div className="text-center mt-8 sm:mt-12">
+            <Button
+              size="sm"
+              className="bg-primary hover:bg-[#4411ab] text-primary-foreground group px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg"
+              asChild
+            >
+              <Link href="/services" className="flex items-center">
+                <Rocket className="mr-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
+                View All Services
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </Section>
 
@@ -906,87 +606,87 @@ export default function Home() {
       <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background">
         <div>
           <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
-            Proven Results That Speak
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Numbers don&apos;t lie. Here&apos;s what we&apos;ve achieved for our clients through data-driven strategies and relentless optimization.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mt-8 sm:mt-12">
-          {/* Revenue Generated */}
-          <div className="text-center">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-white text-sm sm:text-base font-bold">$</span>
-              </div>
-            </div>
-            <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
-              $2.4M+
-            </div>
-            <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Revenue Generated</div>
-            <div className="text-sm sm:text-xs text-primary font-medium">+156% YoY Growth</div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
+              Proven Results That Speak
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Numbers don&apos;t lie. Here&apos;s what we&apos;ve achieved for our clients through data-driven strategies and relentless optimization.
+            </p>
           </div>
 
-          {/* ROI Increase */}
-          <div className="text-center">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
-                <TrendingUp className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 mt-8 sm:mt-12">
+            {/* Revenue Generated */}
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <span className="text-white text-sm sm:text-base font-bold">$</span>
+                </div>
               </div>
+              <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
+                $2.4M+
+              </div>
+              <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Revenue Generated</div>
+              <div className="text-sm sm:text-xs text-primary font-medium">+156% YoY Growth</div>
             </div>
-            <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
-              340%
+
+            {/* ROI Increase */}
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <TrendingUp className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
+                </div>
+              </div>
+              <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
+                340%
+              </div>
+              <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Average ROI Increase</div>
+              <div className="text-sm sm:text-xs text-primary font-medium">Industry Leading</div>
             </div>
-            <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Average ROI Increase</div>
-            <div className="text-sm sm:text-xs text-primary font-medium">Industry Leading</div>
+
+            {/* Client Retention */}
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Users className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
+                </div>
+              </div>
+              <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
+                95%
+              </div>
+              <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Client Retention Rate</div>
+              <div className="text-sm sm:text-xs text-primary font-medium">Long-term Partners</div>
+            </div>
+
+            {/* Industries Served */}
+            <div className="text-center">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
+                  <Globe className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
+                </div>
+              </div>
+              <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
+                12+
+              </div>
+              <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Industries Served</div>
+              <div className="text-sm sm:text-xs text-primary font-medium">Cross-sector Expertise</div>
+            </div>
           </div>
 
-          {/* Client Retention */}
-          <div className="text-center">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Users className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
-              </div>
-            </div>
-            <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
-              95%
-            </div>
-            <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Client Retention Rate</div>
-            <div className="text-sm sm:text-xs text-primary font-medium">Long-term Partners</div>
+          {/* Bottom CTA */}
+          <div className="text-center mt-8 sm:mt-12">
+            <Button
+              variant="outline"
+              size="sm"
+              className="border-primary/30 text-primary hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg"
+              asChild
+            >
+              <a href="/case-studies">
+                <BarChart3 className="mr-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
+                View Detailed Results
+                <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
+            </Button>
           </div>
-
-          {/* Industries Served */}
-          <div className="text-center">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
-              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Globe className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
-              </div>
-            </div>
-            <div className="text-xl sm:text-3xl md:text-4xl font-bold text-foreground mb-1 sm:mb-2">
-              12+
-            </div>
-            <div className="text-sm sm:text-base font-medium text-muted-foreground mb-1 sm:mb-2">Industries Served</div>
-            <div className="text-sm sm:text-xs text-primary font-medium">Cross-sector Expertise</div>
-          </div>
-        </div>
-
-        {/* Bottom CTA */}
-        <div className="text-center mt-8 sm:mt-12">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="border-primary/30 text-primary hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg" 
-            asChild
-          >
-            <a href="/case-studies">
-              <BarChart3 className="mr-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
-              View Detailed Results
-              <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-[#4411ab] group-hover:translate-x-1 transition-transform duration-300" />
-            </a>
-          </Button>
-        </div>
         </div>
       </Section>
 
@@ -997,41 +697,41 @@ export default function Home() {
           subtitle="Our proven 4-step process ensures consistent, measurable results for every client through systematic execution and continuous optimization."
           align="center"
         />
-        
+
         <div className="max-w-6xl mx-auto mt-8 sm:mt-12">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 relative">
             {/* Professional Dotted Connecting Line - Desktop */}
             <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 z-0">
               <div className="w-full h-full border-t-2 border-dotted border-primary/40"></div>
             </div>
-            
+
             {/* Professional Dotted Connecting Line - Mobile */}
             <div className="sm:hidden absolute left-1/2 top-0 bottom-0 w-0.5 z-0">
               <div className="w-full h-full border-l-2 border-dotted border-primary/40"></div>
             </div>
-            
+
             {[
-              { 
-                step: 1, 
-                title: 'Analyze', 
+              {
+                step: 1,
+                title: 'Analyze',
                 desc: 'Deep dive into your business, market, and current performance to identify opportunities and growth potential.',
                 icon: Eye
               },
-              { 
-                step: 2, 
-                title: 'Strategize', 
+              {
+                step: 2,
+                title: 'Strategize',
                 desc: 'Develop data-driven strategies tailored to your specific goals, market position, and competitive landscape.',
                 icon: Target
               },
-              { 
-                step: 3, 
-                title: 'Execute', 
+              {
+                step: 3,
+                title: 'Execute',
                 desc: 'Implement campaigns with precision, using proven tactics, cutting-edge tools, and real-time optimization.',
                 icon: Rocket
               },
-              { 
-                step: 4, 
-                title: 'Optimize', 
+              {
+                step: 4,
+                title: 'Optimize',
                 desc: 'Continuous monitoring, testing, and optimization to maximize ROI and drive sustainable, long-term growth.',
                 icon: TrendingUp
               }
@@ -1043,12 +743,12 @@ export default function Home() {
                   <div className="w-6 h-6 sm:w-8 sm:h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm sm:text-base font-bold mx-auto mb-3 sm:mb-4 flex-shrink-0">
                     {item.step}
                   </div>
-                  
+
                   {/* Icon Container */}
                   <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border border-[#4411ab] rounded-xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:bg-[#4411ab]/10 transition-colors duration-300 flex-shrink-0">
                     <item.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#4411ab]" />
                   </div>
-                  
+
                   {/* Content */}
                   <div className="flex-grow">
                     <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3 group-hover:text-primary transition-colors duration-300">
@@ -1062,7 +762,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          
+
           {/* Process Timeline Info */}
           <div className="text-center mt-8 sm:mt-12">
             <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-primary/10 border border-primary/20 rounded-full">
@@ -1085,17 +785,17 @@ export default function Home() {
               We&apos;re not just another marketing agency. We&apos;re your growth partner.
             </p>
           </div>
-          
+
           {/* Main Content Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
-            
+
             {/* Left Side - Natural Scrolling Content */}
             <div className="space-y-4 sm:space-y-6">
               {features.map((feature, index) => (
                 <div key={index} className="group">
                   {/* Feature Card */}
                   <div className="bg-card/30 border border-border/30 rounded-xl p-4 sm:p-5 hover:border-primary/40 hover:bg-card/50 hover:shadow-md transition-all duration-300">
-                    
+
                     {/* Header Row */}
                     <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
                       {/* Icon Container */}
@@ -1104,7 +804,7 @@ export default function Home() {
                           <feature.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
                         </div>
                       </div>
-                      
+
                       {/* Badge */}
                       <div className="flex-shrink-0 pt-1">
                         <Badge variant="outline" className="text-xs sm:text-sm px-2 sm:px-3 py-1 border-primary/20 text-primary bg-primary/5">
@@ -1112,7 +812,7 @@ export default function Home() {
                         </Badge>
                       </div>
                     </div>
-                    
+
                     {/* Content */}
                     <div className="space-y-1 sm:space-y-2">
                       <h3 className="text-sm sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
@@ -1125,7 +825,7 @@ export default function Home() {
                   </div>
                 </div>
               ))}
-              
+
               {/* Bottom CTA */}
               <div className="pt-4 sm:pt-6">
                 <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-4 sm:p-5 text-center">
@@ -1135,9 +835,9 @@ export default function Home() {
                   <p className="text-muted-foreground text-sm sm:text-base mb-3 sm:mb-4">
                     Join hundreds of businesses that have already achieved remarkable growth with our proven strategies.
                   </p>
-                  <Button 
-                    size="sm" 
-                    className="bg-primary hover:bg-[#4411ab] text-primary-foreground px-12 py-5 sm:px-6 py-2 font-medium shadow-md hover:shadow-lg transition-all duration-300 group text-sm sm:text-base" 
+                  <Button
+                    size="sm"
+                    className="bg-primary hover:bg-[#4411ab] text-primary-foreground px-12 py-5 sm:px-6 py-2 font-medium shadow-md hover:shadow-lg transition-all duration-300 group text-sm sm:text-base"
                     asChild
                   >
                     <a href="/schedule-call">
@@ -1149,7 +849,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            
+
             {/* Right Side - Fixed Centered Image */}
             <div className="lg:sticky lg:top-32 relative h-fit">
               <div className="w-full h-80 sm:h-96 lg:h-[500px] bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-2xl border border-primary/20 overflow-hidden">
@@ -1166,7 +866,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-              
+
               {/* Floating Stats */}
               <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-card border border-border rounded-xl p-3 sm:p-4 shadow-lg">
                 <div className="text-center">
@@ -1174,7 +874,7 @@ export default function Home() {
                   <div className="text-sm text-muted-foreground">Client Satisfaction</div>
                 </div>
               </div>
-              
+
               <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-card border border-border rounded-xl p-3 sm:p-4 shadow-lg">
                 <div className="text-center">
                   <div className="text-base sm:text-lg font-bold text-primary">340%</div>
@@ -1198,7 +898,7 @@ export default function Home() {
               Get answers to the most common questions about working with ROI Agency.
             </p>
           </div>
-          
+
           {/* FAQ Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-8">
             {[
@@ -1235,7 +935,7 @@ export default function Home() {
             ].map((faq, index) => (
               <div key={index} className="group">
                 <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300">
-                  
+
                   {/* Question Header */}
                   <div className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
                     {/* Icon */}
@@ -1244,7 +944,7 @@ export default function Home() {
                         <faq.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
                       </div>
                     </div>
-                    
+
                     {/* Question */}
                     <div className="flex-grow">
                       <h3 className="text-sm sm:text-base font-semibold text-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
@@ -1252,7 +952,7 @@ export default function Home() {
                       </h3>
                     </div>
                   </div>
-                  
+
                   {/* Answer */}
                   <div className="pl-13 sm:pl-16">
                     <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
@@ -1263,7 +963,7 @@ export default function Home() {
               </div>
             ))}
           </div>
-          
+
           {/* Bottom CTA */}
           <div className="text-center mt-8 sm:mt-12">
             <div className="bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20 rounded-xl p-6 sm:p-8 text-center max-w-2xl mx-auto">
@@ -1273,16 +973,16 @@ export default function Home() {
               <p className="text-muted-foreground text-sm sm:text-base mb-4 sm:mb-6">
                 Our team is here to help. Get in touch and we&apos;ll answer all your questions about growing your business.
               </p>
-              <Button 
-                size="sm" 
-                className="bg-primary hover:bg-[#4411ab] text-primary-foreground px-6 sm:px-8 py-2 sm:py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group text-sm sm:text-base" 
+              <Button
+                size="sm"
+                className="bg-primary hover:bg-[#4411ab] text-primary-foreground px-6 sm:px-8 py-2 sm:py-3 font-semibold shadow-lg hover:shadow-xl transition-all duration-300 group text-sm sm:text-base"
                 asChild
               >
-                <a href="/contact">
+                <Link href="/contact">
                   <Mail className="mr-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
                   Ask Us Anything
                   <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 lg:w-6 lg:h-6 text-white group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
@@ -1301,123 +1001,73 @@ export default function Home() {
               Real results from real businesses. Here&apos;s what our clients have to say about working with us.
             </p>
           </div>
-          
+
           {/* Testimonials Continuous Scroll */}
-          <div className="mb-16">
-            <div className="relative overflow-hidden">
-              {/* Continuous scrolling testimonials */}
-              <div className="flex animate-scroll-left">
-                <div className="flex space-x-4 sm:space-x-8 items-stretch min-w-max">
-                  {/* First set of testimonials */}
-                  {testimonials.map((testimonial, index) => (
-                    <div key={index} className="w-72 sm:w-80 flex-shrink-0">
-                      <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full flex flex-col group">
-                        
-                        {/* Quote Icon */}
-                        <div className="mb-3 sm:mb-4 flex-shrink-0">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-[#4411ab] rounded-lg flex items-center justify-center mx-auto group-hover:bg-[#4411ab]/10 transition-colors duration-300">
-                            <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
+          <div className="mb-16 px-6 lg:px-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
+                {testimonials.map((testimonial, index) => (
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-4">
+                    <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full flex flex-col group">
+
+                      {/* Quote Icon */}
+                      <div className="mb-3 sm:mb-4 flex-shrink-0">
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-[#4411ab] rounded-lg flex items-center justify-center mx-auto group-hover:bg-[#4411ab]/10 transition-colors duration-300">
+                          <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
+                        </div>
+                      </div>
+
+                      {/* Testimonial Quote */}
+                      <div className="flex-grow mb-4 sm:mb-6">
+                        <blockquote className="text-muted-foreground italic leading-relaxed text-sm sm:text-base">
+                          &ldquo;{testimonial.quote}&rdquo;
+                        </blockquote>
+                      </div>
+
+                      {/* Client Info */}
+                      <div className="mt-auto">
+                        {/* Industry Badge */}
+                        <div className="mb-3 sm:mb-4">
+                          <Badge variant="outline" className="text-sm border-primary/20 text-primary bg-primary/5">
+                            {testimonial.industry}
+                          </Badge>
+                        </div>
+
+                        {/* Avatar and Details */}
+                        <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                          <Avatar className="w-10 h-10 sm:w-12 sm:h-12 group-hover:scale-105 transition-transform duration-300">
+                            <AvatarImage src={`/avatars/${testimonial.avatar.toLowerCase()}.jpg`} />
+                            <AvatarFallback className="bg-primary/10 text-primary text-sm sm:text-base font-semibold">
+                              {testimonial.avatar}
+                            </AvatarFallback>
+                          </Avatar>
+
+                          <div className="flex-grow">
+                            <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
+                            <p className="text-muted-foreground text-sm">{testimonial.role}</p>
                           </div>
                         </div>
-                        
-                        {/* Testimonial Quote */}
-                        <div className="flex-grow mb-4 sm:mb-6">
-                          <blockquote className="text-muted-foreground italic leading-relaxed text-sm sm:text-base">
-                            &ldquo;{testimonial.quote}&rdquo;
-                          </blockquote>
-                        </div>
-                        
-                        {/* Client Info */}
-                        <div className="mt-auto">
-                          {/* Industry Badge */}
-                          <div className="mb-3 sm:mb-4">
-                            <Badge variant="outline" className="text-sm border-primary/20 text-primary bg-primary/5">
-                              {testimonial.industry}
-                            </Badge>
-                          </div>
-                          
-                          {/* Avatar and Details */}
-                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                            <Avatar className="w-10 h-10 sm:w-12 sm:h-12 group-hover:scale-105 transition-transform duration-300">
-                              <AvatarImage src={`/avatars/${testimonial.avatar.toLowerCase()}.jpg`} />
-                              <AvatarFallback className="bg-primary/10 text-primary text-sm sm:text-base font-semibold">
-                                {testimonial.avatar}
-                              </AvatarFallback>
-                            </Avatar>
-                            
-                            <div className="flex-grow">
-                              <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
-                              <p className="text-muted-foreground text-sm">{testimonial.role}</p>
-                            </div>
-                          </div>
-                          
-                          {/* Star Rating - Moved to the end */}
-                          <div className="flex items-center gap-1">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 fill-[#4411ab] text-[#4411ab]" />
-                            ))}
-                          </div>
+
+                        {/* Star Rating - Moved to the end */}
+                        <div className="flex items-center gap-1">
+                          {[...Array(5)].map((_, i) => (
+                            <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 fill-[#4411ab] text-[#4411ab]" />
+                          ))}
                         </div>
                       </div>
                     </div>
-                  ))}
-                  
-                  {/* Duplicate testimonials for seamless loop */}
-                  {testimonials.map((testimonial, index) => (
-                    <div key={`duplicate-${index}`} className="w-72 sm:w-80 flex-shrink-0">
-                      <div className="bg-card border border-border rounded-xl p-4 sm:p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300 h-full flex flex-col group">
-                        
-                        {/* Quote Icon */}
-                        <div className="mb-3 sm:mb-4 flex-shrink-0">
-                          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-[#4411ab] rounded-lg flex items-center justify-center mx-auto group-hover:bg-[#4411ab]/10 transition-colors duration-300">
-                            <Quote className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
-                          </div>
-                        </div>
-                        
-                        {/* Testimonial Quote */}
-                        <div className="flex-grow mb-4 sm:mb-6">
-                          <blockquote className="text-muted-foreground italic leading-relaxed text-sm sm:text-base">
-                            &ldquo;{testimonial.quote}&rdquo;
-                          </blockquote>
-                        </div>
-                        
-                        {/* Client Info */}
-                        <div className="mt-auto">
-                          {/* Industry Badge */}
-                          <div className="mb-3 sm:mb-4">
-                            <Badge variant="outline" className="text-sm border-primary/20 text-primary bg-primary/5">
-                              {testimonial.industry}
-                            </Badge>
-                          </div>
-                          
-                          {/* Avatar and Details */}
-                          <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                            <Avatar className="w-10 h-10 sm:w-12 sm:h-12 group-hover:scale-105 transition-transform duration-300">
-                              <AvatarImage src={`/avatars/${testimonial.avatar.toLowerCase()}.jpg`} />
-                              <AvatarFallback className="bg-primary/10 text-primary text-sm sm:text-base font-semibold">
-                                {testimonial.avatar}
-                              </AvatarFallback>
-                            </Avatar>
-                            
-                            <div className="flex-grow">
-                              <p className="font-semibold text-foreground text-sm sm:text-base">{testimonial.name}</p>
-                              <p className="text-muted-foreground text-sm">{testimonial.role}</p>
-                            </div>
-                          </div>
-                          
-                          {/* Star Rating - Moved to the end */}
-                          <div className="flex items-center gap-1">
-                            {[...Array(5)].map((_, i) => (
-                              <Star key={i} className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 fill-[#4411ab] text-[#4411ab]" />
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </div>
       </Section>
