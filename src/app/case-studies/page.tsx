@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { CTASection } from '@/components/cta-section';
 import { ArrowRight, TrendingUp, Users, DollarSign, Target, Clock, CheckCircle, Star, BarChart3, Globe, Zap, Award, Rocket } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Case Studies - ROI Agency',
@@ -233,12 +234,12 @@ export default function CaseStudiesPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
         <div className="absolute inset-0 bg-gradient-to-bl from-secondary/5 via-transparent to-primary/5 animate-pulse delay-2000"></div>
-        
+
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-bounce delay-1000"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
         <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
-        
+
         <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-screen pt-8 pb-8 lg:py-0">
           {/* Left Side - Content */}
           <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 pr-0 lg:pr-8">
@@ -252,16 +253,16 @@ export default function CaseStudiesPage() {
               <h1 className="text-[44px] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
                 Case Studies
               </h1>
-                
-            {/* Enhanced Subheadline - Minimal spacing */}
-            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
-              Real results from real businesses. See how we&apos;ve helped companies across industries achieve measurable growth.
-              <span className="block text-sm text-primary mt-1 font-medium">
-                ✨ Proven Results • Data-Driven • ROI-Focused ✨
-              </span>
-            </p>
-          </div>
-              
+
+              {/* Enhanced Subheadline - Minimal spacing */}
+              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
+                Real results from real businesses. See how we&apos;ve helped companies across industries achieve measurable growth.
+                <span className="block text-sm text-primary mt-1 font-medium">
+                  ✨ Proven Results • Data-Driven • ROI-Focused ✨
+                </span>
+              </p>
+            </div>
+
             {/* Enhanced CTA Buttons - Single line */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start">
               <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
@@ -279,7 +280,7 @@ export default function CaseStudiesPage() {
                 </Link>
               </Button>
             </div>
-              
+
             {/* Trust Indicators */}
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -303,15 +304,13 @@ export default function CaseStudiesPage() {
           <div className="hidden lg:block w-1/2 pl-8">
             <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                  {/* Replace this div with your actual case studies image: */}
-                  {/* <img src="/case-studies/case-studies-hero-image.jpg" alt="ROI Agency Case Studies" className="w-full h-full object-contain" /> */}
-                  
-                  {/* Placeholder for now - Image only */}
-                  <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
-                    <span className="text-6xl">📊</span>
-                  </div>
-                </div>
+                <Image
+                  src="/hero-image-v2.png"
+                  alt="ROI Agency Case Studies"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -321,15 +320,13 @@ export default function CaseStudiesPage() {
             <div className="max-w-4xl mx-auto">
               <div className="relative h-[300px] sm:h-[400px]">
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                    {/* Replace with your images: */}
-                    {/* <img src="/case-studies/case-studies-hero-image.jpg" alt="ROI Agency Case Studies" className="w-full h-full object-contain" /> */}
-                    
-                    {/* Mobile Placeholder */}
-                    <div className="w-full h-full bg-gray-300 rounded-xl flex items-center justify-center">
-                      <span className="text-3xl sm:text-4xl">📊</span>
-                    </div>
-                  </div>
+                  <Image
+                    src="/hero-image-v2.png"
+                    alt="ROI Agency Case Studies"
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -348,12 +345,12 @@ export default function CaseStudiesPage() {
                   <div className="h-48 sm:h-52 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
                     {/* Replace this div with your actual case study image: */}
                     {/* <img src={`/case-studies/${study.id}-hero.jpg`} alt={study.title} className="w-full h-full object-cover" /> */}
-                    
+
                     {/* Placeholder for now */}
                     <div className="w-full h-full bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
                       <span className="text-4xl sm:text-5xl">📊</span>
                     </div>
-                    
+
                     {/* Badge overlay */}
                     <div className="absolute top-3 left-3">
                       <Badge variant={study.badgeVariant} className="text-xs">
@@ -386,8 +383,8 @@ export default function CaseStudiesPage() {
                     </div>
 
                     {/* CTA Button */}
-                    <Button 
-                      variant="outline" 
+                    <Button
+                      variant="outline"
                       size="sm"
                       className="w-full px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold border-[#4411ab] text-[#4411ab] hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
                       asChild
@@ -416,7 +413,7 @@ export default function CaseStudiesPage() {
               Numbers that speak for themselves
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             <div className="text-center">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border border-[#4411ab] rounded-xl flex items-center justify-center mx-auto mb-3">
@@ -425,7 +422,7 @@ export default function CaseStudiesPage() {
               <div className="text-xl sm:text-2xl font-bold text-foreground mb-1">$2.4M+</div>
               <div className="text-sm text-muted-foreground">Revenue Generated</div>
             </div>
-            
+
             <div className="text-center">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border border-[#4411ab] rounded-xl flex items-center justify-center mx-auto mb-3">
                 <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-[#4411ab]" />
@@ -433,7 +430,7 @@ export default function CaseStudiesPage() {
               <div className="text-xl sm:text-2xl font-bold text-foreground mb-1">340%</div>
               <div className="text-sm text-muted-foreground">Average ROI</div>
             </div>
-            
+
             <div className="text-center">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border border-[#4411ab] rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-[#4411ab]" />
@@ -441,7 +438,7 @@ export default function CaseStudiesPage() {
               <div className="text-xl sm:text-2xl font-bold text-foreground mb-1">95%</div>
               <div className="text-sm text-muted-foreground">Client Retention</div>
             </div>
-            
+
             <div className="text-center">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border border-[#4411ab] rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Globe className="w-6 h-6 sm:w-8 sm:h-8 text-[#4411ab]" />

@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { CTASection } from '@/components/cta-section';
 import { ArrowRight, Target, TrendingUp, Users, Lightbulb, Rocket, Search, Clipboard, Zap, BarChart3, Sparkles, Award, CheckCircle, Clock } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useMemo } from 'react';
 
 export default function AboutPage() {
@@ -81,12 +82,12 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
         <div className="absolute inset-0 bg-gradient-to-bl from-secondary/5 via-transparent to-primary/5 animate-pulse delay-2000"></div>
-        
+
         {/* Floating Elements */}
         <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-bounce delay-1000"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
         <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
-        
+
         <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-screen pt-8 pb-8 lg:py-0">
           {/* Left Side - Content */}
           <div className="w-full lg:w-1/2 space-y-6 sm:space-y-8 pr-0 lg:pr-8">
@@ -103,7 +104,7 @@ export default function AboutPage() {
                   Our Job
                 </span>
               </h1>
-              
+
               {/* Enhanced Subheadline - Minimal spacing */}
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
                 We&apos;re a team of data-driven marketers, developers, and strategists who believe that every marketing dollar should work harder than the last.
@@ -112,7 +113,7 @@ export default function AboutPage() {
                 </span>
               </p>
             </div>
-            
+
             {/* Enhanced CTA Buttons - Single line */}
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start">
               <Button size="sm" className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group" asChild>
@@ -130,7 +131,7 @@ export default function AboutPage() {
                 </Link>
               </Button>
             </div>
-            
+
             {/* Trust Indicators */}
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -154,15 +155,13 @@ export default function AboutPage() {
           <div className="hidden lg:block w-1/2 pl-8">
             <div className="relative h-[600px]">
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                  {/* Replace this div with your actual about image: */}
-                  {/* <img src="/about/team-image.jpg" alt="ROI Agency Team" className="w-full h-full object-contain" /> */}
-                  
-                  {/* Placeholder for now - Image only */}
-                  <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
-                    <span className="text-6xl">👥</span>
-                  </div>
-                </div>
+                <Image
+                  src="/hero-image-v2.png"
+                  alt="ROI Agency Team"
+                  fill
+                  className="object-cover transition-transform duration-700 hover:scale-105"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -172,15 +171,13 @@ export default function AboutPage() {
             <div className="max-w-4xl mx-auto">
               <div className="relative h-[300px] sm:h-[400px]">
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                    {/* Replace with your about image: */}
-                    {/* <img src="/about/team-image.jpg" alt="ROI Agency Team" className="w-full h-full object-contain" /> */}
-                    
-                    {/* Mobile Placeholder - Image only */}
-                    <div className="w-full h-full bg-gray-300 rounded-xl flex items-center justify-center">
-                      <span className="text-3xl sm:text-4xl">👥</span>
-                    </div>
-                  </div>
+                  <Image
+                    src="/hero-image-v2.png"
+                    alt="ROI Agency Team"
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    priority
+                  />
                 </div>
               </div>
             </div>
@@ -197,7 +194,7 @@ export default function AboutPage() {
             backgroundSize: '50px 50px'
           }}></div>
         </div>
-        
+
         <div className="relative z-10">
           <div id="mission" className="opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
@@ -208,7 +205,7 @@ export default function AboutPage() {
                   <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Mission</span>
                   <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
                 </div>
-                
+
                 {/* Enhanced Title */}
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                   Data-Driven Results,{' '}
@@ -216,12 +213,12 @@ export default function AboutPage() {
                     ROI-First Approach
                   </span>
                 </h2>
-                
+
                 {/* Enhanced Description */}
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   We believe in the power of data to drive decisions, not hunches. Every strategy we create, every campaign we run, and every optimization we make is backed by solid analytics and measurable outcomes.
                 </p>
-                
+
                 {/* Minimal Enhanced Checklist */}
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
@@ -243,7 +240,7 @@ export default function AboutPage() {
                     <span className="text-sm sm:text-base text-foreground">Transparent reporting and insights</span>
                   </div>
                 </div>
-                
+
                 {/* Trust Indicators */}
                 <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
                   <div className="flex items-center gap-1 sm:gap-2">
@@ -270,7 +267,7 @@ export default function AboutPage() {
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                       {/* Replace this div with your actual mission image: */}
                       {/* <img src="/about/mission-image.jpg" alt="ROI Agency Mission" className="w-full h-full object-contain" /> */}
-                      
+
                       {/* Placeholder for now - Image only */}
                       <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
                         <span className="text-6xl">🎯</span>
@@ -293,7 +290,7 @@ export default function AboutPage() {
             backgroundSize: '45px 45px'
           }}></div>
         </div>
-        
+
         <div className="relative z-10">
           <div id="story" className="opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
@@ -304,7 +301,7 @@ export default function AboutPage() {
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                       {/* Replace this div with your actual story image: */}
                       {/* <img src="/about/story-image.jpg" alt="ROI Agency Story" className="w-full h-full object-contain" /> */}
-                      
+
                       {/* Placeholder for now - Image only */}
                       <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
                         <span className="text-6xl">📈</span>
@@ -321,18 +318,18 @@ export default function AboutPage() {
                   <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Story</span>
                   <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
                 </div>
-                
+
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                   Why We Started,{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                     What Sets Us Apart
                   </span>
                 </h2>
-                
+
                 <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
                   Founded in 2019, ROI Agency was born from frustration with traditional marketing agencies that promised the world but delivered vague results and empty promises.
                 </p>
-                
+
                 <div className="space-y-3 sm:space-y-4">
                   <div className="bg-gradient-to-r from-muted/20 to-muted/10 border border-muted/20 rounded-xl p-3 sm:p-4">
                     <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">The Problem We Solved</h4>
@@ -347,7 +344,7 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
-                
+
                 {/* Trust Indicators */}
                 <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
                   <div className="flex items-center gap-1 sm:gap-2">
@@ -380,7 +377,7 @@ export default function AboutPage() {
             backgroundSize: '50px 50px'
           }}></div>
         </div>
-        
+
         <div className="relative z-10">
           <div id="philosophy" className="opacity-0 transform translate-y-8 transition-all duration-700 ease-out">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-center">
@@ -391,14 +388,14 @@ export default function AboutPage() {
                   <span className="text-xs sm:text-sm font-medium text-primary uppercase tracking-wider">Our Philosophy</span>
                   <div className="w-1 h-6 sm:h-8 bg-primary rounded-full"></div>
                 </div>
-                
+
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                   Marketing Should{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
                     Pay for Itself
                   </span>
                 </h2>
-                
+
                 <div className="bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <p className="text-lg sm:text-xl font-bold text-foreground text-center mb-2 sm:mb-4">
                     &quot;Marketing expenditures should pay for themselves&quot;
@@ -407,7 +404,7 @@ export default function AboutPage() {
                     This isn&apos;t just a slogan—it&apos;s our core principle. We believe every marketing dollar should generate at least $2 in return.
                   </p>
                 </div>
-                
+
                 <div className="space-y-2 sm:space-y-3">
                   <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
                     <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
@@ -428,7 +425,7 @@ export default function AboutPage() {
                     <span className="text-sm sm:text-base text-foreground">Continuous optimization focus</span>
                   </div>
                 </div>
-                
+
                 {/* Trust Indicators */}
                 <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
                   <div className="flex items-center gap-1 sm:gap-2">
@@ -455,7 +452,7 @@ export default function AboutPage() {
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                       {/* Replace this div with your actual philosophy image: */}
                       {/* <img src="/about/philosophy-image.jpg" alt="ROI Agency Philosophy" className="w-full h-full object-contain" /> */}
-                      
+
                       {/* Placeholder for now - Image only */}
                       <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
                         <span className="text-6xl">💰</span>
@@ -488,7 +485,7 @@ export default function AboutPage() {
               Our proven 5-step process ensures every project follows the same rigorous methodology for predictable, scalable success.
             </p>
           </div>
-          
+
           <div className="relative">
             {/* Connecting lines container - positioned absolutely to overlay the grid */}
             <div className="hidden lg:block absolute inset-0 pointer-events-none z-10">
@@ -499,30 +496,30 @@ export default function AboutPage() {
                   <div className="flex-1 h-0.5 border-t-2 border-dotted border-primary/40 mx-4"></div>
                   <div className="w-3 h-3 bg-primary/20 rounded-full"></div>
                 </div>
-                
+
                 {/* Line between card 2 and 3 */}
                 <div className="flex-1 flex items-center">
                   <div className="flex-1 h-0.5 border-t-2 border-dotted border-primary/40 mx-4"></div>
                   <div className="w-3 h-3 bg-primary/20 rounded-full"></div>
                 </div>
-                
+
                 {/* Line between card 3 and 4 */}
                 <div className="flex-1 flex items-center">
                   <div className="flex-1 h-0.5 border-t-2 border-dotted border-primary/40 mx-4"></div>
                   <div className="w-3 h-3 bg-primary/20 rounded-full"></div>
                 </div>
-                
+
                 {/* Line between card 4 and 5 */}
                 <div className="flex-1 flex items-center">
                   <div className="flex-1 h-0.5 border-t-2 border-dotted border-primary/40 mx-4"></div>
                   <div className="w-3 h-3 bg-primary/20 rounded-full"></div>
                 </div>
-                
+
                 {/* Final circle for card 5 */}
                 <div className="w-3 h-3 bg-primary/20 rounded-full"></div>
               </div>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6 relative z-20">
               {processSteps.map((step, index) => (
                 <div
@@ -538,7 +535,7 @@ export default function AboutPage() {
                         <div className="w-12 h-12 sm:w-16 sm:h-16 border-2 border-[#4411ab] rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto">
                           <step.icon className="w-6 h-6 sm:w-8 sm:h-8 text-[#4411ab]" />
                         </div>
-                        
+
                         {/* Content */}
                         <div className="flex-1 flex flex-col justify-center">
                           <h3 className="font-bold text-foreground text-sm sm:text-base mb-1 sm:mb-2">

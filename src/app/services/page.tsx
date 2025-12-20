@@ -125,12 +125,12 @@ export default function ServicesPage() {
           {/* Right Side - Single Services Image */}
           <div className="hidden lg:block w-1/2 pl-8">
             <div className="relative h-[250px] sm:h-[400px] lg:h-[600px] w-full flex items-center justify-center">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl p-2">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
                 <Image
                   src="/services-hero.png"
                   alt="Services Hero"
                   fill
-                  className="object-contain"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
                   priority
                 />
               </div>
@@ -141,12 +141,12 @@ export default function ServicesPage() {
           <div className="block lg:hidden w-full mt-8">
             <div className="max-w-4xl mx-auto">
               <div className="relative h-[300px] sm:h-[400px]">
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl p-2">
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
                   <Image
                     src="/services-hero.png"
                     alt="Services Hero"
                     fill
-                    className="object-contain"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
                     priority
                   />
                 </div>

@@ -76,7 +76,8 @@ export default function Home() {
       gradient: 'from-blue-900 via-blue-800 to-purple-900',
       rotation: '-rotate-2',
       hasWebsitePreview: true,
-      subtitle: 'Real Estate Excellence'
+      subtitle: 'Real Estate Excellence',
+      image: '/case-studies/tech-startup.jpg'
     },
     {
       id: 2,
@@ -91,7 +92,8 @@ export default function Home() {
       gradient: 'from-amber-900 via-orange-800 to-red-900',
       rotation: 'rotate-2',
       hasWebsitePreview: true,
-      subtitle: 'Woodwork Excellence'
+      subtitle: 'Woodwork Excellence',
+      image: '/case-studies/ecommerce.jpg'
     },
     {
       id: 3,
@@ -106,7 +108,8 @@ export default function Home() {
       gradient: 'from-green-900 via-emerald-800 to-teal-900',
       rotation: '-rotate-1',
       hasWebsitePreview: false,
-      subtitle: 'Digital Transformation'
+      subtitle: 'Digital Transformation',
+      image: '/case-studies/fintech.jpg'
     },
     {
       id: 4,
@@ -121,7 +124,8 @@ export default function Home() {
       gradient: 'from-purple-900 via-violet-800 to-indigo-900',
       rotation: 'rotate-1',
       hasWebsitePreview: true,
-      subtitle: 'Brand Identity'
+      subtitle: 'Brand Identity',
+      image: '/case-studies/manufacturing.jpg'
     },
     {
       id: 5,
@@ -136,7 +140,8 @@ export default function Home() {
       gradient: 'from-emerald-400 via-teal-300 to-cyan-400',
       rotation: '-rotate-1',
       hasWebsitePreview: false,
-      subtitle: 'Digital Healthcare'
+      subtitle: 'Digital Healthcare',
+      image: '/case-studies/healthcare.jpg'
     },
     {
       id: 6,
@@ -151,7 +156,8 @@ export default function Home() {
       gradient: 'from-amber-300 via-yellow-200 to-orange-300',
       rotation: 'rotate-2',
       hasWebsitePreview: true,
-      subtitle: 'Educational Innovation'
+      subtitle: 'Educational Innovation',
+      image: '/case-studies/education.jpg'
     }
   ];
 
@@ -289,12 +295,12 @@ export default function Home() {
           {/* Right Side - Portfolio Slider (Desktop Only) */}
           <div className="hidden lg:block w-1/2 pl-8">
             <div className="relative h-[600px] w-full flex items-center justify-center">
-              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl p-2">
+              <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
                 <Image
-                  src="/hero-image.png"
+                  src="/hero-image-v2.png"
                   alt="Digital Agency Hero"
                   fill
-                  className="object-contain"
+                  className="object-cover transition-transform duration-700 hover:scale-105"
                   priority
                 />
               </div>
@@ -305,12 +311,12 @@ export default function Home() {
           <div className="block lg:hidden w-full mt-8">
             <div className="max-w-4xl mx-auto">
               <div className="relative h-[300px] sm:h-[400px]">
-                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl p-2">
+                <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
                   <Image
-                    src="/hero-image.png"
+                    src="/hero-image-v2.png"
                     alt="Digital Agency Hero"
                     fill
-                    className="object-contain"
+                    className="object-cover transition-transform duration-700 hover:scale-105"
                     priority
                   />
                 </div>
@@ -438,18 +444,30 @@ export default function Home() {
               <div key={study.id} className="group">
                 <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-full hover:shadow-xl transition-all duration-300">
                   {/* Card Header - Minimal */}
-                  <div className={`h-24 sm:h-28 bg-gradient-to-br ${study.gradient} relative`}>
-                    <div className="absolute inset-0 bg-black/10"></div>
-                    <div className="absolute inset-0 p-4 sm:p-6 flex items-center justify-between">
-                      <div className="text-white">
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 bg-white/20 rounded-lg flex items-center justify-center mb-2">
-                          <span className="text-sm sm:text-base">{study.icon}</span>
-                        </div>
-                        <h3 className="text-sm sm:text-base font-bold">{study.title}</h3>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-xs font-medium text-white/80 bg-white/10 px-2 py-1 rounded-full">
+                  {/* Card Header - Minimal */}
+                  <div className="h-48 sm:h-56 relative overflow-hidden bg-muted">
+                    {/* Background Image */}
+                    <Image
+                      src={study.image as string}
+                      alt={study.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    {/* Gradient Overlay for Text Readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+
+                    <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-between">
+                      <div className="flex justify-end">
+                        <div className="text-xs font-medium text-white/90 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
                           {study.industry}
+                        </div>
+                      </div>
+                      <div className="text-white">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                            <span className="text-sm">{study.icon}</span>
+                          </div>
+                          <h3 className="text-lg font-bold">{study.title}</h3>
                         </div>
                       </div>
                     </div>
@@ -852,19 +870,13 @@ export default function Home() {
 
             {/* Right Side - Fixed Centered Image */}
             <div className="lg:sticky lg:top-32 relative h-fit">
-              <div className="w-full h-80 sm:h-96 lg:h-[500px] bg-gradient-to-br from-primary/10 via-primary/5 to-background rounded-2xl border border-primary/20 overflow-hidden">
-                {/* Placeholder for actual image - Replace this div with: <img src="/images/why-choose-us.jpg" alt="ROI Agency Team" className="w-full h-full object-cover" /> */}
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="text-center space-y-3 sm:space-y-4">
-                    <div className="w-20 h-20 sm:w-24 sm:h-24 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
-                      <Users className="w-10 h-10 sm:w-12 sm:h-12 text-[#4411ab]" />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="w-24 h-3 sm:w-32 sm:h-4 bg-primary/10 rounded-full mx-auto"></div>
-                      <div className="w-20 h-2 sm:w-24 sm:h-3 bg-primary/5 rounded-full mx-auto"></div>
-                    </div>
-                  </div>
-                </div>
+              <div className="w-full h-80 sm:h-96 lg:h-[500px] bg-white rounded-2xl border border-primary/20 overflow-hidden relative shadow-2xl">
+                <Image
+                  src="/why-choose-us.png"
+                  alt="Why Choose ROI Agency - Team Collaboration"
+                  fill
+                  className="object-cover object-center hover:scale-105 transition-transform duration-700"
+                />
               </div>
 
               {/* Floating Stats */}

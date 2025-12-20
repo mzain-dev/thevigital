@@ -43,28 +43,33 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
             </Section>
 
             {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center overflow-hidden">
-                {/* Background Elements */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5"></div>
-                <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-pulse"></div>
-                <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-pulse"></div>
+            <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+                {/* Enhanced Animated Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
+                <div className="absolute inset-0 bg-gradient-to-bl from-secondary/5 via-transparent to-primary/5 animate-pulse delay-2000"></div>
 
-                <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-[70vh] py-8">
+                {/* Floating Elements */}
+                <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-bounce delay-1000"></div>
+                <div className="absolute bottom-20 right-10 w-40 h-40 bg-secondary/5 rounded-full blur-3xl animate-bounce delay-2000"></div>
+                <div className="absolute top-1/2 left-20 w-24 h-24 bg-accent/5 rounded-full blur-2xl animate-pulse delay-1500"></div>
+
+                <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16 flex flex-col lg:flex-row items-center min-h-[70vh] py-12 lg:py-20">
                     {/* Left Side - Content */}
                     <div className="w-full lg:w-1/2 space-y-6 pr-0 lg:pr-8">
                         {/* Back Button */}
                         <Link
                             href="/services"
-                            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group"
+                            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group mb-4"
                         >
                             <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
                             Back to Services
                         </Link>
 
                         {/* Service Badge */}
-                        <div className="flex items-center gap-2">
-                            <service.icon className="w-6 h-6 text-primary" />
-                            <Badge variant={service.badgeVariant} className="text-sm">
+                        <div className="flex items-center gap-2 mb-2">
+                            <service.icon className="w-6 h-6 text-primary animate-pulse" />
+                            <Badge variant={service.badgeVariant} className="text-sm px-3 py-1">
                                 {service.badge}
                             </Badge>
                         </div>
@@ -80,17 +85,17 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                         </p>
 
                         {/* Key Stats */}
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-4">
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 py-6 border-y border-muted/50 my-6 bg-background/30 backdrop-blur-sm rounded-xl p-4">
                             {service.keyStats.map((stat, index) => (
                                 <div key={index} className="text-center">
                                     <div className="text-2xl font-bold text-primary">{stat.value}</div>
-                                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                                    <div className="text-xs sm:text-sm text-muted-foreground">{stat.label}</div>
                                 </div>
                             ))}
                         </div>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4">
+                        <div className="flex flex-col sm:flex-row gap-4 pt-2">
                             <Button
                                 onClick={openModal}
                                 size="lg"
@@ -115,8 +120,8 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                     </div>
 
                     {/* Right Side - Service Image/Visual */}
-                    <div className="w-full lg:w-1/2 pl-0 lg:pl-8 mt-8 lg:mt-0">
-                        <div className="relative h-[300px] sm:h-[400px] lg:h-[500px]">
+                    <div className="w-full lg:w-1/2 pl-0 lg:pl-8 mt-12 lg:mt-0">
+                        <div className="relative h-[300px] sm:h-[400px] lg:h-[600px]">
                             <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
                                 {service.image ? (
                                     <Image
@@ -130,7 +135,7 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
                                         <div className="text-center">
-                                            <service.icon className="w-24 h-24 text-primary mx-auto mb-4" />
+                                            <service.icon className="w-24 h-24 text-primary mx-auto mb-4 animate-bounce" />
                                             <div className="text-6xl mb-4">{service.emoji}</div>
                                             <p className="text-lg text-muted-foreground">Service Visualization</p>
                                         </div>
