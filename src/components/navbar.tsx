@@ -109,10 +109,12 @@ export function Navbar() {
 
           {/* Desktop CTA Buttons */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button size="lg" className="px-6 py-3 lg:px-8 lg:py-4 xl:px-10 xl:py-5 text-base lg:text-lg font-semibold bg-primary text-primary-foreground hover:bg-[#4411ab] shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
+            <Button size="lg" className="relative overflow-hidden px-6 py-4 lg:px-8 lg:py-5 xl:px-10 xl:py-6 text-sm lg:text-base xl:text-lg font-bold bg-gradient-to-r from-primary via-[#6d28d9] to-primary bg-[length:200%_auto] hover:bg-[position:right_center] text-white shadow-[0_0_20px_rgba(68,17,171,0.3)] hover:shadow-[0_0_30px_rgba(68,17,171,0.5)] hover:scale-105 transition-all duration-300 rounded-lg group border-0" asChild>
               <Link href="/schedule-call">
-                <Phone className="mr-2 w-4 h-4" />
-                Schedule a Call
+                <span className="relative z-10 flex items-center">
+                  <Phone className="mr-2 w-4 h-4 lg:w-5 lg:h-5 fill-current" />
+                  Schedule a Call
+                </span>
               </Link>
             </Button>
           </div>
@@ -181,10 +183,12 @@ export function Navbar() {
 
               {/* CTA Buttons */}
               <div className="px-3 sm:px-4 pt-3 sm:pt-4 space-y-2 sm:space-y-3 border-t border-border">
-                <Button size="sm" className="w-full py-2 sm:py-3 text-sm sm:text-base font-semibold bg-primary text-primary-foreground hover:bg-[#4411ab] shadow-lg hover:shadow-xl transition-all duration-300 group" asChild>
+                <Button size="sm" className="w-full py-5 text-sm font-bold bg-gradient-to-r from-primary via-[#6d28d9] to-primary bg-[length:200%_auto] hover:bg-[position:right_center] text-white shadow-[0_0_15px_rgba(68,17,171,0.3)] hover:shadow-[0_0_25px_rgba(68,17,171,0.5)] transition-all duration-300 rounded-lg group border-0" asChild>
                   <Link href="/schedule-call" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Phone className="mr-2 w-3 h-3 sm:w-4 sm:h-4" />
-                    Schedule a Call
+                    <span className="relative z-10 flex items-center justify-center">
+                      <Phone className="mr-2 w-4 h-4 fill-current" />
+                      Schedule a Call
+                    </span>
                   </Link>
                 </Button>
               </div>
