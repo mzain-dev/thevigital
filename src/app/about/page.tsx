@@ -98,17 +98,17 @@ export default function AboutPage() {
                 <Badge variant="secondary" className="text-xs sm:text-sm">About Us</Badge>
                 <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
               </div>
-              <h1 className="text-[44px] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
-                Your Growth{' '}
+              <h1 className="text-[34px] sm:text-5xl md:text-5xl lg:text-5xl font-bold text-foreground leading-tight text-center sm:text-left">
+                We're Not Just an Agency.{' '}
                 <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
-                  Our Job
+                  We're Your Alignment Partners.
                 </span>
               </h1>
 
               {/* Enhanced Subheadline - Minimal spacing */}
               <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
-                We&apos;re a team of data-driven marketers, developers, and strategists who believe that every marketing dollar should work harder than the last.
-                <span className="block text-sm text-primary mt-1 font-medium">
+                Vigital was founded on a single, powerful observation: Most businesses don't have a marketing problem; they have an alignment problem.
+                <span className="block text-sm text-primary mt-4 font-medium">
                   ✨ ROI-Focused • Data-Driven • Results-Guaranteed ✨
                 </span>
               </p>
@@ -208,71 +208,75 @@ export default function AboutPage() {
 
                 {/* Enhanced Title */}
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                  Data-Driven Results,{' '}
+                  Our Mission:{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    ROI-First Approach
+                    To Eliminate Misalignment
                   </span>
                 </h2>
 
-                {/* Enhanced Description */}
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  We believe in the power of data to drive decisions, not hunches. Every strategy we create, every campaign we run, and every optimization we make is backed by solid analytics and measurable outcomes.
-                </p>
+                {/* Enhanced Description with Narrative Flow */}
+                {/* Enhanced Narrative Flow - Matching UI/UX */}
+                <div className="space-y-4 sm:space-y-6">
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                    We watched for years as businesses wasted millions. We saw brilliant <span className="text-foreground font-medium">Digital Ad Campaigns</span> send thousands of qualified leads into a <span className="text-foreground font-medium">Virtual Black Hole</span>.
+                  </p>
 
-                {/* Minimal Enhanced Checklist */}
-                <div className="space-y-2 sm:space-y-3">
-                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
+                  <div className="space-y-3 sm:space-y-4">
+                    {/* The Problem Block - Muted Style */}
+                    <div className="bg-gradient-to-r from-muted/20 to-muted/10 border border-muted/20 rounded-xl p-3 sm:p-4">
+                      <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base flex items-center gap-2">
+                        <Zap className="w-4 h-4 text-[#4411ab]" />
+                        The Disconnect
+                      </h4>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        The ad agency wasn't talking to the sales team. The web developer didn't understand the CRM. Result: A "leaky bucket" of wasted budget.
+                      </p>
                     </div>
-                    <span className="text-sm sm:text-base text-foreground">Performance-based pricing models</span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
+
+                    {/* The Solution Block - Primary Style */}
+                    <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-3 sm:p-4">
+                      <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base flex items-center gap-2">
+                        <CheckCircle className="w-4 h-4 text-[#4411ab]" />
+                        The Solution: Vigital
+                      </h4>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                        We are a single, integrated team built to manage your entire online system—from the first click to the final close. <span className="text-primary font-medium">No leaks. No waste. Just alignment.</span>
+                      </p>
                     </div>
-                    <span className="text-sm sm:text-base text-foreground">Real-time data monitoring and optimization</span>
-                  </div>
-                  <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/20">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-[#4411ab] rounded-full flex items-center justify-center flex-shrink-0">
-                      <CheckCircle className="w-2 h-2 sm:w-3 sm:h-3 text-[#4411ab]" />
-                    </div>
-                    <span className="text-sm sm:text-base text-foreground">Transparent reporting and insights</span>
                   </div>
                 </div>
 
+                {/* Tagline */}
                 {/* Trust Indicators */}
                 <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
                   <div className="flex items-center gap-1 sm:gap-2">
                     <Target className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
-                    <span>Data-Driven</span>
+                    <span>Total Alignment</span>
                   </div>
                   <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                   <div className="flex items-center gap-1 sm:gap-2">
                     <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
-                    <span>ROI Focused</span>
+                    <span>Zero Waste</span>
                   </div>
                   <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
                   <div className="flex items-center gap-1 sm:gap-2">
                     <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
-                    <span>Results Guaranteed</span>
+                    <span>Real Results</span>
                   </div>
                 </div>
               </div>
 
-              {/* Right Side - Single Mission Image */}
+              {/* Right Side - New Mission Alignment Image */}
               <div className="relative">
-                <div className="relative h-[250px] sm:h-[400px] lg:h-[600px]">
+                <div className="relative h-[300px] sm:h-[450px] lg:h-[550px]">
                   <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                      {/* Replace this div with your actual mission image: */}
-                      {/* <img src="/about/mission-image.jpg" alt="ROI Agency Mission" className="w-full h-full object-contain" /> */}
-
-                      {/* Placeholder for now - Image only */}
-                      <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
-                        <span className="text-6xl">🎯</span>
-                      </div>
-                    </div>
+                    <Image
+                      src="/mission-final.png"
+                      alt="Digital Meeting Virtual - No Leaks"
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                      priority
+                    />
                   </div>
                 </div>
               </div>
