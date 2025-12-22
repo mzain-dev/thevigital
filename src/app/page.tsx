@@ -297,7 +297,7 @@ export default function Home() {
             <div className="relative h-[600px] w-full flex items-center justify-center">
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
                 <Image
-                  src="/hero-image-v2.png"
+                  src="/hero-image-v3.png"
                   alt="Digital Agency Hero"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
@@ -313,7 +313,7 @@ export default function Home() {
               <div className="relative h-[300px] sm:h-[400px]">
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
                   <Image
-                    src="/hero-image-v2.png"
+                    src="/hero-image-v3.png"
                     alt="Digital Agency Hero"
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
@@ -328,7 +328,7 @@ export default function Home() {
 
 
       {/* Client Logos Carousel Section */}
-      <section className="py-12 lg:py-24 bg-gradient-to-r from-muted/20 to-background">
+      <section className="py-12 lg:py-24 bg-gradient-to-r from-muted/20 to-background overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12 xl:px-16">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6">
@@ -709,7 +709,7 @@ export default function Home() {
       </Section>
 
       {/* Process/How We Work Section - Theme Aligned */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background">
+      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background overflow-hidden relative">
         <SectionHeader
           title="How We Work"
           subtitle="Our proven 4-step process ensures consistent, measurable results for every client through systematic execution and continuous optimization."
@@ -792,7 +792,7 @@ export default function Home() {
       </Section>
 
       {/* Why Choose Us Section - Left-Right Layout */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background">
+      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background overflow-hidden lg:overflow-visible">
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -869,30 +869,17 @@ export default function Home() {
             </div>
 
             {/* Right Side - Fixed Centered Image */}
-            <div className="lg:sticky lg:top-32 relative h-fit">
+            <div className="lg:sticky lg:top-32 relative h-fit self-start">
               <div className="w-full h-80 sm:h-96 lg:h-[500px] bg-white rounded-2xl border border-primary/20 overflow-hidden relative shadow-2xl">
                 <Image
-                  src="/why-choose-us.png"
+                  src="/why-choose-us-redesign.png"
                   alt="Why Choose ROI Agency - Team Collaboration"
                   fill
                   className="object-cover object-center hover:scale-105 transition-transform duration-700"
                 />
               </div>
 
-              {/* Floating Stats */}
-              <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 bg-card border border-border rounded-xl p-3 sm:p-4 shadow-lg">
-                <div className="text-center">
-                  <div className="text-base sm:text-lg font-bold text-primary">95%</div>
-                  <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-                </div>
-              </div>
 
-              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 bg-card border border-border rounded-xl p-3 sm:p-4 shadow-lg">
-                <div className="text-center">
-                  <div className="text-base sm:text-lg font-bold text-primary">340%</div>
-                  <div className="text-sm text-muted-foreground">Avg. ROI</div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -1077,8 +1064,8 @@ export default function Home() {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
             </Carousel>
           </div>
         </div>
