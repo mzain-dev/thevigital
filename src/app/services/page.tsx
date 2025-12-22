@@ -77,7 +77,7 @@ export default function ServicesPage() {
               </h1>
 
               {/* Enhanced Subheadline */}
-              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
+              <p className="text-lg md:text-xl lg:text-2xl text-foreground leading-relaxed text-center sm:text-left">
                 Comprehensive digital solutions designed to transform your business and maximize your return on investment.
                 <span className="block text-sm text-primary mt-1 font-medium">
                   ✨ ROI-Focused • Data-Driven • Results-Guaranteed ✨
@@ -104,7 +104,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-foreground">
               <div className="flex items-center gap-2">
                 <Clock className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
                 <span>24/7 Support</span>
@@ -127,7 +127,7 @@ export default function ServicesPage() {
             <div className="relative h-[250px] sm:h-[400px] lg:h-[600px] w-full flex items-center justify-center">
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
                 <Image
-                  src="/services-hero.png"
+                  src="/services-hero-redesign.png"
                   alt="Services Hero"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
@@ -143,7 +143,7 @@ export default function ServicesPage() {
               <div className="relative h-[300px] sm:h-[400px]">
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
                   <Image
-                    src="/services-hero.png"
+                    src="/services-hero-redesign.png"
                     alt="Services Hero"
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
@@ -169,7 +169,7 @@ export default function ServicesPage() {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6">
               Comprehensive Digital Solutions
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground max-w-2xl md:max-w-3xl mx-auto leading-relaxed">
               Each service is crafted with precision to deliver measurable ROI and sustainable business growth
             </p>
           </div>
@@ -186,8 +186,8 @@ export default function ServicesPage() {
 
                   {/* Animated Header with Icon */}
                   <div className="flex items-start justify-between mb-6">
-                    <div className={`p-3 rounded-2xl bg-gradient-to-br ${service.gradient} bg-opacity-10 shadow-inner`}>
-                      <service.icon className="w-8 h-8 text-white" />
+                    <div className="p-3 rounded-2xl bg-white border border-[#4411ab]/20 shadow-inner">
+                      <service.icon className="w-8 h-8 text-[#4411ab]" />
                     </div>
                     <Badge variant={service.badgeVariant} className="text-xs px-3 py-1">
                       {service.badge}
@@ -200,7 +200,7 @@ export default function ServicesPage() {
                       {service.title}
                     </h3>
 
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="text-foreground leading-relaxed">
                       {service.shortPitch}
                     </p>
 
@@ -215,13 +215,13 @@ export default function ServicesPage() {
                     <div className="pt-2">
                       <ul className="space-y-2">
                         {service.keyFeatures.slice(0, 3).map((feature, idx) => (
-                          <li key={idx} className="flex items-start gap-2 text-sm text-foreground/80">
+                          <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
                             <CheckCircle className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                             <span>{feature}</span>
                           </li>
                         ))}
                         {service.keyFeatures.length > 3 && (
-                          <li className="flex items-center gap-2 text-sm text-muted-foreground pl-6">
+                          <li className="flex items-center gap-2 text-sm text-foreground pl-6">
                             <span>+{service.keyFeatures.length - 3} more features</span>
                           </li>
                         )}
@@ -262,7 +262,7 @@ export default function ServicesPage() {
       {/* Bottom CTA Section */}
       <CTASection
         title="Ready to Transform Your Business?"
-        highlightText="Transform"
+        highlightText=""
         subtitle="Get a custom quote for your growth journey. Let's discuss how we can help you achieve measurable, sustainable growth."
         primaryButton={{
           text: "Schedule a Call",

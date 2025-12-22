@@ -106,7 +106,7 @@ export default function AboutPage() {
               </h1>
 
               {/* Enhanced Subheadline - Minimal spacing */}
-              <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
+              <p className="text-lg md:text-xl lg:text-2xl text-foreground leading-relaxed text-center sm:text-left">
                 Vigital was founded on a single, powerful observation: Most businesses don't have a marketing problem; they have an alignment problem.
                 <span className="block text-sm text-primary mt-4 font-medium">
                   ✨ ROI-Focused • Data-Driven • Results-Guaranteed ✨
@@ -133,7 +133,7 @@ export default function AboutPage() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-muted-foreground">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-6 text-sm sm:text-base text-foreground">
               <div className="flex items-center gap-2">
                 <Clock className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-[#4411ab]" />
                 <span>24/7 Support</span>
@@ -156,7 +156,7 @@ export default function AboutPage() {
             <div className="relative h-[600px]">
               <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
                 <Image
-                  src="/hero-image-v2.png"
+                  src="/about-banner.png"
                   alt="ROI Agency Team"
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-105"
@@ -172,7 +172,7 @@ export default function AboutPage() {
               <div className="relative h-[300px] sm:h-[400px]">
                 <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-xl">
                   <Image
-                    src="/hero-image-v2.png"
+                    src="/about-banner.png"
                     alt="ROI Agency Team"
                     fill
                     className="object-cover transition-transform duration-700 hover:scale-105"
@@ -216,20 +216,20 @@ export default function AboutPage() {
 
                 {/* Enhanced Description with Narrative Flow */}
                 {/* Enhanced Narrative Flow - Matching UI/UX */}
-                <div className="space-y-4 sm:space-y-6">
-                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                <div className="space-y-2 sm:space-y-2">
+                  <p className="text-base sm:text-lg text-foreground leading-relaxed">
                     We watched for years as businesses wasted millions. We saw brilliant <span className="text-foreground font-medium">Digital Ad Campaigns</span> send thousands of qualified leads into a <span className="text-foreground font-medium">Virtual Black Hole</span>.
                   </p>
 
-                  <div className="space-y-3 sm:space-y-4">
+                  <div className="space-y-2 sm:space-y-2">
                     {/* The Problem Block - Muted Style */}
                     <div className="bg-gradient-to-r from-muted/20 to-muted/10 border border-muted/20 rounded-xl p-3 sm:p-4">
                       <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base flex items-center gap-2">
                         <Zap className="w-4 h-4 text-[#4411ab]" />
-                        The Disconnect
+                        Why?
                       </h4>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        The ad agency wasn't talking to the sales team. The web developer didn't understand the CRM. Result: A "leaky bucket" of wasted budget.
+                      <p className="text-sm sm:text-base text-foreground leading-relaxed">
+                        Because the ad agency wasn't talking to the sales team. The web developer didn't understand the CRM. The "Digital" front-end and "Virtual" back-end were completely disconnected, and the result was a "leaky bucket" of wasted money and lost opportunities.
                       </p>
                     </div>
 
@@ -237,10 +237,10 @@ export default function AboutPage() {
                     <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-3 sm:p-4">
                       <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base flex items-center gap-2">
                         <CheckCircle className="w-4 h-4 text-[#4411ab]" />
-                        The Solution: Vigital
+                        We knew there had to be a better way.
                       </h4>
-                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                        We are a single, integrated team built to manage your entire online system—from the first click to the final close. <span className="text-primary font-medium">No leaks. No waste. Just alignment.</span>
+                      <p className="text-sm sm:text-base text-foreground leading-relaxed">
+                        Vigital was created to be the solution. We are a single, integrated team built from the ground up to manage your entire online system—from the first ad click to the final, closed sale. <span className="text-primary font-medium">No leaks. No waste. Just alignment.</span>
                       </p>
                     </div>
                   </div>
@@ -248,7 +248,7 @@ export default function AboutPage() {
 
                 {/* Tagline */}
                 {/* Trust Indicators */}
-                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
+                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-foreground pt-2 sm:pt-4">
                   <div className="flex items-center gap-1 sm:gap-2">
                     <Target className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Total Alignment</span>
@@ -302,15 +302,12 @@ export default function AboutPage() {
               <div className="relative order-2 lg:order-1">
                 <div className="relative h-[250px] sm:h-[400px] lg:h-[600px]">
                   <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                      {/* Replace this div with your actual story image: */}
-                      {/* <img src="/about/story-image.jpg" alt="ROI Agency Story" className="w-full h-full object-contain" /> */}
-
-                      {/* Placeholder for now - Image only */}
-                      <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
-                        <span className="text-6xl">📈</span>
-                      </div>
-                    </div>
+                    <Image
+                      src="/about-team-alignment.png"
+                      alt="Team Alignment"
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                    />
                   </div>
                 </div>
               </div>
@@ -324,43 +321,47 @@ export default function AboutPage() {
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                  Why We Started,{' '}
+                  A Team Purpose-Built{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    What Sets Us Apart
+                    for Alignment
                   </span>
                 </h2>
 
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  Founded in 2019, ROI Agency was born from frustration with traditional marketing agencies that promised the world but delivered vague results and empty promises.
+                <p className="text-base sm:text-lg text-foreground leading-relaxed">
+                  You can&apos;t achieve true alignment with a team of siloed specialists. Our team is different. We are a unified, expert group of:
                 </p>
 
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-1 sm:space-y-4">
                   <div className="bg-gradient-to-r from-muted/20 to-muted/10 border border-muted/20 rounded-xl p-3 sm:p-4">
-                    <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">The Problem We Solved</h4>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      Too many businesses were spending money on marketing without seeing real returns. We decided to change that by focusing on measurable outcomes.
+                    <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Digital Strategists:</h4>
+                    <p className="text-sm sm:text-base text-foreground leading-relaxed">
+                      Masters of capturing high-intent customers (Vigital Ads, SEO, Web).
                     </p>
                   </div>
-                  <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-3 sm:p-4">
-                    <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">What Makes Us Different</h4>
-                    <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                      We don&apos;t just create campaigns; we build systems that continuously optimize and improve performance based on real data.
+                  <div className="bg-gradient-to-r from-muted/20 to-muted/10 border border-muted/20 rounded-xl p-3 sm:p-4">
+                    <h4 className="font-semibold text-foreground mb-1 sm:mb-2 text-sm sm:text-base">Virtual Architects</h4>
+                    <p className="text-sm sm:text-base text-foreground leading-relaxed">
+                      Masters of efficiency and data (Vigital Operations, AI, CRM).
                     </p>
                   </div>
                 </div>
 
+                <p className="text-sm sm:text-base text-foreground leading-relaxed italic border-l-4 border-primary pl-4">
+                  &quot;Together, we act as a single, powerful extension of your business. We don&apos;t just &quot;hand off&quot; leads—we manage the entire journey, ensuring every part of your system is working together toward one goal: your profit.&quot;
+                </p>
+
                 {/* Trust Indicators */}
-                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
+                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-foreground pt-2 sm:pt-4">
                   <div className="flex items-center gap-1 sm:gap-2">
                     <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Team Founded</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="w-1 h-1 bg-foreground rounded-full hidden sm:block"></div>
                   <div className="flex items-center gap-1 sm:gap-2">
                     <Target className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Problem Focused</span>
                   </div>
-                  <div className="w-1 h-1 bg-muted-foreground rounded-full hidden sm:block"></div>
+                  <div className="w-1 h-1 bg-foreground rounded-full hidden sm:block"></div>
                   <div className="flex items-center gap-1 sm:gap-2">
                     <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>Growth Driven</span>
@@ -394,18 +395,18 @@ export default function AboutPage() {
                 </div>
 
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                  Marketing Should{' '}
+                  Our Promise{' '}
                   <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent">
-                    Pay for Itself
+                    to You
                   </span>
                 </h2>
 
                 <div className="bg-gradient-to-r from-primary/20 to-primary/10 border border-primary/30 rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <p className="text-lg sm:text-xl font-bold text-foreground text-center mb-2 sm:mb-4">
-                    &quot;Marketing expenditures should pay for themselves&quot;
+                    &quot;We will never be a cost center. We are a profit engine.&quot;
                   </p>
-                  <p className="text-sm sm:text-base text-muted-foreground text-center leading-relaxed">
-                    This isn&apos;t just a slogan—it&apos;s our core principle. We believe every marketing dollar should generate at least $2 in return.
+                  <p className="text-sm sm:text-base text-foreground text-center leading-relaxed">
+                    As your partners, our commitment is to your bottom line. That&apos;s why we stand by our <span className="text-foreground font-bold">2x ROI Guarantee</span>. We only succeed when you do. This isn&apos;t just our business model—it&apos;s who we are.
                   </p>
                 </div>
 
@@ -431,7 +432,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Trust Indicators */}
-                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-muted-foreground pt-2 sm:pt-4">
+                <div className="flex flex-wrap items-center justify-start gap-3 sm:gap-6 text-xs sm:text-sm text-foreground pt-2 sm:pt-4">
                   <div className="flex items-center gap-1 sm:gap-2">
                     <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-[#4411ab]" />
                     <span>ROI Focused</span>
@@ -453,15 +454,12 @@ export default function AboutPage() {
               <div className="relative">
                 <div className="relative h-[250px] sm:h-[400px] lg:h-[600px]">
                   <div className="relative w-full h-full rounded-2xl overflow-hidden bg-gradient-to-br from-muted/10 to-background/50 backdrop-blur-sm border border-muted/20 shadow-2xl">
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200">
-                      {/* Replace this div with your actual philosophy image: */}
-                      {/* <img src="/about/philosophy-image.jpg" alt="ROI Agency Philosophy" className="w-full h-full object-contain" /> */}
-
-                      {/* Placeholder for now - Image only */}
-                      <div className="w-full h-full bg-gray-300 rounded-2xl flex items-center justify-center">
-                        <span className="text-6xl">💰</span>
-                      </div>
-                    </div>
+                    <Image
+                      src="/about-profit-promise.png"
+                      alt="Profit Promise"
+                      fill
+                      className="object-cover transition-transform duration-700 hover:scale-105"
+                    />
                   </div>
                 </div>
               </div>
@@ -485,7 +483,7 @@ export default function AboutPage() {
                 Consistent Results
               </span>
             </h2>
-            <p className="text-base sm:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-foreground max-w-3xl mx-auto leading-relaxed">
               Our proven 5-step process ensures every project follows the same rigorous methodology for predictable, scalable success.
             </p>
           </div>
@@ -545,7 +543,7 @@ export default function AboutPage() {
                           <h3 className="font-bold text-foreground text-sm sm:text-base mb-1 sm:mb-2">
                             {step.title}
                           </h3>
-                          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                          <p className="text-sm sm:text-base text-foreground leading-relaxed">
                             {step.description}
                           </p>
                         </div>

@@ -99,13 +99,13 @@ export const darkColorPalettes: ColorPalette[] = [
 export function generateCustomPalette(baseColor: string, isDark: boolean = false): ColorPalette {
   // This is a simplified color generation - in a real app you might want more sophisticated color theory
   const hsl = parseHsl(baseColor);
-  
+
   if (!hsl) {
     return defaultColorPalettes[0];
   }
 
   const { h, s, l } = hsl;
-  
+
   if (isDark) {
     return {
       name: 'Custom Dark',
@@ -151,7 +151,7 @@ function parseHsl(hslString: string): { h: number; s: number; l: number } | null
 
 export function applyColorPalette(palette: ColorPalette) {
   const root = document.documentElement;
-  
+
   Object.entries(palette).forEach(([key, value]) => {
     if (key !== 'name') {
       root.style.setProperty(`--${key}`, value);

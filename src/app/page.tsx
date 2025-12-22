@@ -1087,7 +1087,7 @@ export default function Home() {
       {/* Enhanced CTA Banner Section */}
       <CTASection
         title="Stop Waiting, Start Growing"
-        highlightText="Growing"
+        highlightText=""
         subtitle="Get a custom quote for your growth journey. Let's discuss how we can help you achieve measurable, sustainable growth that actually pays for itself."
         primaryButton={{
           text: "Schedule a Call",
