@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { CTASection } from '@/components/cta-section';
-import { ArrowRight, TrendingUp, Globe, Users, Palette, Bot, Zap, BarChart3, Target, Eye, RotateCcw, Sparkles, Rocket, Award, Clock, Star, CheckCircle, Mail, Quote } from 'lucide-react';
+import { ArrowRight, TrendingUp, Globe, Users, Palette, Bot, Zap, BarChart3, Target, Eye, RotateCcw, Sparkles, Rocket, Award, Clock, Star, CheckCircle, Mail, Quote, Compass, Magnet, Plug, Brain, Handshake, Sprout } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -15,10 +15,49 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 
 import { SERVICES_SUMMARY } from '@/lib/constants';
 
 const typewriterServices = SERVICES_SUMMARY.map(s => s.title);
+
+const VIGITAL_ALIGNMENT_STEPS = [
+  {
+    title: "1. The Alignment Audit",
+    icon: Compass,
+    description: "We don't guess; we analyze. We start by auditing your existing data, market, and systems. From this, we build a Vigital Blueprint—a custom strategy that identifies the single biggest opportunity for profit."
+  },
+  {
+    title: "2. Data-Driven Ads",
+    icon: Magnet,
+    description: "With our blueprint as the guide, we launch highly-targeted Vigital Ad campaigns on Google, Meta, and TikTok. Every ad is engineered to capture your highest-intent customers at the lowest possible cost."
+  },
+  {
+    title: "3. Instant CRM Sync",
+    icon: Plug,
+    description: "The moment a lead comes in, our system instantly and automatically syncs it with your CRM. This is the Vigital Alignment in action—the \"Digital\" front-end is perfectly connected to your \"Virtual\" backend. No more lost leads."
+  },
+  {
+    title: "4. AI Lead Scoring",
+    icon: Brain,
+    description: "This is our \"secret weapon.\" Our custom AI model instantly analyzes the new lead—scoring them based on their data and behavior. Are they a \"hot,\" sales-ready lead or a \"warm,\" curious prospect? The system knows instantly."
+  },
+  {
+    title: "5. \"Hot Lead\" Handoff",
+    icon: Handshake,
+    description: "\"Hot\" leads, as identified by our AI, are immediately routed to your sales team with a high-priority alert. We provide all the data needed to close the deal while the lead's interest is at its peak."
+  },
+  {
+    title: "6. AI-Powered Nurture",
+    icon: Sprout,
+    description: "\"Warm\" or \"cold\" leads aren't forgotten. They automatically enter our Vigital Operations nurture system. Our AI-powered automations send them valuable content, case studies, and offers, building trust 24/7 until they are \"hot\" and ready to buy."
+  },
+  {
+    title: "7. The 360° Recovery Loop",
+    icon: RotateCcw,
+    description: "Didn't close? No problem. Our system automatically moves \"lost\" or \"cold\" leads from the sales process into a long-term retargeting and email nurture campaign. We stay top-of-mind, ensuring you get a second, third, or fourth chance to win their business."
+  }
+];
 
 export default function Home() {
   // Portfolio slider data
@@ -207,7 +246,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section - Full Viewport Height */}
-      <section className="relative min-h-screen flex items-center overflow-hidden pt-8 lg:pt-0">
+      <section className="relative min-h-screen flex items-center overflow-hidden pt-8 lg:py-12">
         {/* Enhanced Animated Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-primary/10 to-secondary/5 animate-pulse"></div>
         <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/10 animate-pulse delay-1000"></div>
@@ -228,19 +267,19 @@ export default function Home() {
                 <Badge variant="secondary" className="text-xs sm:text-sm">2025&apos;s Most Innovative Agency</Badge>
                 <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-[#4411ab] animate-pulse" />
               </div>
-              <h1 className="text-[44px] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight text-center sm:text-left">
-                Marketing That{' '}
+              <h1 className="text-[35px] sm:text-5xl md:text-5xl xl:text-6xl font-bold text-foreground leading-tight text-center sm:text-left">
+                Stop Wasting Money On{' '}
                 <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
-                  Delivers ROI
+                  Misaligned Marketing.
                 </span>
               </h1>
 
               {/* Text Type Animation for Services - Equal height to animated indicator */}
-              <div className="flex flex-col sm:flex-row items-center sm:items-baseline gap-2 sm:gap-3 h-8 sm:h-8 md:h-10 lg:h-12">
+              <div className="flex flex-col sm:flex-row items-center sm:items-baseline">
                 <span className="text-base sm:text-lg md:text-xl text-muted-foreground whitespace-nowrap text-center sm:text-left">We specialize in:</span>
                 <div className="relative flex items-center justify-center sm:justify-start min-w-[220px] sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] w-full sm:w-auto h-full">
                   <div className="text-base sm:text-lg md:text-xl font-semibold text-primary typewriter-container w-full text-center sm:text-left h-full flex items-center">
-                    <span className="typewriter-text">{typewriterServices[0]}</span>
+                    <span className="typewriter-text"> {typewriterServices[0]}</span>
                     <span className="typewriter-cursor animate-pulse">|</span>
                   </div>
                 </div>
@@ -248,10 +287,10 @@ export default function Home() {
             </div>
 
             {/* Enhanced Subheadline - Minimal spacing */}
-            <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground leading-relaxed text-center sm:text-left">
-              Your marketing spend should always pay for itself.
-              <span className="block text-sm text-primary mt-1 font-medium">
-                ✨ AI-Powered • Data-Driven • Results-Guaranteed ✨
+            <p className="text-lg md:text-xl lg:text-1xl text-foreground leading-relaxed text-center sm:text-left">
+              Profit isn't just about good ads; it's about a connected system. We introduce The Vigital Alignment—our proprietary system to perfectly sync your Digital Marketing (growth) with your Virtual Operations (efficiency).
+              <span className="block text-sm text-primary mt-4 font-medium">
+                ✨ The Result • Predictable, Guaranteed ROI. ✨
               </span>
             </p>
 
@@ -327,84 +366,46 @@ export default function Home() {
       </section>
 
 
-      {/* Client Logos Carousel Section */}
+      {/* The Vigital Alignment Section */}
       <section className="py-12 lg:py-24 bg-gradient-to-r from-muted/20 to-background overflow-hidden">
         <div className="container mx-auto px-6 lg:px-12 xl:px-16">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 md:mb-6">
-              Trusted by Industry Leaders
+            <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
+              The Vigital Alignment:{' '}
+
             </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
-              We&apos;ve helped businesses across various industries achieve remarkable growth and ROI
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
+              Your 360° Profit System
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
+              Most agencies just run ads. We build a complete, closed-loop system. We believe that wasted leads are just as bad as wasted ad spend.
+            </p>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
+              Our Vigital Alignment process connects every step of the customer journey, from the first click to the final sale, ensuring no lead is ever left behind.
             </p>
           </div>
 
-          <div className="relative overflow-hidden">
-            {/* First row of logos */}
-            <div className="flex animate-scroll-left">
-              <div className="flex space-x-8 sm:space-x-16 items-center min-w-max">
-                {/* Client Logo 1 */}
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-lg border border-blue-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-blue-600">TechCorp</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {VIGITAL_ALIGNMENT_STEPS.map((step, index) => (
+              <div
+                key={index}
+                className={`group bg-card border border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300 ${step.className || ''}`}
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                  <step.icon className="w-6 h-6 text-primary" />
                 </div>
-
-                {/* Client Logo 2 */}
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 rounded-lg border border-green-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-green-600">GrowthLab</span>
-                </div>
-
-                {/* Client Logo 3 */}
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-orange-500/10 to-red-600/10 rounded-lg border border-orange-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-orange-600">ScaleUp</span>
-                </div>
-
-                {/* Client Logo 4 */}
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-lg border border-purple-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-purple-600">InnovateCorp</span>
-                </div>
-
-                {/* Client Logo 5 */}
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-yellow-500/10 to-orange-600/10 rounded-lg border border-yellow-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-yellow-600">FutureTech</span>
-                </div>
-
-                {/* Client Logo 6 */}
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-indigo-500/10 to-cyan-600/10 rounded-lg border border-indigo-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-indigo-600">DataFlow</span>
-                </div>
-
-                {/* Duplicate logos for seamless loop */}
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-blue-500/10 to-purple-600/10 rounded-lg border border-blue-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-blue-600">TechCorp</span>
-                </div>
-
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-green-500/10 to-blue-600/10 rounded-lg border border-green-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-green-600">GrowthLab</span>
-                </div>
-
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-orange-500/10 to-red-600/10 rounded-lg border border-orange-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-orange-600">ScaleUp</span>
-                </div>
-
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-purple-500/10 to-pink-600/10 rounded-lg border border-purple-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-purple-600">InnovateCorp</span>
-                </div>
-
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-yellow-500/10 to-orange-600/10 rounded-lg border border-yellow-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-yellow-600">FutureTech</span>
-                </div>
-
-                <div className="flex items-center justify-center w-24 h-12 sm:w-32 sm:h-16 bg-gradient-to-r from-indigo-500/10 to-cyan-600/10 rounded-lg border border-indigo-500/20 p-2 sm:p-4">
-                  <span className="text-sm sm:text-base font-bold text-indigo-600">DataFlow</span>
-                </div>
+                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  {step.description}
+                </p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Case Studies Section - Minimal Design with Tabs */}
-      <section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-gradient-to-br from-white to-blue-50/30">
+      <section className="py-24 bg-gradient-to-br from-white to-purple-100/100">
         <div className="container mx-auto px-6 lg:px-12 xl:px-16 max-w-7xl">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -416,111 +417,114 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex justify-center mb-16">
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-4 bg-muted/30 rounded-lg p-1 border border-muted/20">
-              <button className="px-4 sm:px-6 py-2 sm:py-3 rounded-md bg-primary text-primary-foreground font-semibold transition-all duration-300 flex items-center justify-center text-sm sm:text-base">
-                <Globe className="mr-2 w-4 h-4 text-white" />
-                All Projects
-              </button>
-              <button className="px-4 sm:px-6 py-2 sm:py-3 rounded-md text-muted-foreground font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center group text-sm sm:text-base">
-                <Bot className="mr-2 w-4 h-4 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
-                SaaS
-              </button>
-              <button className="px-4 sm:px-6 py-2 sm:py-3 rounded-md text-muted-foreground font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center group text-sm sm:text-base">
-                <Palette className="mr-2 w-4 h-4 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
-                E-commerce
-              </button>
-              <button className="px-4 sm:px-6 py-2 sm:py-3 rounded-md text-muted-foreground font-semibold hover:bg-primary hover:text-primary-foreground transition-all duration-300 flex items-center justify-center group text-sm sm:text-base">
-                <BarChart3 className="mr-2 w-4 h-4 text-[#4411ab] group-hover:text-white transition-colors duration-300" />
-                FinTech
-              </button>
-            </div>
-          </div>
+
 
           {/* Case Study Cards Grid - Minimal Design */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {caseStudies.map((study) => (
-              <div key={study.id} className="group">
-                <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-full hover:shadow-xl transition-all duration-300">
-                  {/* Card Header - Minimal */}
-                  {/* Card Header - Minimal */}
-                  <div className="h-48 sm:h-56 relative overflow-hidden bg-muted">
-                    {/* Background Image */}
-                    <Image
-                      src={study.image as string}
-                      alt={study.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    {/* Gradient Overlay for Text Readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+          {/* Case Study Cards Carousel */}
+          <div className="relative px-4 sm:px-12">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[
+                Autoplay({
+                  delay: 2000,
+                  stopOnInteraction: false,
+                  stopOnMouseEnter: true,
+                }),
+              ]}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4 pb-4">
+                {caseStudies.map((study) => (
+                  <CarouselItem key={study.id} className="pl-4 md:basis-1/2 lg:basis-1/3 h-auto">
+                    <div className="group h-full">
+                      <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-full hover:shadow-xl transition-all duration-300 flex flex-col">
+                        {/* Card Header - Minimal */}
+                        <div className="h-48 sm:h-56 relative overflow-hidden bg-muted flex-shrink-0">
+                          {/* Background Image */}
+                          <Image
+                            src={study.image as string}
+                            alt={study.title}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {/* Gradient Overlay for Text Readability */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
 
-                    <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-between">
-                      <div className="flex justify-end">
-                        <div className="text-xs font-medium text-white/90 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
-                          {study.industry}
-                        </div>
-                      </div>
-                      <div className="text-white">
-                        <div className="flex items-center gap-3 mb-2">
-                          <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
-                            <span className="text-sm">{study.icon}</span>
+                          <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-between">
+                            <div className="flex justify-end">
+                              <div className="text-xs font-medium text-white/90 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                                {study.industry}
+                              </div>
+                            </div>
+                            <div className="text-white">
+                              <div className="flex items-center gap-3 mb-2">
+                                <div className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+                                  <span className="text-sm">{study.icon}</span>
+                                </div>
+                                <h3 className="text-lg font-bold">{study.title}</h3>
+                              </div>
+                            </div>
                           </div>
-                          <h3 className="text-lg font-bold">{study.title}</h3>
+                        </div>
+
+                        {/* Card Content - Minimal */}
+                        <div className="p-4 sm:p-6 flex flex-col flex-grow">
+                          <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-3">
+                            {study.description}
+                          </p>
+
+                          {/* Key Results - Minimal */}
+                          <div className="space-y-2 mb-4">
+                            {study.results.slice(0, 2).map((result, index) => (
+                              <div key={index} className="flex items-center text-xs text-muted-foreground">
+                                <div className="w-1.5 h-1.5 bg-[#4411ab] rounded-full mr-2 flex-shrink-0"></div>
+                                <span className="truncate">{result}</span>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Services - Minimal Tags */}
+                          <div className="mb-4">
+                            <div className="flex flex-wrap gap-1">
+                              {study.services.slice(0, 2).map((service, index) => (
+                                <span key={index} className="text-xs bg-[#4411ab]/10 text-[#4411ab] px-2 py-1 rounded-full">
+                                  {service}
+                                </span>
+                              ))}
+                              {study.services.length > 2 && (
+                                <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
+                                  +{study.services.length - 2} more
+                                </span>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* CTA Button - Minimal */}
+                          <div className="mt-auto">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="w-full px-4 py-2 text-sm font-semibold border-[#4411ab] text-[#4411ab] hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
+                              asChild
+                            >
+                              <Link href={study.href}>
+                                View Details
+                                <ArrowRight className="ml-2 w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                              </Link>
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Card Content - Minimal */}
-                  <div className="p-4 sm:p-6">
-                    <p className="text-sm text-muted-foreground mb-4 leading-relaxed line-clamp-3">
-                      {study.description}
-                    </p>
-
-                    {/* Key Results - Minimal */}
-                    <div className="space-y-2 mb-4">
-                      {study.results.slice(0, 2).map((result, index) => (
-                        <div key={index} className="flex items-center text-xs text-muted-foreground">
-                          <div className="w-1.5 h-1.5 bg-[#4411ab] rounded-full mr-2 flex-shrink-0"></div>
-                          <span className="truncate">{result}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Services - Minimal Tags */}
-                    <div className="mb-4">
-                      <div className="flex flex-wrap gap-1">
-                        {study.services.slice(0, 2).map((service, index) => (
-                          <span key={index} className="text-xs bg-[#4411ab]/10 text-[#4411ab] px-2 py-1 rounded-full">
-                            {service}
-                          </span>
-                        ))}
-                        {study.services.length > 2 && (
-                          <span className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full">
-                            +{study.services.length - 2} more
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {/* CTA Button - Minimal */}
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-full px-4 py-2 text-sm font-semibold border-[#4411ab] text-[#4411ab] hover:bg-[#4411ab] hover:text-white hover:border-[#4411ab] transition-all duration-300 group"
-                      asChild
-                    >
-                      <a href={study.href}>
-                        View Details
-                        <ArrowRight className="ml-2 w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            ))}
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-[-12px] sm:left-[-20px] bg-background border-primary/20 hover:bg-primary hover:text-white transition-colors" />
+              <CarouselNext className="right-[-12px] sm:right-[-20px] bg-background border-primary/20 hover:bg-primary hover:text-white transition-colors" />
+            </Carousel>
           </div>
 
           {/* View All Button - Minimal */}
@@ -536,7 +540,7 @@ export default function Home() {
       </section>
 
       {/* Services Teaser Section - Simple & Clean */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background">
+      <Section className="pt-12 pb-12 lg:pt-24 lg:pb-24 bg-background">
         <div>
           {/* Services Section Heading */}
           <div className="text-center mb-16">
@@ -621,7 +625,7 @@ export default function Home() {
       </Section>
 
       {/* Stats/Results Section - Simple & Clean */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background">
+      <Section className="py-24 bg-gradient-to-br from-white to-purple-100/100">
         <div>
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 md:mb-6">
@@ -709,7 +713,7 @@ export default function Home() {
       </Section>
 
       {/* Process/How We Work Section - Theme Aligned */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background overflow-hidden relative">
+      <Section className="pt-12 pb-12 lg:pt-24 lg:pb-24 bg-background overflow-hidden relative">
         <SectionHeader
           title="How We Work"
           subtitle="Our proven 4-step process ensures consistent, measurable results for every client through systematic execution and continuous optimization."
@@ -792,7 +796,7 @@ export default function Home() {
       </Section>
 
       {/* Why Choose Us Section - Left-Right Layout */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background overflow-hidden lg:overflow-visible">
+      <Section className="pt-12 pb-12 lg:pt-24 lg:pb-24 bg-gradient-to-br from-white to-purple-100/100 overflow-hidden lg:overflow-visible">
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -886,7 +890,7 @@ export default function Home() {
       </Section>
 
       {/* FAQ Section - Redesigned */}
-      <Section className="pt-8 pb-12 lg:pt-12 lg:pb-24 bg-background">
+      <Section className="pt-12 pb-12 lg:pt-24 lg:pb-12 bg-background">
         <div>
           {/* Section Header */}
           <div className="text-center mb-16">
