@@ -267,7 +267,8 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                                     ))}
                                 </ul>
                                 <Button
-                                    className={`w-full ${tier.featured ? 'bg-primary hover:bg-[#4411ab]' : 'bg-secondary hover:bg-[#4411ab] hover:text-white'}`}
+                                    variant={tier.featured ? "default" : "outline"}
+                                    className={`w-full ${tier.featured ? 'bg-primary hover:bg-[#4411ab]' : 'border-primary text-primary hover:bg-primary hover:text-white'}`}
                                     onClick={openModal}
                                 >
                                     {tier.cta}

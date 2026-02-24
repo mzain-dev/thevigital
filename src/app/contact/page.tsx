@@ -20,13 +20,6 @@ export default function ContactPage() {
       description: 'hello@roi-agency.com',
       action: 'Send Email',
       href: 'mailto:hello@roi-agency.com'
-    },
-    {
-      icon: Phone,
-      title: 'Call Us',
-      description: '+1 (555) 123-4567',
-      action: 'Call Now',
-      href: 'tel:+15551234567'
     }
   ];
 

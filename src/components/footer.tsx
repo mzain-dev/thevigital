@@ -105,27 +105,6 @@ export function Footer() {
                   </a>
                 </div>
               </div>
-              
-              <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primary mt-0.5" />
-                <div>
-                  <p className="font-medium text-foreground">Phone</p>
-                  <a href="tel:+15551234567" className="text-muted-foreground hover:text-primary transition-colors duration-200">
-                    +1 (555) 123-4567
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary mt-0.5" />
-                <div>
-                  <p className="font-medium text-foreground">Address</p>
-                  <p className="text-muted-foreground">
-                    123 Business Ave, Suite 100<br />
-                    New York, NY 10001
-                  </p>
-                </div>
-              </div>
             </div>
             
             <div className="pt-2">
