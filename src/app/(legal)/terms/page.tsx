@@ -136,8 +136,8 @@ export default function TermsPage() {
               <h3 className="text-xl font-bold text-foreground mb-4">Contact Information</h3>
               <p className="text-muted-foreground">
                 If you have questions about these terms, please contact us at{' '}
-                <a href="mailto:legal@roi-agency.com" className="text-primary hover:underline">
-                  legal@roi-agency.com
+                <a href="mailto:hello@thevigital.com" className="text-primary hover:underline">
+                  hello@thevigital.com
                 </a>
               </p>
             </div>

@@ -108,8 +108,8 @@ export default function PrivacyPage() {
               <h3 className="text-xl font-bold text-foreground mb-4">Contact Us</h3>
               <p className="text-muted-foreground">
                 If you have any questions about this privacy policy, please contact us at{' '}
-                <a href="mailto:privacy@roi-agency.com" className="text-primary hover:underline">
-                  privacy@roi-agency.com
+                <a href="mailto:hello@thevigital.com" className="text-primary hover:underline">
+                  hello@thevigital.com
                 </a>
               </p>
             </div>

@@ -17,9 +17,9 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: 'Email Us',
-      description: 'hello@roi-agency.com',
+      description: 'hello@thevigital.com',
       action: 'Send Email',
-      href: 'mailto:hello@roi-agency.com'
+      href: 'mailto:hello@thevigital.com'
     }
   ];
 

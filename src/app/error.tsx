@@ -84,7 +84,7 @@ export default function Error({
                   <Link href="/contact">Contact Support</Link>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
-                  <a href="mailto:support@roi-agency.com">Email Support</a>
+                  <a href="mailto:hello@thevigital.com">Email Support</a>
                 </Button>
               </div>
             </div>
