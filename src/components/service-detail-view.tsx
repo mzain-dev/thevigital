@@ -34,8 +34,20 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
     return (
         <div className="min-h-screen bg-background overflow-x-hidden">
             {/* Breadcrumb Navigation */}
-            <Section className="pt-8 pb-4 bg-muted/20">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Section className="pt-8 pb-4 relative overflow-hidden border-b border-border/40">
+                {/* Background Image for UI/UX Enhancement */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src="/ui-ux-breadcrumb-bg.png"
+                        alt="Breadcrumb Background"
+                        fill
+                        className="object-cover opacity-20 dark:opacity-10"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/90 backdrop-blur-sm"></div>
+                </div>
+
+                <div className="relative z-10 flex items-center gap-2 text-sm text-muted-foreground max-w-7xl mx-auto">
                     <Link href="/" className="hover:text-primary transition-colors duration-200">Home</Link>
                     <ArrowRight className="w-3 h-3" />
                     <Link href="/services" className="hover:text-primary transition-colors duration-200">Services</Link>
