@@ -128,7 +128,7 @@ export async function POST(req: Request) {
 
     // Send the email using Resend
     const result = await resend.emails.send({
-      from: 'Contact Form <onboarding@resend.dev>', // Use onboarding@resend.dev for testing without a verified domain
+      from: 'The Vigital Contact <hello@thevigital.com>', // Send from your verified domain
       to: 'hello@thevigital.com', // The destination email address
       subject: `New Lead: ${data.name} - ${data.service || 'General Inquiry'}`,
       html: htmlContent,
