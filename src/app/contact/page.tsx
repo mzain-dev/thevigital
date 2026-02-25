@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Mail, Phone, MessageSquare } from 'lucide-react';
+import { ContactForm } from '@/components/contact-form';
 
 export const metadata: Metadata = {
   title: 'Contact Us - ROI Agency',
@@ -35,69 +36,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="space-y-6">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-2xl">Send us a message</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First Name</Label>
-                    <Input id="firstName" placeholder="John" />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last Name</Label>
-                    <Input id="lastName" placeholder="Doe" />
-                  </div>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="john@company.com" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="company">Company</Label>
-                  <Input id="company" placeholder="Your Company Name" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="phone">Phone (Optional)</Label>
-                  <Input id="phone" type="tel" placeholder="+1 (555) 123-4567" />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="service">Service Interest</Label>
-                  <select 
-                    id="service" 
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                  >
-                    <option value="">Select a service</option>
-                    <option value="strategic-consulting">Strategic Consulting</option>
-                    <option value="digital-marketing">Digital Marketing</option>
-                    <option value="analytics-reporting">Analytics & Reporting</option>
-                    <option value="web-development">Web Development</option>
-                    <option value="seo-optimization">SEO Optimization</option>
-                    <option value="brand-strategy">Brand Strategy</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea 
-                    id="message" 
-                    placeholder="Tell us about your business goals and how we can help..."
-                    rows={5}
-                  />
-                </div>
-                
-                <Button size="lg" className="w-full py-6 bg-primary hover:bg-[#4411ab] group">
-                  <MessageSquare className="w-4 h-4 mr-2" />
-                  Send Message
-                </Button>
-              </CardContent>
-            </Card>
+            <ContactForm />
           </div>
           
           {/* Contact Information */}

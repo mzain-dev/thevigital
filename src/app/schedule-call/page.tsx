@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Calendar, Clock, Upload, Phone, Mail, User, FileText, CheckCircle } from 'lucide-react';
 import { Section } from '@/components/section';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 import { SERVICES_SUMMARY, TIME_SLOTS } from '@/lib/constants';
 
@@ -28,6 +29,7 @@ function ScheduleCallForm() {
     file: null as File | null
   });
 
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -85,6 +87,10 @@ function ScheduleCallForm() {
       newErrors.description = 'Please describe your project';
     }
 
+    if (!turnstileToken) {
+      newErrors.turnstile = 'Please complete the CAPTCHA verification';
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -97,15 +103,44 @@ function ScheduleCallForm() {
     }
 
     setIsSubmitting(true);
+    setErrors({});
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      const submitData = new FormData();
+      submitData.append('name', formData.fullName);
+      submitData.append('email', formData.email);
+      submitData.append('phone', formData.phone);
+      submitData.append('service', formData.service);
+      submitData.append('date', formData.date);
+      submitData.append('time', formData.time);
+      submitData.append('description', formData.description);
+      submitData.append('cf-turnstile-response', turnstileToken!);
+      if (formData.file) {
+        submitData.append('file', formData.file);
+      }
 
-      console.log('Form submitted:', formData);
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        // Omit Content-Type header to allow browser to set multipart/form-data boundary
+        body: submitData,
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Failed to submit consultation request.';
+        try {
+          const errorData = await response.json();
+          if (errorData.error) errorMessage = errorData.error;
+        } catch (e) {
+          // Fallback if not JSON
+        }
+        throw new Error(errorMessage);
+      }
+
+      console.log('Form submitted successfully');
       setIsSubmitted(true);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error submitting form:', error);
+      setErrors({ formError: error.message || 'An error occurred. Please try again.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -126,6 +161,7 @@ function ScheduleCallForm() {
             <Button
               onClick={() => {
                 setIsSubmitted(false);
+                setTurnstileToken(null);
                 setFormData({
                   fullName: '',
                   email: '',
@@ -175,6 +211,11 @@ function ScheduleCallForm() {
             </CardHeader>
             <CardContent className="pt-0">
               <form onSubmit={handleSubmit} className="space-y-6">
+                {errors.formError && (
+                  <div className="bg-red-50 text-red-800 p-3 rounded-md text-sm border border-red-200">
+                    {errors.formError}
+                  </div>
+                )}
                 {/* Personal Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -347,6 +388,20 @@ function ScheduleCallForm() {
                   <p className="text-sm text-muted-foreground">
                     Supported formats: PDF, DOC, DOCX, TXT, JPG, PNG (Max 10MB)
                   </p>
+                </div>
+
+                {/* CAPTCHA */}
+                <div className="space-y-2 pt-2 pb-2">
+                  <Turnstile 
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} 
+                    onSuccess={(token) => {
+                      setTurnstileToken(token);
+                      setErrors(prev => ({ ...prev, turnstile: '' }));
+                    }}
+                  />
+                  {errors.turnstile && (
+                    <p className="text-sm text-red-500">{errors.turnstile}</p>
+                  )}
                 </div>
 
                 {/* Submit Button */}

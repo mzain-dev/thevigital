@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Phone, Mail, User, FileText, Upload, Calendar, Clock, CheckCircle } from 'lucide-react';
+import { Turnstile } from '@marsidev/react-turnstile';
 
 import { SERVICES_SUMMARY, TIME_SLOTS } from '@/lib/constants';
 
@@ -35,12 +36,14 @@ interface ScheduleCallPopupProps {
 export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '' }: ScheduleCallPopupProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [file, setFile] = useState<File | null>(null);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
 
   const {
     register,
     handleSubmit,
     setValue,
     reset,
+    setError,
     formState: { errors, isSubmitting },
     watch
   } = useForm<FormData>({
@@ -69,17 +72,60 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
   };
 
   const onSubmit = async (data: FormData) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    console.log('Form Data:', data);
-    console.log('File:', file);
-    setIsSubmitted(true);
+    if (!turnstileToken) {
+      setError('root.serverError', {
+        type: 'server',
+        message: 'Please complete the CAPTCHA verification.',
+      });
+      return;
+    }
+
+    try {
+      const submitData = new FormData();
+      submitData.append('name', data.fullName);
+      submitData.append('email', data.email);
+      submitData.append('phone', data.phone);
+      submitData.append('service', data.service);
+      submitData.append('date', data.date);
+      submitData.append('time', data.time);
+      submitData.append('description', data.description);
+      submitData.append('cf-turnstile-response', turnstileToken);
+      if (file) {
+        submitData.append('file', file);
+      }
+
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        // Omit Content-Type header to let browser set boundary
+        body: submitData,
+      });
+
+      if (!response.ok) {
+        let errorMessage = 'Failed to submit consultation request.';
+        try {
+          const errorData = await response.json();
+          if (errorData.error) errorMessage = errorData.error;
+        } catch (e) {
+          // Fallback if not JSON
+        }
+        throw new Error(errorMessage);
+      }
+
+      setIsSubmitted(true);
+    } catch (error: any) {
+      console.error('Error submitting form:', error);
+      setError('root.serverError', {
+        type: 'server',
+        message: error.message || 'An error occurred. Please try again.',
+      });
+    }
   };
 
   const closeModal = () => {
     onOpenChange(false);
     setTimeout(() => {
       setIsSubmitted(false);
+      setTurnstileToken(null);
       reset();
       setFile(null);
     }, 300);
@@ -112,6 +158,12 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
           </div>
         ) : (
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-3 sm:space-y-4 px-3 sm:px-6 pb-4 sm:pb-6">
+            {errors.root?.serverError && (
+              <div className="bg-red-50 text-red-800 p-3 rounded-md text-xs sm:text-sm border border-red-200">
+                {errors.root.serverError.message}
+              </div>
+            )}
+            
             {/* Personal Information */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-4">
               <div className="space-y-1 sm:space-y-2">
@@ -279,6 +331,16 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
               <p className="text-xs text-muted-foreground">
                 Supported formats: PDF, DOC, DOCX, TXT, JPG, PNG (Max 10MB)
               </p>
+            </div>
+
+            {/* CAPTCHA */}
+            <div className="space-y-1 sm:space-y-2 pt-1">
+              <Turnstile 
+                siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!} 
+                onSuccess={(token) => {
+                  setTurnstileToken(token);
+                }}
+              />
             </div>
 
             {/* Submit Button */}
