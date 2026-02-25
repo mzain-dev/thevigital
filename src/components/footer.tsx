@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Loader2, CheckCircle } from 'lucide-react';
 import { appendLeadDataToFormData } from '@/lib/lead-tracking';
 import { SERVICES_SUMMARY } from '@/lib/constants';
@@ -48,9 +49,13 @@ export function Footer() {
           {/* Column 1: Brand + Tagline */}
           <div className="lg:col-span-1 space-y-6">
             <div className="flex items-center gap-3">
-              <h3 className="text-2xl font-bold text-foreground">
-                <span className="text-primary">Vigital</span>
-              </h3>
+              <Image 
+                src="/vigital-logo.png" 
+                alt="Vigital Logo" 
+                width={200} 
+                height={70} 
+                className="w-auto h-13 sm:h-16 object-contain"
+              />
             </div>
             <p className="text-muted-foreground leading-relaxed max-w-xs break-words">
               We help businesses maximize their return on investment through strategic digital solutions and data-driven insights.

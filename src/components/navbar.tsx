@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Menu, X, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import { SERVICES_SUMMARY } from '@/lib/constants';
@@ -23,9 +24,14 @@ export function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <div className="flex items-center">
-              <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground">
-                <span className="text-primary">Vigital</span>
-              </h1>
+              <Image 
+                src="/vigital-logo.png" 
+                alt="Vigital Logo" 
+                width={200} 
+                height={70} 
+                className="w-auto h-13 sm:h-16 object-contain"
+                priority
+              />
             </div>
           </Link>
 
