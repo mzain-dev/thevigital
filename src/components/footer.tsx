@@ -155,7 +155,7 @@ export function Footer() {
             </div>
             
             <div className="max-w-2xl mx-auto">
-              <form className="relative" onSubmit={handleSubscribe}>
+              <form className="relative" onSubmit={handleSubscribe} suppressHydrationWarning>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 bg-white rounded-xl p-1 shadow-lg border border-primary/20 relative">
                   <input
                     type="email"
@@ -164,10 +164,12 @@ export function Footer() {
                     className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base rounded-lg border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 min-w-0"
                     required
                     disabled={isSubscribing || subscribeSuccess}
+                    suppressHydrationWarning
                   />
                   <button 
                     type="submit"
                     disabled={isSubscribing || subscribeSuccess}
+                    suppressHydrationWarning
                     className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 text-sm sm:text-base bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-[#4411ab] transition-all duration-300 flex-shrink-0 whitespace-nowrap shadow-md hover:shadow-lg group flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubscribing ? (
