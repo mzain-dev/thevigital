@@ -34,6 +34,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: "/Vigital-icon.png",
+    shortcut: "/Vigital-icon.png",
+    apple: "/Vigital-icon.png",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
