@@ -18,6 +18,7 @@ interface ServiceDetailViewProps {
 
 export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [popupSource, setPopupSource] = useState('Service Detail Page');
 
     const service = serviceData.find((s) => s.slug === slug);
 
@@ -25,7 +26,8 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
         return null; // Should be handled by parent, but safe guard
     }
 
-    const openModal = () => {
+    const openModal = (source: string) => {
+        setPopupSource(source);
         setIsModalOpen(true);
     };
 
@@ -97,7 +99,7 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                         {/* CTA Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 pt-2">
                             <Button
-                                onClick={openModal}
+                                onClick={() => openModal(`${service.title} - Hero CTA`)}
                                 size="lg"
                                 className="px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-primary hover:bg-[#4411ab] group"
                             >
@@ -269,7 +271,7 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                                 <Button
                                     variant={tier.featured ? "default" : "outline"}
                                     className={`w-full ${tier.featured ? 'bg-primary hover:bg-[#4411ab]' : 'border-primary text-primary hover:bg-primary hover:text-white'}`}
-                                    onClick={openModal}
+                                    onClick={() => openModal(`${service.title} - Pricing Tier: ${tier.name}`)}
                                 >
                                     {tier.cta}
                                 </Button>
@@ -307,7 +309,7 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                 subtitle={`Transform your business with our proven ${service.title.toLowerCase()} solutions.Let's discuss your project and create a custom strategy that delivers measurable results.`}
                 primaryButton={{
                     text: "Schedule a Call",
-                    href: "/schedule-call",
+                    onClick: () => openModal(`${service.title} - Bottom CTA`),
                     icon: Rocket
                 }}
                 secondaryButton={{
@@ -322,6 +324,7 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                 isOpen={isModalOpen}
                 onOpenChange={setIsModalOpen}
                 preSelectedService={service.slug}
+                source={popupSource}
             />
         </div>
     );

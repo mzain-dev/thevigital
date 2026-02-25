@@ -32,9 +32,10 @@ interface ScheduleCallPopupProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
   preSelectedService?: string;
+  source?: string;
 }
 
-export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '' }: ScheduleCallPopupProps) {
+export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '', source = 'Schedule Call Popup' }: ScheduleCallPopupProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [file, setFile] = useState<File | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
@@ -96,7 +97,7 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
       }
 
       // Append lead tracking data
-      appendLeadDataToFormData(submitData, 'Schedule Call Popup');
+      appendLeadDataToFormData(submitData, source);
 
       const response = await fetch('/api/contact', {
         method: 'POST',

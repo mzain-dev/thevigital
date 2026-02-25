@@ -10,8 +10,9 @@ interface CTASectionProps {
   subtitle: string;
   primaryButton: {
     text: string;
-    href: string;
+    href?: string;
     icon?: React.ComponentType<{ className?: string }>;
+    onClick?: () => void;
   };
   secondaryButton: {
     text: string;
@@ -85,17 +86,29 @@ export function CTASection({
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-            <Button
-              size="sm"
-              className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-black hover:bg-[#4411ab] group"
-              asChild
-            >
-              <Link href={primaryButton.href}>
+            {primaryButton.onClick ? (
+              <Button
+                size="sm"
+                className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-black hover:bg-[#4411ab] group"
+                onClick={primaryButton.onClick}
+              >
                 {primaryButton.icon && <primaryButton.icon className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />}
                 {primaryButton.text}
                 <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </Link>
-            </Button>
+              </Button>
+            ) : (
+              <Button
+                size="sm"
+                className="px-12 py-5 sm:px-8 sm:py-6 text-sm sm:text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 bg-black hover:bg-[#4411ab] group"
+                asChild
+              >
+                <Link href={primaryButton.href || "#"}>
+                  {primaryButton.icon && <primaryButton.icon className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />}
+                  {primaryButton.text}
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Link>
+              </Button>
+            )}
             <Button
               variant="outline"
               size="sm"

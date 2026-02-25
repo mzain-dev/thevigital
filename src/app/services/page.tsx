@@ -16,10 +16,12 @@ import { SERVICES_SUMMARY } from '@/lib/constants';
 export default function ServicesPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState('');
+  const [popupSource, setPopupSource] = useState('Services Page');
 
-  const openModal = (serviceId: string) => {
+  const openModal = (serviceId: string, source: string) => {
     setIsModalOpen(true);
     setSelectedService(serviceId);
+    setPopupSource(source);
   };
 
   const services = useMemo(() => SERVICES_SUMMARY, []);
@@ -232,7 +234,7 @@ export default function ServicesPage() {
                   {/* Actions - Always at Bottom */}
                   <div className="mt-8 pt-6 border-t border-border/50 flex flex-col sm:flex-row gap-3">
                     <Button
-                      onClick={() => openModal(service.slug)}
+                      onClick={() => openModal(service.slug, `Services List - ${service.title} Card`)}
                       className="flex-1 bg-primary hover:bg-[#4411ab] text-white shadow-md group/btn"
                     >
                       Schedule Call
@@ -266,7 +268,7 @@ export default function ServicesPage() {
         subtitle="Get a custom quote for your growth journey. Let's discuss how we can help you achieve measurable, sustainable growth."
         primaryButton={{
           text: "Schedule a Call",
-          href: "/schedule-call",
+          onClick: () => openModal('', 'Services Page - Bottom CTA'),
           icon: Rocket
         }}
         secondaryButton={{
@@ -281,6 +283,7 @@ export default function ServicesPage() {
         isOpen={isModalOpen}
         onOpenChange={setIsModalOpen}
         preSelectedService={selectedService}
+        source={popupSource}
       />
 
       <style jsx>{`
