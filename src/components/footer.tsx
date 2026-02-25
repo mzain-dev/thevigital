@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Loader2, CheckCircle } from 'lucide-react';
 import { appendLeadDataToFormData } from '@/lib/lead-tracking';
+import { SERVICES_SUMMARY } from '@/lib/constants';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -57,16 +58,13 @@ export function Footer() {
             
             {/* Social Links */}
             <div className="flex items-center gap-4">
-              <Link href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-[#4411ab] hover:text-white transition-all duration-300">
+              <Link href="https://www.facebook.com/Vigitalofficial/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-[#4411ab] hover:text-white transition-all duration-300">
                 <Facebook className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-[#4411ab] hover:text-white transition-all duration-300">
-                <Twitter className="w-4 h-4" />
-              </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-[#4411ab] hover:text-white transition-all duration-300">
+              <Link href="https://www.linkedin.com/company/vigitalofficial/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-[#4411ab] hover:text-white transition-all duration-300">
                 <Linkedin className="w-4 h-4" />
               </Link>
-              <Link href="#" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-[#4411ab] hover:text-white transition-all duration-300">
+              <Link href="https://www.instagram.com/vigitalofficial" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-[#4411ab] hover:text-white transition-all duration-300">
                 <Instagram className="w-4 h-4" />
               </Link>
             </div>
@@ -103,26 +101,12 @@ export function Footer() {
           <div className="space-y-6">
             <h4 className="text-lg font-bold text-foreground">Our Services</h4>
             <nav className="space-y-3">
-              <Link href="#" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
-                Strategic Consulting
-              </Link>
-              <Link href="#" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
-                Digital Marketing
-              </Link>
-              <Link href="#" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
-                Analytics & Reporting
-              </Link>
-              <Link href="#" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
-                Web Development
-              </Link>
-              <Link href="#" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group">
-                <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
-                SEO Optimization
-              </Link>
+              {SERVICES_SUMMARY.map((service) => (
+                <Link key={service.id} href={`/services/${service.slug}`} className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors duration-200 group">
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-200" />
+                  {service.title}
+                </Link>
+              ))}
             </nav>
           </div>
 

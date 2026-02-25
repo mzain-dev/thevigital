@@ -38,21 +38,22 @@ export default function ServiceDetailView({ slug }: ServiceDetailViewProps) {
                 {/* Background Image for UI/UX Enhancement */}
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/ui-ux-breadcrumb-bg.png"
+                        src="/ui-ux-breadcrumb-new-bg.png"
                         alt="Breadcrumb Background"
                         fill
-                        className="object-cover opacity-20 dark:opacity-10"
+                        className="object-cover"
                         priority
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/60 to-background/90 backdrop-blur-sm"></div>
+                    {/* Subtle overlay to ensure text readability without hiding the image */}
+                    <div className="absolute inset-0 bg-black/40"></div>
                 </div>
 
-                <div className="relative z-10 flex items-center gap-2 text-sm text-muted-foreground max-w-7xl mx-auto">
-                    <Link href="/" className="hover:text-primary transition-colors duration-200">Home</Link>
-                    <ArrowRight className="w-3 h-3" />
-                    <Link href="/services" className="hover:text-primary transition-colors duration-200">Services</Link>
-                    <ArrowRight className="w-3 h-3" />
-                    <span className="text-foreground font-medium">{service.title}</span>
+                <div className="relative z-10 flex items-center gap-2 text-sm text-white/80 max-w-7xl mx-auto drop-shadow-md">
+                    <Link href="/" className="hover:text-white transition-colors duration-200">Home</Link>
+                    <ArrowRight className="w-3 h-3 text-white/80" />
+                    <Link href="/services" className="hover:text-white transition-colors duration-200">Services</Link>
+                    <ArrowRight className="w-3 h-3 text-white/80" />
+                    <span className="text-white font-semibold">{service.title}</span>
                 </div>
             </Section>
 
