@@ -8,6 +8,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { MessageSquare, Loader2 } from 'lucide-react';
 import { Turnstile } from '@marsidev/react-turnstile';
+import { appendLeadDataToFormData } from '@/lib/lead-tracking';
+import { SERVICES_SUMMARY } from '@/lib/constants';
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,6 +35,9 @@ export function ContactForm() {
     
     // Override name to be the combined explicitly
     formData.set('name', data.name);
+    
+    // Append lead tracking data
+    appendLeadDataToFormData(formData, 'Contact Page Form');
 
     try {
       const response = await fetch('/api/contact', {
@@ -116,12 +121,11 @@ export function ContactForm() {
                 className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               >
                 <option value="">Select a service</option>
-                <option value="strategic-consulting">Strategic Consulting</option>
-                <option value="digital-marketing">Digital Marketing</option>
-                <option value="analytics-reporting">Analytics & Reporting</option>
-                <option value="web-development">Web Development</option>
-                <option value="seo-optimization">SEO Optimization</option>
-                <option value="brand-strategy">Brand Strategy</option>
+                {SERVICES_SUMMARY.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.title}
+                  </option>
+                ))}
                 <option value="other">Other</option>
               </select>
             </div>

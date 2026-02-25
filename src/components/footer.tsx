@@ -1,9 +1,43 @@
-import React from 'react';
+"use client";
+
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Facebook, Twitter, Linkedin, Instagram, Loader2, CheckCircle } from 'lucide-react';
+import { appendLeadDataToFormData } from '@/lib/lead-tracking';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [subscribeSuccess, setSubscribeSuccess] = useState(false);
+  const [subscribeError, setSubscribeError] = useState('');
+
+  const handleSubscribe = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubscribing(true);
+    setSubscribeError('');
+    
+    const formData = new FormData(e.currentTarget);
+    appendLeadDataToFormData(formData, 'Footer Newsletter');
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error('Failed to subscribe');
+      
+      setSubscribeSuccess(true);
+      (e.target as HTMLFormElement).reset();
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubscribeSuccess(false), 5000);
+    } catch (err) {
+      setSubscribeError('Failed to subscribe. Please try again.');
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <footer className="bg-background border-t border-border">
@@ -132,23 +166,38 @@ export function Footer() {
             </div>
             
             <div className="max-w-2xl mx-auto">
-              <form className="relative">
-                <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 bg-white rounded-xl p-1 shadow-lg border border-primary/20">
+              <form className="relative" onSubmit={handleSubscribe}>
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-0 bg-white rounded-xl p-1 shadow-lg border border-primary/20 relative">
                   <input
                     type="email"
+                    name="email"
                     placeholder="Enter your email address"
                     className="flex-1 px-4 py-3 sm:py-4 text-sm sm:text-base rounded-lg border-0 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-0 min-w-0"
                     required
+                    disabled={isSubscribing || subscribeSuccess}
                   />
                   <button 
                     type="submit"
-                    className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 text-sm sm:text-base bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-[#4411ab] transition-all duration-300 flex-shrink-0 whitespace-nowrap shadow-md hover:shadow-lg group flex items-center justify-center gap-2"
+                    disabled={isSubscribing || subscribeSuccess}
+                    className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 text-sm sm:text-base bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-[#4411ab] transition-all duration-300 flex-shrink-0 whitespace-nowrap shadow-md hover:shadow-lg group flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    <Mail className="w-4 h-4" />
-                    Subscribe
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                    {isSubscribing ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : subscribeSuccess ? (
+                      <CheckCircle className="w-4 h-4" />
+                    ) : (
+                      <Mail className="w-4 h-4" />
+                    )}
+                    {isSubscribing ? 'Subscribing...' : subscribeSuccess ? 'Subscribed!' : 'Subscribe'}
+                    {!isSubscribing && !subscribeSuccess && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />}
                   </button>
                 </div>
+                {subscribeError && (
+                  <p className="absolute -bottom-6 left-2 text-xs text-red-500 font-medium">{subscribeError}</p>
+                )}
+                {subscribeSuccess && (
+                  <p className="absolute -bottom-6 left-2 text-xs text-green-500 font-medium">Thanks for joining our newsletter!</p>
+                )}
               </form>
               
               <div className="flex items-center justify-center gap-6 mt-4 text-xs text-muted-foreground">

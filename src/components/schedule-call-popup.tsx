@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Phone, Mail, User, FileText, Upload, Calendar, Clock, CheckCircle } from 'lucide-react';
 import { Turnstile } from '@marsidev/react-turnstile';
+import { appendLeadDataToFormData } from '@/lib/lead-tracking';
 
 import { SERVICES_SUMMARY, TIME_SLOTS } from '@/lib/constants';
 
@@ -93,6 +94,9 @@ export function ScheduleCallPopup({ isOpen, onOpenChange, preSelectedService = '
       if (file) {
         submitData.append('file', file);
       }
+
+      // Append lead tracking data
+      appendLeadDataToFormData(submitData, 'Schedule Call Popup');
 
       const response = await fetch('/api/contact', {
         method: 'POST',
