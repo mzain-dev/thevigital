@@ -140,7 +140,7 @@ export default function Home() {
   const caseStudies = caseStudiesData.map((study, index) => ({
     id: study.id,
     title: study.company,
-    industry: study.industry,
+    industry: study.category,
     description: study.description,
     logo: study.company.substring(0, 2).toUpperCase(),
     services: study.services,

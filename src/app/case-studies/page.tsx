@@ -1,19 +1,24 @@
-import { Metadata } from 'next';
+"use client";
+
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CTASection } from '@/components/cta-section';
 import { ArrowRight, TrendingUp, Users, DollarSign, Target, Clock, CheckCircle, Star, BarChart3, Globe, Zap, Award, Rocket } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { caseStudiesData } from '@/lib/case-studies-data';
 
-export const metadata: Metadata = {
-  title: 'Case Studies - ROI Agency',
-  description: 'Explore real success stories and case studies showcasing how we\'ve helped businesses achieve exceptional ROI and growth.',
-};
-
 export default function CaseStudiesPage() {
+  const [activeTab, setActiveTab] = useState('All Projects');
+  const categories = ['All Projects', ...Array.from(new Set(caseStudiesData.map(study => study.category)))];
+  
+  const filteredStudies = activeTab === 'All Projects' 
+    ? caseStudiesData 
+    : caseStudiesData.filter(study => study.category === activeTab);
+    
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section - Full Viewport Height */}
@@ -125,9 +130,27 @@ export default function CaseStudiesPage() {
       {/* Case Studies Grid */}
       <section className="py-8 sm:py-12">
         <div className="container mx-auto px-4 lg:px-8 max-w-7xl">
+          
+          {/* Categories Tabs */}
+          <div className="flex justify-center mb-12 md:mb-12 w-full px-2 md:px-0">
+             <Tabs defaultValue="All Projects" className="w-full max-w-4xl flex flex-col items-center" onValueChange={setActiveTab}>
+              <TabsList className="flex w-full flex-wrap justify-center gap-2 md:gap-3 p-0 bg-transparent mb-2 md:mb-8">
+                {categories.map((category) => (
+                  <TabsTrigger 
+                    key={category} 
+                    value={category}
+                    className="flex-none rounded-full px-3 py-1.5 md:px-6 md:py-1.5 text-xs md:text-base font-medium data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-muted text-foreground border border-transparent shadow-md hover:bg-muted/80 data-[state=active]:shadow-md transition-all duration-300 whitespace-nowrap"
+                  >
+                    {category}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </Tabs>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {caseStudiesData.map((study) => (
-              <div key={study.id} className="group">
+            {filteredStudies.map((study) => (
+              <div key={study.id} className="group animate-in fade-in slide-in-from-bottom-4 duration-700 fill-mode-both">
                 <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden h-full hover:shadow-xl transition-all duration-300">
                   {/* Card Image */}
                   <div className="h-48 sm:h-52 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center relative overflow-hidden">
@@ -222,7 +245,7 @@ export default function CaseStudiesPage() {
             <div className="text-center">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border border-[#4411ab] rounded-xl flex items-center justify-center mx-auto mb-3">
                 <Users className="w-6 h-6 sm:w-8 sm:h-8 text-[#4411ab]" />
-              </div>
+               </div>
               <div className="text-xl sm:text-2xl font-bold text-foreground mb-1">95%</div>
               <div className="text-sm text-muted-foreground">Client Retention</div>
             </div>

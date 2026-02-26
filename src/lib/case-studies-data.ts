@@ -1,7 +1,7 @@
 import { 
     DollarSign, Users, Target, TrendingUp, Globe, BarChart3, Star, Clock, 
     CheckCircle, LucideIcon, Zap, Shield, Smartphone, LayoutDashboard, 
-    Search, Settings, Server, Heart, BookOpen, ZoomIn
+    Search, Settings, Server, Heart, BookOpen, ZoomIn, Database
 } from 'lucide-react';
 
 export interface CaseStudyMetric {
@@ -58,6 +58,7 @@ export interface CaseStudy {
     results: Record<string, CaseStudyResultItem>;
     metrics: CaseStudyMetric[];
     description: string;
+    category: 'Web Development' | 'Designing' | 'Digital Marketing' | 'AI Agents';
     services: string[];
     badge: string;
     badgeVariant: 'default' | 'secondary' | 'outline' | 'destructive';
@@ -116,6 +117,7 @@ export const caseStudiesData: CaseStudy[] = [
             { label: 'Conversion Rate', before: '2.1%', after: '6.0%', improvement: '+185%' }
         ],
         description: 'A struggling SaaS startup was losing customers faster than they could acquire them. Their onboarding was broken, and their pricing page confused prospects. Through comprehensive funnel analysis and optimization, we identified key bottlenecks, simplified their core messaging, and implemented data-driven solutions that completely transformed their business trajectory. Within 8 months, they achieved profitability.',
+        category: 'Digital Marketing',
         services: ['Funnel Optimization', 'A/B Testing', 'Conversion Rate Optimization', 'Customer Retention'],
         badge: 'Featured',
         badgeVariant: 'default',
@@ -161,6 +163,7 @@ export const caseStudiesData: CaseStudy[] = [
             { label: 'Social Media Followers', before: '890', after: '3,200', improvement: '+260%' }
         ],
         description: 'A traditional, multi-location restaurant group was struggling to adapt to the digital age, heavily reliant on physical foot traffic that had dried up. We created a comprehensive digital strategy that included modern website development with robust e-commerce capabilities, an intuitive online ordering system, and aggressive localized social media management to win back the local market.',
+        category: 'Web Development',
         services: ['Web Development', 'Online Ordering', 'Social Media Management', 'Local SEO'],
         badge: 'Popular',
         badgeVariant: 'secondary',
@@ -205,6 +208,7 @@ export const caseStudiesData: CaseStudy[] = [
             { label: 'New Partnerships', before: '2', after: '14', improvement: '+600%' }
         ],
         description: 'A deeply traditional manufacturing company needed to severely modernize their approach to reach totally new customer segments and compete on a global digital stage. We developed a comprehensive B2B marketing strategy that positioned their technical superiority at the forefront of their digital identity, completely overhauling how they capture, nurture, and close enterprise-level leads.',
+        category: 'Digital Marketing',
         services: ['B2B Marketing', 'Content Strategy', 'Lead Generation', 'Partnership Development'],
         badge: 'Premium',
         badgeVariant: 'outline',
@@ -249,6 +253,7 @@ export const caseStudiesData: CaseStudy[] = [
             { label: 'Cart Abandonment', before: '68%', after: '34%', improvement: '-50%' }
         ],
         description: 'An emerging eco-friendly fashion brand was struggling to convert their limited online traffic into actual sales despite having incredible products. We meticulously audited their buyer journey, identified severe friction points in the checkout process, and rolled out comprehensive optimization strategies alongside highly targeted email retargeting flows.',
+        category: 'Web Development',
         services: ['E-commerce Optimization', 'Conversion Rate Optimization', 'SEO', 'Email Marketing'],
         badge: 'Featured',
         badgeVariant: 'default',
@@ -293,6 +298,7 @@ export const caseStudiesData: CaseStudy[] = [
             { label: 'Website Traffic', before: '2,100', after: '12,800', improvement: '+510%' }
         ],
         description: 'A highly respected but traditional medical practice needed to vastly modernize their approach to patient acquisition and management to stay relevant. We architected a comprehensive digital strategy that strictly respected healthcare compliance regulations while implementing a frictionless online booking experience and aggressive reputation management.',
+        category: 'Digital Marketing',
         services: ['Healthcare Marketing', 'Website Development', 'Patient Acquisition', 'Online Booking'],
         badge: 'New',
         badgeVariant: 'secondary',
@@ -337,6 +343,7 @@ export const caseStudiesData: CaseStudy[] = [
             { label: 'Average Case Value', before: '$7,500', after: '$9,600', improvement: '+28%' }
         ],
         description: 'An elite law firm was struggling to attract the caliber of corporate clients they deserved, often losing out to larger bureaucratic competitors. We developed a sophisticated professional services marketing strategy that elevated their partners, positioned them as absolute thought leaders in their specific legal niches, and dramatically increased their inbound high-value case volume.',
+        category: 'Designing',
         services: ['Professional Services Marketing', 'Content Marketing', 'Client Acquisition', 'Thought Leadership'],
         badge: 'Premium',
         badgeVariant: 'outline',
@@ -359,5 +366,84 @@ export const caseStudiesData: CaseStudy[] = [
         ],
         techStack: defaultTechStack,
         liveLink: "https://example.com/legal"
+    },
+    {
+        id: 7,
+        slug: 'ai-sales-agent-deployment',
+        title: '24/7 AI Sales Conversions',
+        company: 'AutoMotive Group',
+        industry: 'Automotive',
+        duration: '4 months',
+        challenge: 'Missing after-hours leads and spending too much on tier-1 support staff for basic vehicle inquiries.',
+        solution: 'Custom AI agent trained on the dealership\'s entire inventory, pricing, and financing options to handle inquiries automatically.',
+        results: {
+            conversions: { value: '+45%', icon: Target, color: 'text-purple-600' },
+            supportCosts: { value: '-60%', icon: DollarSign, color: 'text-green-600' },
+            leads: { value: '+120%', icon: Users, color: 'text-blue-600' }
+        },
+        metrics: [
+            { label: 'After-Hours Leads', before: '15/week', after: '85/week', growth: '+466%' },
+            { label: 'Response Time', before: '4 hours', after: '4 seconds', improvement: '+99%' },
+            { label: 'Support Costs', before: '$12K/mo', after: '$4.8K/mo', improvement: '-60%' },
+            { label: 'Test Drives Booked', before: '45/mo', after: '92/mo', improvement: '+104%' }
+        ],
+        description: 'A regional automotive group was losing significant business during off-hours as competitors captured impatient prospects. We developed a robust AI agent tightly integrated with their inventory management system that could qualify leads, discuss pricing, and even schedule test drives completely autonomously.',
+        category: 'AI Agents',
+        services: ['AI Agent Development', 'Process Automation', 'Lead Qualification', 'System Integration'],
+        badge: 'New',
+        badgeVariant: 'default',
+        testimonial: {
+            quote: "The AI agent literally pays for itself in just the first week of every month. It's like having our best salesperson working 24/7 without taking vacations.",
+            author: "Michael Chang",
+            role: "Operations Director, AutoMotive Group"
+        },
+        timeline: [
+            { month: 'Month 1', activity: 'Knowledge base creation and inventory API integration' },
+            { month: 'Month 2', activity: 'AI persona training and edge-case prompt engineering' },
+            { month: 'Month 3', activity: 'CRM integration and limited beta rollout on main website' },
+            { month: 'Month 4', activity: 'Full deployment across social channels and website with handoff' }
+        ],
+        features: [
+            { title: "Inventory Syncing", description: "Real-time lookups to verify if a specific vehicle trim is currently on the lot.", icon: Database },
+            { title: "Human Handoff", description: "Seamlessly routes highly-qualified buyers directly to available managers.", icon: Users },
+            { title: "Multi-language Support", description: "Automatically converses fluently in Spanish and English.", icon: Globe },
+            { title: "SMS Integration", description: "Follows up with prospects right via SMS if they disconnect from the site.", icon: Smartphone }
+        ]
+    },
+    {
+        id: 8,
+        slug: 'local-service-wordpress-platform',
+        title: 'Local Plumber Domination',
+        company: 'Apex Plumbing',
+        industry: 'Home Services',
+        duration: '3 months',
+        challenge: 'Reliant on expensive aggregators (HomeAdvisor, Yelp) for leads because their own website looked ancient and ranked poorly.',
+        solution: 'Modern, high-converting WordPress website optimized heavily for local search and mobile users in a panic.',
+        results: {
+            organicTraffic: { value: '+310%', icon: TrendingUp, color: 'text-green-600' },
+            calls: { value: '+185%', icon: Smartphone, color: 'text-blue-600' },
+            CPA: { value: '-65%', icon: DollarSign, color: 'text-purple-600' }
+        },
+        metrics: [
+            { label: 'Organic Traffic', before: '320/mo', after: '1,450/mo', growth: '+353%' },
+            { label: 'Emergency Calls', before: '12/mo', after: '48/mo', improvement: '+300%' },
+            { label: 'Cost Per Lead', before: '$85', after: '$28', improvement: '-67%' },
+            { label: 'Google Rank', before: 'Page 5', after: 'Position #2', improvement: '+95%' }
+        ],
+        description: 'A successful local plumbing business was tired of paying exorbitant fees to lead-generation platforms. They needed to own their traffic. We built a lightning-fast custom WordPress site architected specifically for high-stress "emergency" conversions. Coupled with aggressive Local SEO, they now generate their own exclusive, highly-qualified leads.',
+        category: 'Web Development',
+        services: ['WordPress Development', 'Local SEO', 'Conversion Rate Optimization', 'Content Creation'],
+        badge: 'Featured',
+        badgeVariant: 'secondary',
+        testimonial: {
+            quote: "We finally fired our lead vendors. The new WordPress site ranks higher than the aggregators in our city and the leads we get call us directly. Total game changer.",
+            author: "Dave Roberts",
+            role: "Owner, Apex Plumbing"
+        },
+        timeline: [
+            { month: 'Month 1', activity: 'Competitor analysis, keyword mapping, and WordPress wireframing' },
+            { month: 'Month 2', activity: 'Custom theme development and mobile-first responsive coding' },
+            { month: 'Month 3', activity: 'Content migration, on-page SEO optimization, and formal launch' }
+        ]
     }
 ];
