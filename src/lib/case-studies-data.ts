@@ -1,4 +1,8 @@
-import { DollarSign, Users, Target, TrendingUp, Globe, BarChart3, Star, Clock, CheckCircle, LucideIcon } from 'lucide-react';
+import { 
+    DollarSign, Users, Target, TrendingUp, Globe, BarChart3, Star, Clock, 
+    CheckCircle, LucideIcon, Zap, Shield, Smartphone, LayoutDashboard, 
+    Search, Settings, Server, Heart, BookOpen, ZoomIn
+} from 'lucide-react';
 
 export interface CaseStudyMetric {
     label: string;
@@ -25,6 +29,23 @@ export interface CaseStudyTestimonial {
     role: string;
 }
 
+export interface CaseStudyFeature {
+    title: string;
+    description: string;
+    icon: LucideIcon;
+}
+
+export interface TechStackItem {
+    name: string;
+    icon: string; // URL to svg or devicon class
+    reason: string;
+}
+
+export interface TechStackCategory {
+    category: string;
+    technologies: TechStackItem[];
+}
+
 export interface CaseStudy {
     id: number;
     slug: string;
@@ -42,7 +63,36 @@ export interface CaseStudy {
     badgeVariant: 'default' | 'secondary' | 'outline' | 'destructive';
     testimonial: CaseStudyTestimonial;
     timeline: CaseStudyTimelineItem[];
+    features?: CaseStudyFeature[];
+    techStack?: TechStackCategory[];
+    liveLink?: string;
+    visualShowcase?: string[];
 }
+
+const defaultTechStack: TechStackCategory[] = [
+    {
+        category: "Frontend",
+        technologies: [
+            { name: "Next.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", reason: "For unparalleled SEO, server-side rendering, and instant page loads." },
+            { name: "React", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", reason: "Component-driven UI architecture." },
+            { name: "Tailwind CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", reason: "Rapid, consistent styling system." }
+        ]
+    },
+    {
+        category: "Backend & Database",
+        technologies: [
+            { name: "Node.js", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg", reason: "Scalable runtime for API services." },
+            { name: "PostgreSQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg", reason: "Reliable relational data storage." }
+        ]
+    },
+    {
+        category: "Infrastructure",
+        technologies: [
+            { name: "Vercel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg", reason: "Edge network deployment." },
+            { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", reason: "Scalable cloud services and media storage." }
+        ]
+    }
+];
 
 export const caseStudiesData: CaseStudy[] = [
     {
@@ -79,7 +129,16 @@ export const caseStudiesData: CaseStudy[] = [
             { month: 'Month 3-4', activity: 'Funnel redesign and rigorous A/B testing rollout' },
             { month: 'Month 5-6', activity: 'Full Implementation and continuous optimization' },
             { month: 'Month 7-8', activity: 'Scale and rollout of advanced marketing automation' }
-        ]
+        ],
+        features: [
+            { title: "Dynamic A/B Testing Engine", description: "Implemented customized variant testing enabling real-time conversion adjustments.", icon: Shield },
+            { title: "Automated Onboarding flows", description: "Redesigned step-by-step user onboarding, significantly reducing drop-offs.", icon: Target },
+            { title: "Real-time Analytics Dashboard", description: "Built a custom dashboard tracking user acquisitions, MRR, and churn.", icon: LayoutDashboard },
+            { title: "Scalable API Architecture", description: "Refactored legacy endpoints to handle 10x simultaneous user connections.", icon: Server }
+        ],
+        techStack: defaultTechStack,
+        liveLink: "https://example.com/techflow",
+        visualShowcase: ["/images/showcase-techflow-1.jpg", "/images/showcase-techflow-2.jpg", "/images/showcase-techflow-3.jpg"]
     },
     {
         id: 2,
@@ -115,7 +174,15 @@ export const caseStudiesData: CaseStudy[] = [
             { month: 'Month 2-3', activity: 'Hyper-local social media strategy and content creation' },
             { month: 'Month 4-5', activity: 'Local SEO overhaul and Google My Business optimization' },
             { month: 'Month 6', activity: 'Advanced analytics setup and performance monitoring dashboards' }
-        ]
+        ],
+        features: [
+            { title: "Custom POS Integration", description: "Synced online orders directly to the kitchen's existing Point of Sale system.", icon: Search },
+            { title: "Mobile-First Ordering", description: "Optimized the entire menu browsing and checkout experience for smartphones.", icon: Smartphone },
+            { title: "Geo-targeted Marketing", description: "Automated local ad spending based on location proximity to branches.", icon: Target },
+            { title: "Review Management System", description: "Integrated automated feedback requests post-delivery.", icon: Star }
+        ],
+        techStack: defaultTechStack,
+        liveLink: "https://example.com/urbanbistro"
     },
     {
         id: 3,
@@ -151,7 +218,15 @@ export const caseStudiesData: CaseStudy[] = [
             { month: 'Month 3-4', activity: 'Enterprise website redesign and dense content strategy mapping' },
             { month: 'Month 5-7', activity: 'Multi-channel lead generation campaigns and email nurturing flows' },
             { month: 'Month 8-10', activity: 'Strategic partnership development and system scaling' }
-        ]
+        ],
+        features: [
+            { title: "B2B Portal", description: "Secure portal for existing partners to track component manufacturing status.", icon: Shield },
+            { title: "CRM Integration", description: "Full bidirectional sync with Salesforce for sales teams.", icon: Settings },
+            { title: "Interactive 3D Viewer", description: "WebGL based component viewer highlighting precision details.", icon: ZoomIn },
+            { title: "Automated RFQ System", description: "Streamlined the Request For Quote process lowering response times by 80%.", icon: Zap }
+        ],
+        techStack: defaultTechStack,
+        liveLink: "https://example.com/precision"
     },
     {
         id: 4,
@@ -187,7 +262,15 @@ export const caseStudiesData: CaseStudy[] = [
             { month: 'Month 2-3', activity: 'Heavy website optimization and continuous A/B testing' },
             { month: 'Month 4-5', activity: 'Technical SEO and organic content marketing implementation' },
             { month: 'Month 6-7', activity: 'Complex email marketing automations and retention campaigns' }
-        ]
+        ],
+        features: [
+            { title: "Headless E-commerce Architecture", description: "Decoupled frontend for lightning-fast page transitions.", icon: Zap },
+            { title: "Dynamic Cart Recommendations", description: "AI-driven product up-sells directly inside the sliding cart.", icon: Target },
+            { title: "One-Click Checkout", description: "Integrated Apple Pay and Shop Pay to reduce checkout friction.", icon: Smartphone },
+            { title: "Advanced User Segmentation", description: "Grouped users dynamically for hyper-targeted email campaigns.", icon: Users }
+        ],
+        techStack: defaultTechStack,
+        liveLink: "https://example.com/ecofashion"
     },
     {
         id: 5,
@@ -223,7 +306,15 @@ export const caseStudiesData: CaseStudy[] = [
             { month: 'Month 3-4', activity: 'Secure online booking system and patient portal integration' },
             { month: 'Month 5-7', activity: 'Aggressive localized SEO and automated review management' },
             { month: 'Month 8-9', activity: 'Targeted patient acquisition campaigns and ad optimization' }
-        ]
+        ],
+        features: [
+            { title: "HIPAA-Compliant Hosting", description: "Ensured all patient data handling met strict federal guidelines.", icon: Shield },
+            { title: "Telehealth Integration", description: "Built direct video consultation scheduling into the patient portal.", icon: Heart },
+            { title: "Automated Appointment Reminders", description: "Reduced no-shows by 40% using SMS and email triggers.", icon: Clock },
+            { title: "Patient Resource Library", description: "Searchable CMS for medical articles and post-care instructions.", icon: BookOpen }
+        ],
+        techStack: defaultTechStack,
+        liveLink: "https://example.com/wellness"
     },
     {
         id: 6,
@@ -259,6 +350,14 @@ export const caseStudiesData: CaseStudy[] = [
             { month: 'Month 4-6', activity: 'Premium website redesign and initial thought leadership deployment' },
             { month: 'Month 7-9', activity: 'High-ticket client acquisition campaigns and digital networking' },
             { month: 'Month 10-12', activity: 'Institutional referral system buildout and advanced automation' }
-        ]
+        ],
+        features: [
+            { title: "Secure Case Intake Form", description: "Multi-step encrypted forms sorting prospects based on value.", icon: Shield },
+            { title: "Thought Leadership Blog", description: "Advanced CMS for attorneys to publish insights effortlessly.", icon: BookOpen },
+            { title: "Partner Directory", description: "Dynamic filtering of legal personnel based on specialization.", icon: Users },
+            { title: "CRM Sync", description: "Direct routing of leads to specific partners and paralegals.", icon: LayoutDashboard }
+        ],
+        techStack: defaultTechStack,
+        liveLink: "https://example.com/legal"
     }
 ];

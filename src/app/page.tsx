@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import { Section, SectionHeader } from '@/components/section';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -60,6 +61,40 @@ const VIGITAL_ALIGNMENT_STEPS = [
 ];
 
 export default function Home() {
+  const [currentServiceIndex, setCurrentServiceIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    if (!typewriterServices || typewriterServices.length === 0) return;
+    const service = typewriterServices[currentServiceIndex];
+    let timeout: NodeJS.Timeout;
+
+    if (isDeleting) {
+      if (currentText === '') {
+        setIsDeleting(false);
+        setCurrentServiceIndex((prev) => (prev + 1) % typewriterServices.length);
+        timeout = setTimeout(() => {}, 400); // Wait before typing new word
+      } else {
+        timeout = setTimeout(() => {
+          setCurrentText(currentText.slice(0, -1));
+        }, 30); // Faster delete
+      }
+    } else {
+      if (currentText === service) {
+        timeout = setTimeout(() => {
+          setIsDeleting(true);
+        }, 1000); // Hold word longer
+      } else {
+        timeout = setTimeout(() => {
+          setCurrentText(service.slice(0, currentText.length + 1));
+        }, 60); // Faster typing
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isDeleting, currentServiceIndex]);
+
   // Portfolio slider data
 
 
@@ -274,14 +309,16 @@ export default function Home() {
                 </span>
               </h1>
 
-              {/* Text Type Animation for Services - Equal height to animated indicator */}
-              <div className="flex flex-col sm:flex-row items-center sm:items-baseline">
-                <span className="text-base sm:text-lg md:text-xl text-muted-foreground whitespace-nowrap text-center sm:text-left">We specialize in:</span>
-                <div className="relative flex items-center justify-center sm:justify-start min-w-[220px] sm:min-w-[300px] md:min-w-[400px] lg:min-w-[500px] w-full sm:w-auto h-full">
-                  <div className="text-base sm:text-lg md:text-xl font-semibold text-primary typewriter-container w-full text-center sm:text-left h-full flex items-center">
-                    <span className="typewriter-text"> {typewriterServices[0]}</span>
-                    <span className="typewriter-cursor animate-pulse">|</span>
-                  </div>
+              {/* Text Type Animation for Services */}
+              <div className="flex flex-col sm:flex-row items-center sm:items-center justify-center sm:justify-start gap-1 sm:gap-2 mt-6 h-16 sm:h-10">
+                <span className="text-base sm:text-lg md:text-xl text-muted-foreground whitespace-nowrap shrink-0 flex items-center h-full">
+                  We specialize in:
+                </span>
+                <div className="flex items-center justify-center sm:justify-start h-full sm:min-w-[400px]">
+                  <span className="text-base sm:text-lg md:text-xl font-bold font-semibold text-[#4411ab] whitespace-nowrap">
+                    {currentText}
+                    <span className="animate-pulse ml-[2px]">|</span>
+                  </span>
                 </div>
               </div>
             </div>

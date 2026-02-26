@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://roi-agency.com",
+    url: "https://thevigital.com",
     title: "ROI Agency - Marketing That Delivers ROI",
     description: "Your marketing spend should always pay for itself. We deliver data-driven marketing solutions that guarantee measurable ROI and sustainable business growth.",
     siteName: "ROI Agency",
