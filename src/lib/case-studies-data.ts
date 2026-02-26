@@ -70,7 +70,7 @@ export interface CaseStudy {
     visualShowcase?: string[];
 }
 
-const defaultTechStack: TechStackCategory[] = [
+const webDevTechStack: TechStackCategory[] = [
     {
         category: "Frontend",
         technologies: [
@@ -91,6 +91,77 @@ const defaultTechStack: TechStackCategory[] = [
         technologies: [
             { name: "Vercel", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg", reason: "Edge network deployment." },
             { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", reason: "Scalable cloud services and media storage." }
+        ]
+    }
+];
+
+const marketingTechStack: TechStackCategory[] = [
+    {
+        category: "Analytics & Tracking",
+        technologies: [
+            { name: "Google Analytics 4", icon: "https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg", reason: "Advanced user journey tracking and event measurement." },
+            { name: "Google Tag Manager", icon: "https://cdn.worldvectorlogo.com/logos/google-tag-manager.svg", reason: "Agile deployment of marketing tags and tracking pixels." }
+        ]
+    },
+    {
+        category: "CRM & Automation",
+        technologies: [
+            { name: "HubSpot", icon: "https://cdn.worldvectorlogo.com/logos/hubspot.svg", reason: "Centralized lead scoring, routing, and email automation." },
+            { name: "Zapier", icon: "https://cdn.worldvectorlogo.com/logos/zapier-1.svg", reason: "Connecting disparate marketing tools into cohesive workflows." }
+        ]
+    },
+    {
+        category: "Ad Platforms",
+        technologies: [
+            { name: "Google Ads", icon: "https://cdn.worldvectorlogo.com/logos/google-ads-1.svg", reason: "High-intent search and display network acquisitions." },
+            { name: "Meta Ads", icon: "https://cdn.worldvectorlogo.com/logos/meta-1.svg", reason: "Hyper-targeted demographic and behavioral social campaigns." }
+        ]
+    }
+];
+
+const designTechStack: TechStackCategory[] = [
+    {
+        category: "UI/UX & Prototyping",
+        technologies: [
+            { name: "Figma", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg", reason: "Collaborative interface design and interactive prototyping." },
+            { name: "Framer", icon: "https://cdn.worldvectorlogo.com/logos/framer-lettermark.svg", reason: "High-fidelity micro-interactions and spatial animations." }
+        ]
+    },
+    {
+        category: "Creative Assets",
+        technologies: [
+            { name: "Adobe Illustrator", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-line.svg", reason: "Vector-based brand identity and iconography design." },
+            { name: "Adobe Photoshop", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-line.svg", reason: "Advanced raster image manipulation and compositing." }
+        ]
+    },
+    {
+        category: "Design Systems",
+        technologies: [
+            { name: "Storybook", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/storybook/storybook-original.svg", reason: "Isolated component development and documentation." }
+        ]
+    }
+];
+
+const aiTechStack: TechStackCategory[] = [
+    {
+        category: "AI Models & Infrastructure",
+        technologies: [
+            { name: "OpenAI", icon: "https://cdn.worldvectorlogo.com/logos/openai-2.svg", reason: "Advanced LLM routing for natural language processing." },
+            { name: "Pinecone", icon: "https://cdn.worldvectorlogo.com/logos/pinecone-1.svg", reason: "Vector database for semantic search and Retrieval-Augmented Generation." }
+        ]
+    },
+    {
+        category: "Agent Frameworks",
+        technologies: [
+            { name: "LangChain", icon: "https://cdn.worldvectorlogo.com/logos/langchain.svg", reason: "Chaining prompts, memory, and external tools together." },
+            { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg", reason: "Core scripting logic for agent orchestration." }
+        ]
+    },
+    {
+        category: "Deployment",
+        technologies: [
+            { name: "Docker", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg", reason: "Containerization mapping for scalable cloud deployments." },
+            { name: "AWS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg", reason: "Reliable cloud compute for 24/7 autonomous agents." }
         ]
     }
 ];
@@ -138,7 +209,7 @@ export const caseStudiesData: CaseStudy[] = [
             { title: "Real-time Analytics Dashboard", description: "Built a custom dashboard tracking user acquisitions, MRR, and churn.", icon: LayoutDashboard },
             { title: "Scalable API Architecture", description: "Refactored legacy endpoints to handle 10x simultaneous user connections.", icon: Server }
         ],
-        techStack: defaultTechStack,
+        techStack: marketingTechStack,
         liveLink: "https://example.com/techflow",
         visualShowcase: ["/images/showcase-techflow-1.jpg", "/images/showcase-techflow-2.jpg", "/images/showcase-techflow-3.jpg"]
     },
@@ -184,7 +255,7 @@ export const caseStudiesData: CaseStudy[] = [
             { title: "Geo-targeted Marketing", description: "Automated local ad spending based on location proximity to branches.", icon: Target },
             { title: "Review Management System", description: "Integrated automated feedback requests post-delivery.", icon: Star }
         ],
-        techStack: defaultTechStack,
+        techStack: webDevTechStack,
         liveLink: "https://example.com/urbanbistro"
     },
     {
@@ -229,7 +300,7 @@ export const caseStudiesData: CaseStudy[] = [
             { title: "Interactive 3D Viewer", description: "WebGL based component viewer highlighting precision details.", icon: ZoomIn },
             { title: "Automated RFQ System", description: "Streamlined the Request For Quote process lowering response times by 80%.", icon: Zap }
         ],
-        techStack: defaultTechStack,
+        techStack: marketingTechStack,
         liveLink: "https://example.com/precision"
     },
     {
@@ -274,7 +345,7 @@ export const caseStudiesData: CaseStudy[] = [
             { title: "One-Click Checkout", description: "Integrated Apple Pay and Shop Pay to reduce checkout friction.", icon: Smartphone },
             { title: "Advanced User Segmentation", description: "Grouped users dynamically for hyper-targeted email campaigns.", icon: Users }
         ],
-        techStack: defaultTechStack,
+        techStack: webDevTechStack,
         liveLink: "https://example.com/ecofashion"
     },
     {
@@ -319,53 +390,53 @@ export const caseStudiesData: CaseStudy[] = [
             { title: "Automated Appointment Reminders", description: "Reduced no-shows by 40% using SMS and email triggers.", icon: Clock },
             { title: "Patient Resource Library", description: "Searchable CMS for medical articles and post-care instructions.", icon: BookOpen }
         ],
-        techStack: defaultTechStack,
+        techStack: marketingTechStack,
         liveLink: "https://example.com/wellness"
     },
     {
         id: 6,
-        slug: 'legal-associates-thought-leadership',
-        title: 'Professional Services Firm Growth',
-        company: 'Legal Associates LLP',
-        industry: 'Legal Services',
-        duration: '12 months',
-        challenge: 'Weak online authority and severe difficulty attracting high-value, quality corporate clients.',
-        solution: 'Authoritative professional services marketing rooted deeply in thought leadership and direct client acquisition.',
+        slug: 'paystream-fintech-rebrand-ui',
+        title: 'FinTech App Rebrand & UI/UX',
+        company: 'PayStream Financial',
+        industry: 'FinTech',
+        duration: '5 months',
+        challenge: 'A clunky, outdated app interface causing high user drop-off during onboarding, coupled with an uninspiring, generic visual identity that lacked trust.',
+        solution: 'A comprehensive brand overhaul and meticulous UI/UX mobile app redesign focusing on accessibility, modern aesthetic trust, and frictionless financial transactions.',
         results: {
-            clients: { value: '+180%', icon: Users, color: 'text-blue-600' },
-            revenue: { value: '+240%', icon: DollarSign, color: 'text-green-600' },
-            cases: { value: '+165%', icon: CheckCircle, color: 'text-purple-600' }
+            engagement: { value: '+210%', icon: Users, color: 'text-blue-600' },
+            retention: { value: '+140%', icon: Heart, color: 'text-rose-600' },
+            onboarding: { value: '+300%', icon: Zap, color: 'text-yellow-600' }
         },
         metrics: [
-            { label: 'New Clients', before: '6/month', after: '17/month', growth: '+183%' },
-            { label: 'Firm Revenue', before: '$180K', after: '$612K', improvement: '+240%' },
-            { label: 'Case Volume', before: '24', after: '64', improvement: '+167%' },
-            { label: 'Average Case Value', before: '$7,500', after: '$9,600', improvement: '+28%' }
+            { label: 'User Retention', before: '12%', after: '43%', growth: '+258%' },
+            { label: 'Onboarding Completion', before: '24%', after: '88%', improvement: '+266%' },
+            { label: 'Daily Active Users', before: '4,500', after: '18,200', improvement: '+304%' },
+            { label: 'Design System adoption', before: '0%', after: '100%', improvement: '+100%' }
         ],
-        description: 'An elite law firm was struggling to attract the caliber of corporate clients they deserved, often losing out to larger bureaucratic competitors. We developed a sophisticated professional services marketing strategy that elevated their partners, positioned them as absolute thought leaders in their specific legal niches, and dramatically increased their inbound high-value case volume.',
+        description: 'A promising FinTech startup possessed a powerful backend system but was aggressively bleeding users due to a confusing interface. We spearheaded a complete visual rebrand to establish institutional trust and completely overhauled their mobile app UI/UX. The new intuitive design system eliminated transaction friction and resulted in explosive user retention.',
         category: 'Designing',
-        services: ['Professional Services Marketing', 'Content Marketing', 'Client Acquisition', 'Thought Leadership'],
+        services: ['UI/UX Design', 'Brand Identity', 'Design Systems', 'App Prototyping'],
         badge: 'Premium',
         badgeVariant: 'outline',
         testimonial: {
-            quote: "The strategic alignment completely changed our firm's trajectory. We're now consistently attracting significantly higher-quality corporate clients and our gross revenue has more than doubled.",
-            author: "Robert Kim",
-            role: "Managing Partner, Legal Associates LLP"
+            quote: "The new brand identity and app experience completely changed how users perceive us. The interface is now so intuitive that our customer support tickets regarding app usage dropped to zero.",
+            author: "Elena Rostova",
+            role: "Chief Product Officer, PayStream"
         },
         timeline: [
-            { month: 'Month 1-3', activity: 'Elite brand positioning and deep content strategy formulation' },
-            { month: 'Month 4-6', activity: 'Premium website redesign and initial thought leadership deployment' },
-            { month: 'Month 7-9', activity: 'High-ticket client acquisition campaigns and digital networking' },
-            { month: 'Month 10-12', activity: 'Institutional referral system buildout and advanced automation' }
+            { month: 'Month 1', activity: 'Comprehensive user research, wireframing, and brand identity conceptualization' },
+            { month: 'Month 2', activity: 'High-fidelity UI prototyping and interactive user testing' },
+            { month: 'Month 3-4', activity: 'Creation of a scalable Design System and developer handoff' },
+            { month: 'Month 5', activity: 'Brand launch, marketing collateral design, and app store asset creation' }
         ],
         features: [
-            { title: "Secure Case Intake Form", description: "Multi-step encrypted forms sorting prospects based on value.", icon: Shield },
-            { title: "Thought Leadership Blog", description: "Advanced CMS for attorneys to publish insights effortlessly.", icon: BookOpen },
-            { title: "Partner Directory", description: "Dynamic filtering of legal personnel based on specialization.", icon: Users },
-            { title: "CRM Sync", description: "Direct routing of leads to specific partners and paralegals.", icon: LayoutDashboard }
+            { title: "Scalable Design System", description: "A robust library of reusable UI components in Figma to ensure future consistency.", icon: Settings },
+            { title: "Frictionless Onboarding", description: "Redesigned the KYC process into micro-steps, drastically reducing user fatigue.", icon: Target },
+            { title: "Animated Interactions", description: "Custom micro-animations for transaction success states to trigger delight.", icon: Zap },
+            { title: "Dark Mode Architecture", description: "A beautifully balanced dark mode palette specifically engineered for OLED mobile screens.", icon: Smartphone }
         ],
-        techStack: defaultTechStack,
-        liveLink: "https://example.com/legal"
+        techStack: designTechStack,
+        liveLink: "https://example.com/paystream"
     },
     {
         id: 7,
@@ -408,7 +479,9 @@ export const caseStudiesData: CaseStudy[] = [
             { title: "Human Handoff", description: "Seamlessly routes highly-qualified buyers directly to available managers.", icon: Users },
             { title: "Multi-language Support", description: "Automatically converses fluently in Spanish and English.", icon: Globe },
             { title: "SMS Integration", description: "Follows up with prospects right via SMS if they disconnect from the site.", icon: Smartphone }
-        ]
+        ],
+        techStack: aiTechStack,
+        liveLink: "https://example.com/automotive"
     },
     {
         id: 8,
@@ -444,6 +517,14 @@ export const caseStudiesData: CaseStudy[] = [
             { month: 'Month 1', activity: 'Competitor analysis, keyword mapping, and WordPress wireframing' },
             { month: 'Month 2', activity: 'Custom theme development and mobile-first responsive coding' },
             { month: 'Month 3', activity: 'Content migration, on-page SEO optimization, and formal launch' }
-        ]
+        ],
+        features: [
+            { title: "Local SEO Optimized", description: "Hyper-focused on geographic search terms and Google Business Profile.", icon: Search },
+            { title: "Lightning Fast Mobile UX", description: "Minimal payload and accelerated rendering for mobile connections.", icon: Smartphone },
+            { title: "Click-to-Call Functionality", description: "Persistent floating action buttons for instant emergency dispatch.", icon: Zap },
+            { title: "Trust Signals Integration", description: "Dynamic fetching of latest 5-star reviews specifically for plumbing.", icon: Star }
+        ],
+        techStack: webDevTechStack,
+        liveLink: "https://example.com/apexplumbing"
     }
 ];
