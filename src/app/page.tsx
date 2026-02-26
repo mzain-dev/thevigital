@@ -19,6 +19,7 @@ import {
 import Autoplay from "embla-carousel-autoplay"
 
 import { SERVICES_SUMMARY } from '@/lib/constants';
+import { caseStudiesData } from '@/lib/case-studies-data';
 
 const typewriterServices = SERVICES_SUMMARY.map(s => s.title);
 
@@ -74,7 +75,7 @@ export default function Home() {
       if (currentText === '') {
         setIsDeleting(false);
         setCurrentServiceIndex((prev) => (prev + 1) % typewriterServices.length);
-        timeout = setTimeout(() => {}, 400); // Wait before typing new word
+        timeout = setTimeout(() => { }, 400); // Wait before typing new word
       } else {
         timeout = setTimeout(() => {
           setCurrentText(currentText.slice(0, -1));
@@ -136,104 +137,23 @@ export default function Home() {
     }
   ];
 
-  const caseStudies = [
-    {
-      id: 1,
-      title: 'TechFlow Inc.',
-      industry: 'SaaS',
-      description: 'Increased conversion rate by 340% and generated $2.4M in revenue through data-driven marketing strategies.',
-      logo: 'TF',
-      services: ['Performance Marketing', 'Web Development', 'SEO'],
-      results: ['340% Conversion Increase', '$2.4M Revenue Generated', '95% Client Retention'],
-      href: '/case-studies/techflow',
-      icon: '🏢',
-      gradient: 'from-blue-900 via-blue-800 to-purple-900',
-      rotation: '-rotate-2',
-      hasWebsitePreview: true,
-      subtitle: 'Real Estate Excellence',
-      image: '/case-studies/tech-startup.jpg'
-    },
-    {
-      id: 2,
-      title: 'GrowthLab',
-      industry: 'E-commerce',
-      description: 'Transformed their marketing from cost center to profit driver with AI-powered automation and optimization.',
-      logo: 'GL',
-      services: ['CRM & Automation', 'Performance Marketing', 'AI Agents'],
-      results: ['140% Conversion Increase', '3x ROI on Marketing Spend', 'Automated Lead Nurturing'],
-      href: '/case-studies/growthlab',
-      icon: '🔨',
-      gradient: 'from-amber-900 via-orange-800 to-red-900',
-      rotation: 'rotate-2',
-      hasWebsitePreview: true,
-      subtitle: 'Woodwork Excellence',
-      image: '/case-studies/ecommerce.jpg'
-    },
-    {
-      id: 3,
-      title: 'ScaleUp Solutions',
-      industry: 'FinTech',
-      description: 'Achieved measurable ROI through transparent reporting and data-driven decision making.',
-      logo: 'SS',
-      services: ['Data Analytics', 'Performance Marketing', 'Transparent Reporting'],
-      results: ['Real-time ROI Tracking', 'Data-Driven Decisions', 'Transparent Reporting'],
-      href: '/case-studies/scaleup',
-      icon: '🚀',
-      gradient: 'from-green-900 via-emerald-800 to-teal-900',
-      rotation: '-rotate-1',
-      hasWebsitePreview: false,
-      subtitle: 'Digital Transformation',
-      image: '/case-studies/fintech.jpg'
-    },
-    {
-      id: 4,
-      title: 'InnovateCorp',
-      industry: 'Manufacturing',
-      description: 'Built sustainable marketing systems that continue generating results long after campaign launch.',
-      logo: 'IC',
-      services: ['System Building', 'Long-term Strategy', 'Performance Marketing'],
-      results: ['Sustainable Growth', 'Long-term Results', 'System Optimization'],
-      href: '/case-studies/innovatecorp',
-      icon: '🎨',
-      gradient: 'from-purple-900 via-violet-800 to-indigo-900',
-      rotation: 'rotate-1',
-      hasWebsitePreview: true,
-      subtitle: 'Brand Identity',
-      image: '/case-studies/manufacturing.jpg'
-    },
-    {
-      id: 5,
-      title: 'HealthTech Solutions',
-      industry: 'Healthcare',
-      description: 'Revolutionized patient engagement through digital marketing and streamlined appointment booking systems.',
-      logo: 'HTS',
-      services: ['Healthcare Marketing', 'Patient Acquisition', 'Digital Transformation'],
-      results: ['+180% Patient Engagement', '95% Online Bookings', '40% Cost Reduction'],
-      href: '/case-studies/healthtech',
-      icon: '🏥',
-      gradient: 'from-emerald-400 via-teal-300 to-cyan-400',
-      rotation: '-rotate-1',
-      hasWebsitePreview: false,
-      subtitle: 'Digital Healthcare',
-      image: '/case-studies/healthcare.jpg'
-    },
-    {
-      id: 6,
-      title: 'EduLearn Academy',
-      industry: 'Education',
-      description: 'Transformed online learning platform with AI-powered personalization and student success tracking.',
-      logo: 'ELA',
-      services: ['EdTech Marketing', 'AI Integration', 'Student Analytics'],
-      results: ['+250% Course Completion', '85% Student Satisfaction', '60% Revenue Growth'],
-      href: '/case-studies/edulearn',
-      icon: '🎓',
-      gradient: 'from-amber-300 via-yellow-200 to-orange-300',
-      rotation: 'rotate-2',
-      hasWebsitePreview: true,
-      subtitle: 'Educational Innovation',
-      image: '/case-studies/education.jpg'
-    }
-  ];
+  const caseStudies = caseStudiesData.map((study, index) => ({
+    id: study.id,
+    title: study.company,
+    industry: study.industry,
+    description: study.description,
+    logo: study.company.substring(0, 2).toUpperCase(),
+    services: study.services,
+    results: Object.entries(study.results).map(([key, val]) => `${val.value} ${key.charAt(0).toUpperCase() + key.slice(1)}`),
+    href: `/case-studies/${study.slug}`,
+    icon: ['🏢', '🔨', '🚀', '🎨', '🏥', '🎓'][index % 6],
+    gradient: 'from-blue-900 via-blue-800 to-purple-900',
+    rotation: index % 2 === 0 ? '-rotate-2' : 'rotate-2',
+    hasWebsitePreview: true,
+    subtitle: study.title,
+    image: study.visualShowcase?.[0] || `/case-studies/${['tech-startup.jpg', 'ecommerce.jpg', 'fintech.jpg', 'manufacturing.jpg', 'healthcare.jpg', 'education.jpg'][index % 6]}`
+  }));
+
 
   const testimonials = [
     {
@@ -409,7 +329,6 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6">
               The Vigital Alignment:{' '}
-
             </h2>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6 bg-gradient-to-r from-primary via-primary/80 to-primary/60 bg-clip-text text-transparent animate-pulse">
               Your 360° Profit System
@@ -428,8 +347,8 @@ export default function Home() {
                 key={index}
                 className="group bg-card border border-border rounded-xl p-6 hover:border-primary/50 hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                  <step.icon className="w-6 h-6 text-primary" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white border border-[#4411ab] rounded-lg flex items-center justify-center mb-4 group-hover:bg-[#4411ab]/10 transition-colors duration-300">
+                  <step.icon className="w-5 h-5 sm:w-6 sm:h-6 text-[#4411ab]" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
